@@ -6,21 +6,32 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { SigninPage } from '../pages/signin/signin';
 import { Geolocation } from '@ionic-native/geolocation';
+import { MapPage as MapPage, ModalContentPage } from '../pages/map/map';
+import { SignupPage } from '../pages/signup/signup';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SigninPage,
+    MapPage,
+    ModalContentPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    SigninPage,
+    MapPage,
+    ModalContentPage,
+    SignupPage
   ],
   providers: [
     StatusBar,

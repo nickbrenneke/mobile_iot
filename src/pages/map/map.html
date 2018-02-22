@@ -1,0 +1,33 @@
+<ion-header>
+<ion-navbar>
+    <ion-title>
+    Requests Nearby
+    </ion-title>
+      <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<div #map id="map"></div> 
+
+<div style="width : 100% ;height: 60%">
+  <ion-list>
+    <ion-list-header>
+      Open Events
+    </ion-list-header>
+    <a ion-item (click)="openModal({eventNum: 0})">
+      Raking
+    </a>
+    <a ion-item (click)="openModal({eventNum: 1})">
+      Putting Away Groceries
+    </a>
+    <a ion-item (click)="openModal({eventNum: 2})">
+      Fixing Fence
+    </a>
+  </ion-list>
+</div>
+
+</ion-content>
