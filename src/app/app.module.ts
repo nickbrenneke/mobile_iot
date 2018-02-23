@@ -10,6 +10,8 @@ import { SigninPage } from '../pages/signin/signin';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MapPage as MapPage, ModalContentPage } from '../pages/map/map';
 import { SignupPage } from '../pages/signup/signup';
+import { Camera } from '@ionic-native/camera';
+import { CameraPage } from '../pages/camera/camera';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { SignupPage } from '../pages/signup/signup';
     SigninPage,
     MapPage,
     ModalContentPage,
-    SignupPage
+    SignupPage,
+    CameraPage
   ],
   imports: [
     BrowserModule,
@@ -31,13 +34,15 @@ import { SignupPage } from '../pages/signup/signup';
     SigninPage,
     MapPage,
     ModalContentPage,
-    SignupPage
+    SignupPage,
+    CameraPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Geolocation
+    Geolocation,
+    Camera
   ]
 })
 export class AppModule {}

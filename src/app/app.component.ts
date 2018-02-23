@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { MapPage } from '../pages/map/map';
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
+import { CameraPage} from '../pages/camera/camera';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +15,7 @@ import { SignupPage } from '../pages/signup/signup';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = SignupPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -25,7 +26,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Sign In', component: SigninPage },
-      { title: 'Map', component: MapPage }
+      { title: 'Map', component: MapPage },
+      { title: 'Camera', component: CameraPage}
     ];
 
   }

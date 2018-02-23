@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from 'ionic-angular';
-import { AgeValidator } from  '../../validators/age';
 import { UsernameValidator } from  '../../validators/username';
  
 @Component({
@@ -20,15 +19,15 @@ export class SignupPage {
 constructor(public navCtrl: NavController, public formBuilder: FormBuilder) {
  
     this.slideOneForm = formBuilder.group({
-        firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-        lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-        age: ['', AgeValidator.isValid]
+        name: ['', Validators.compose([Validators.maxLength(255), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+        email: [''],
+        enterPassword: [''],
+        confirmPassword: ['']
     });
  
     this.slideTwoForm = formBuilder.group({
         username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')]), UsernameValidator.checkUsername],
-        privacy: ['', Validators.required],
-        bio: ['']
+        privacy: ['', Validators.required]
     });
  
 }

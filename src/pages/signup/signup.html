@@ -19,26 +19,34 @@
     <ion-list no-lines>
         <form [formGroup]="slideOneForm">
             <ion-item>
-                <ion-label floating>First Name</ion-label>
-                <ion-input formControlName="firstName" type="text" [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"></ion-input>
+                <ion-label floating>Name</ion-label>
+                <ion-input formControlName="name" type="text" [class.invalid]="!slideOneForm.controls.name.valid && (slideOneForm.controls.name.dirty || submitAttempt)"></ion-input>
             </ion-item>
-            <ion-item *ngIf="!slideOneForm.controls.firstName.valid  && (slideOneForm.controls.firstName.dirty || submitAttempt)">
+            <ion-item *ngIf="!slideOneForm.controls.name.valid  && (slideOneForm.controls.name.dirty || submitAttempt)">
                 <p>Please enter a valid name.</p>
             </ion-item>
             <ion-item>
-                <ion-label floating>Last Name</ion-label>
-                <ion-input formControlName="lastName" type="text" [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.age.dirty || submitAttempt)"></ion-input>
-            </ion-item>
-            <ion-item *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">
-                <p>Please enter a valid name.</p>
+                <ion-label floating>Email Address</ion-label>
+                <ion-input formControlName="email" type="email" [class.invalid]="submitAttempt"></ion-input>
             </ion-item>
             <ion-item>
+                <ion-label floating>Password</ion-label>
+                <ion-input formControlName="enterPassword" type="password" [class.invalid]="submitAttempt"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Confirm Password</ion-label>
+                <ion-input formControlName="confirmPassword" type="password" [class.invalid]="submitAttempt"></ion-input>
+            </ion-item>
+            <!--ion-item *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">
+                <p>Please enter a valid name.</p>
+            </ion-item-->
+            <!--ion-item>
                 <ion-label floating>Age</ion-label>
                 <ion-input formControlName="age" type="number" [class.invalid]="!slideOneForm.controls.age.valid && (slideOneForm.controls.age.dirty || submitAttempt)"></ion-input>
             </ion-item>
             <ion-item *ngIf="!slideOneForm.controls.age.valid  && (slideOneForm.controls.age.dirty || submitAttempt)">
                 <p>Please enter a valid age.</p>
-            </ion-item>
+            </ion-item-->
         </form>
     </ion-list>
   </ion-slide>
@@ -62,10 +70,6 @@
                     <ion-option value="friends">Friends Only</ion-option>
                     <ion-option value="private">Private</ion-option>
                 </ion-select>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Bio</ion-label>
-                <ion-textarea formControlName="bio"></ion-textarea>
             </ion-item>
         </form>
     </ion-list>

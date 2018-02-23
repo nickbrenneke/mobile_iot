@@ -1,0 +1,25 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Camera
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home">
+  <ion-card>
+     <ion-card-content>
+       Selfie
+       <img [src]="selfiePhoto" *ngIf="selfiePhoto" />
+       <p><button ion-button (click)="takePicture('selfie')">Take a Picture</button></p>
+     </ion-card-content>
+   </ion-card>
+   <ion-card>
+     <ion-card-content>
+       ID Photo
+       <img [src]="idPhoto" *ngIf="idPhoto" />
+       <p><button ion-button (click)="takePicture('license')">Take a Picture</button></p>
+     </ion-card-content>
+   </ion-card>
+</ion-content>

@@ -1,5 +1,5 @@
 {
-  "name": "nearby-restaurants",
+  "name": "Helping Hands",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
@@ -20,12 +20,14 @@
     "@angular/http": "5.0.3",
     "@angular/platform-browser": "5.0.3",
     "@angular/platform-browser-dynamic": "5.0.3",
+    "@ionic-native/camera": "^4.5.3",
     "@ionic-native/core": "4.4.0",
     "@ionic-native/geolocation": "^4.5.3",
     "@ionic-native/splash-screen": "4.4.0",
     "@ionic-native/status-bar": "4.4.0",
     "@ionic/storage": "2.1.3",
     "cordova-android": "7.0.0",
+    "cordova-plugin-camera": "^4.0.2",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-googlemaps": "^2.2.5",
@@ -56,7 +58,8 @@
         "API_KEY_FOR_ANDROID": " AIzaSyCznFxZL6mlVlZ-Lify21EFoUz-IqodjbU",
         "PLAY_SERVICES_VERSION": "11.8.0",
         "ANDROID_SUPPORT_V4_VERSION": "24.1.0"
-      }
+      },
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "android"
