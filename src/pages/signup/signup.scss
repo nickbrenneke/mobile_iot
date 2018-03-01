@@ -22,8 +22,18 @@
             border: 1px solid #ea6153;
         }
 .scroll-content{
-margin-bottom: 0px !important;
+    margin-bottom: 0px !important;
 padding-bottom: 0px !important;
+}
+.col-33 {
+  width: 25%;
+  height: 25%;
+  margin: auto;
+  }
+
+.full-image {
+  width: 100%;
+  height: 100%;
 }
  
     }
