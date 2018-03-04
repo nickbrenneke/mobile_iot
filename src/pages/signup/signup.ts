@@ -9,6 +9,11 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   selector: 'page-signup',
   templateUrl: 'signup.html'
 })
+
+/*
+Class name: SignupPage
+Description: This page contains the functionality for a user to register/sign up for our platform.
+  */
 export class SignupPage {
  
     @ViewChild('signupSlider') signupSlider: any;
@@ -23,6 +28,7 @@ export class SignupPage {
  
 constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public http: Http, private camera: Camera) {
  
+    //Build first form as a slide object
     this.slideOneForm = formBuilder.group({
         name: ['', Validators.compose([Validators.maxLength(255), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
         username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')]), UsernameValidator.checkUsername],
@@ -30,7 +36,8 @@ constructor(public navCtrl: NavController, public formBuilder: FormBuilder, publ
         enterPassword: [''],
         confirmPassword: ['']
     });
- 
+    
+    //Create slide form two to contain camera objects to capture user picture and government ID photos
     this.slideTwoForm = formBuilder.group({
     });
  
@@ -61,6 +68,12 @@ constructor(public navCtrl: NavController, public formBuilder: FormBuilder, publ
     }
  
 }*/
+
+  /*
+  Function name: save
+  Arguments: None
+  Description: This function saves the data from the form and submits a POST request to the user registration API
+  */
 save() {
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -71,6 +84,7 @@ save() {
       email: this.slideOneForm.value['email']
     }
     
+    //Submit JSON request to API, receive response, and log any errors
     this.http.post("http://localhost:8000/accounts/api/users", JSON.stringify(postParams), options)
       .subscribe(data => {
         console.log(data["_body"]);
@@ -79,7 +93,11 @@ save() {
       });
   }
  
-
+    /*
+  Function name: takePicture
+  Arguments: type (type of photo: selfie (self portrait) or ID (govt issued ID)
+  Description: This function creates a Camera object to allow a user to take photos using native camera functionality
+  */
   takePicture(type){
     this.photoType = type;
     this.camera.getPicture({
@@ -102,5 +120,4 @@ save() {
         console.log(err);
     });
 }
-
 }

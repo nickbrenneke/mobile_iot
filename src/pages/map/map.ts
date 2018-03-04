@@ -1,6 +1,6 @@
-import { Component , ViewChild ,ElementRef } from '@angular/core';import { ModalController, Platform, NavParams, ViewController, NavController } from 'ionic-angular';
+import { Component , ViewChild ,ElementRef } from '@angular/core';
+import { ModalController, Platform, NavParams, ViewController, NavController } from 'ionic-angular';
 import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation';
-//import { ModalPage } from './modal-page';
 
 declare var google;
 
@@ -9,6 +9,10 @@ declare var google;
   templateUrl: 'map.html'
 })
 
+  /*
+  Class name: MapPage
+  Description: This class contains the functions and components to render the Google Maps view of events.
+  */
 export class MapPage {
   options : GeolocationOptions;
   currentPos : Geoposition;
@@ -16,7 +20,6 @@ export class MapPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   
-//  constructor(public modalCtrl: ModalController) {}
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, private geolocation : Geolocation) {}
   openModal(eventNum) {
 
@@ -24,6 +27,11 @@ export class MapPage {
     modal.present();
   }
   
+  /*
+  Function name: getUserPosition
+  Arguments: None
+  Description: This function uses the Geolocation component from the Ionic native functionality to get the user's current position. The function then calls the addMap function, passing in the latitude and longitude coordinates.
+  */
   getUserPosition(){
     this.options = {
     enableHighAccuracy : false
@@ -38,10 +46,20 @@ export class MapPage {
     })
   }
   
+    /*
+  Function name: ionViewDidEnter
+  Arguments: None
+  Description: This function calls the getUserPosition function when Ionic serves up the page view.
+  */
   ionViewDidEnter(){
     this.getUserPosition();
   }
   
+    /*
+  Function name: addMap
+  Arguments: lat, long (latitude and longitude from coordinates)
+  Description: This function generates a new Google Maps object, centering around the latitude and longitude coordinates passed in. Once the Map object is created, it calls the [FUNCTION] to get a list of coordinates and creates a marker for each of them. Once the markers are created, the markers are added to the map.
+  */
   addMap(lat,long){
     let latLng = new google.maps.LatLng(lat, long);
     let mapOptions = {
@@ -60,6 +78,11 @@ export class MapPage {
     this.addMarker();
   }
 
+    /*
+  Function name: AddMarker
+  Arguments: None
+  Description: This function adds markers on the Map object.
+  */
   addMarker(){
     let marker = new google.maps.Marker({
       map: this.map,
@@ -77,6 +100,11 @@ export class MapPage {
     });
   }
   
+    /*
+  Function name: getRestaurants
+  Arguments: latLng (Google Maps LatLng object representing latitude and longitude coordinates)
+  Description: This function get a list of restaurants nearby using the Google Maps Places API. This is a placeholder for getting nearby user requests from our event database.
+  */
   getRestaurants(latLng){
     var service = new google.maps.places.PlacesService(this.map);
     let request = {
@@ -96,6 +124,11 @@ export class MapPage {
     });
   }
   
+    /*
+  Function name: createMarker
+  Arguments: place (array of places/locations)
+  Description: This function creates a marker with info windows containing brief details about the locations.
+  */
   createMarker(place){
     let marker = new google.maps.Marker({
       map: this.map,
@@ -113,7 +146,7 @@ export class MapPage {
   }   
 }
 
-//Following lines for modals
+//The following component is for modal (popup) windows. It creates a template with the event details.
 @Component({
   template: `
 <ion-header>
@@ -147,6 +180,11 @@ export class MapPage {
 </ion-content>
 `
 })
+
+  /*
+  Class name: ModalContentPage
+  Description: This class contains sample events to test the modal functionality.
+  */
 export class ModalContentPage {
   event;
 

@@ -13,6 +13,7 @@ import { MapPage as MapPage, ModalContentPage } from '../pages/map/map';
 import { SignupPage } from '../pages/signup/signup';
 import { Camera } from '@ionic-native/camera';
 import { CameraPage } from '../pages/camera/camera';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CameraPage } from '../pages/camera/camera';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
