@@ -1,2 +1,2 @@
 # Helping Hands
-This repository contains the front-end code for the application. This application was built using Ionic framework. 
+This repository contains the front-end code for the application. This application was built using Ionic framework. There are two main components in the src folder. The app folder contains app-level information such as components, modules, and package information. The pages folder contains each of the pages with corresponding functionality (sign in, sign up, maps, etc.). 
