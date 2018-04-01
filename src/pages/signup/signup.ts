@@ -30,7 +30,8 @@ constructor(public navCtrl: NavController, public formBuilder: FormBuilder, publ
  
     //Build first form as a slide object
     this.slideOneForm = formBuilder.group({
-        name: ['', Validators.compose([Validators.maxLength(255), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+        firstName: ['', Validators.compose([Validators.maxLength(255), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+        lastName: ['', Validators.compose([Validators.maxLength(255), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
         username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')]), UsernameValidator.checkUsername],
         email: [''],
         enterPassword: [''],
