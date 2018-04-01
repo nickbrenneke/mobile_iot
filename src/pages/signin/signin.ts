@@ -16,9 +16,11 @@ import { Storage } from '@ionic/storage';
   Description: This class contains related to the sign in page and functionality.
   */
 export class SigninPage { 
+username: string;
+password: string;
 public token;
 constructor(public nav: NavController, public http: Http, public storage: Storage) {
-    this.nav = nav;
+   this.nav = nav;
 }  
 
     /*
