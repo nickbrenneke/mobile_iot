@@ -25678,6 +25678,10 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+page-add-place agm-map {
+  height: 250px;
+}
+
 page-map .scroll {
   height: 100%;
 }
@@ -25685,6 +25689,46 @@ page-map .scroll {
 page-map #map {
   width: 100%;
   height: 50%;
+}
+
+page-place sebm-google-map {
+  height: 250px;
+}
+
+.account ion-card {
+  margin-top: 100px;
+  overflow: visible;
+}
+
+.account ion-card ion-card-content {
+  background-color: #488aff;
+  color: #FFFFFF;
+  text-align: center;
+  padding-bottom: 28px;
+}
+
+.account ion-card ion-card-content img {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  margin-top: -100px;
+  border: solid 4px #FFFFFF;
+  display: inline;
+}
+
+.account ion-card ion-card-content h2 {
+  font-size: 2.5rem;
+  margin-top: .5rem;
+  color: white;
+}
+
+.account ion-card ion-card-content h3 {
+  font-size: 1.8rem;
+  color: white;
+}
+
+page-set-location agm-map {
+  height: 250px;
 }
 
 .ios page-signup p, .md page-signup p {
@@ -25722,4 +25766,35 @@ page-map #map {
 .ios page-signup .full-image, .md page-signup .full-image {
   width: 100%;
   height: 100%;
+}
+
+page-welcome {
+  font-weight: 300;
+}
+
+page-welcome ion-slide {
+  position: relative;
+  background-size: cover;
+}
+
+page-welcome ion-slide p {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(132, 191, 65, 0.8);
+  color: #FFFFFF;
+  padding: 28px 28px 48px 28px;
+  font-size: 2.7rem;
+  margin-bottom: 0;
+}
+
+page-welcome ion-slide img {
+  width: 50px;
+  height: 50px;
+  margin-top: -150px;
+}
+
+page-welcome .swiper-pagination-bullet {
+  background: white;
 }
