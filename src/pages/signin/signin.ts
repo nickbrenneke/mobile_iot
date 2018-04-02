@@ -44,9 +44,11 @@ constructor(public nav: NavController, public http: Http, public storage: Storag
     /*this.storage.get('currentToken').then((val) => {
     console.log('Your token is', val);*/
     this.storage.get('currentToken').then((val) => {
-    console.log('Your stored token is', val);
-    this.nav.setRoot(MapPage);
-  });
+      console.log('Your stored token is', val);
+      this.nav.setRoot(MapPage);
+    });
+    this.storage.get('orig_iat').then((val) => {
+      console.log('Your original token is', val);})
   }
   
     /*
