@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from 'ionic-angular';
 import { UsernameValidator } from  '../../validators/username';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { Storage } from "@ionic/storage";
  
 @Component({
   selector: 'page-signup',
@@ -26,7 +27,7 @@ export class SignupPage {
  
     submitAttempt: boolean = false;
  
-constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public http: Http, private camera: Camera) {
+constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public http: Http, private camera: Camera, public storage: Storage) {
  
     //Build first form as a slide object
     this.slideOneForm = formBuilder.group({
@@ -82,13 +83,18 @@ save() {
     let postParams = {
       username: this.slideOneForm.value['username'],
       password: this.slideOneForm.value['enterPassword'],
-      email: this.slideOneForm.value['email']
+      email: this.slideOneForm.value['email'],
+      first_name: this.slideOneForm.value['firstName'],
+      last_name: this.slideOneForm.value['lastName']
     }
     
     //Submit JSON request to API, receive response, and log any errors
     this.http.post("http://localhost:8000/accounts/api/users", JSON.stringify(postParams), options)
       .subscribe(data => {
         console.log(data["_body"]);
+        let parsed = JSON.parse(data["_body"]);
+        this.token = parsed["token"];
+        this.storage.set('orig_iat',this.token);
        }, error => {
         console.log("AN ERROR OCCURED!" + error.error);// Error getting the data
       });

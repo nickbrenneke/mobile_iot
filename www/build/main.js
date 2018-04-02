@@ -414,6 +414,9 @@ var SigninPage = (function () {
             console.log('Your stored token is', val);
             _this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_4__map_map__["a" /* MapPage */]);
         });
+        this.storage.get('orig_iat').then(function (val) {
+            console.log('Your original token is', val);
+        });
     };
     /*
   Function name: authenticate
@@ -449,9 +452,10 @@ var SigninPage = (function () {
         Description: This class contains related to the sign in page and functionality.
         */
         ,
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */]) === "function" && _c || Object])
     ], SigninPage);
     return SigninPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=signin.js.map
@@ -469,6 +473,7 @@ var SigninPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__validators_username__ = __webpack_require__(465);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(133);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -484,12 +489,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SignupPage = (function () {
-    function SignupPage(navCtrl, formBuilder, http, camera) {
+    function SignupPage(navCtrl, formBuilder, http, camera, storage) {
         this.navCtrl = navCtrl;
         this.formBuilder = formBuilder;
         this.http = http;
         this.camera = camera;
+        this.storage = storage;
         this.submitAttempt = false;
         //Build first form as a slide object
         this.slideOneForm = formBuilder.group({
@@ -532,18 +539,24 @@ var SignupPage = (function () {
     Description: This function saves the data from the form and submits a POST request to the user registration API
     */
     SignupPage.prototype.save = function () {
+        var _this = this;
         var headers = new __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Headers */]();
         headers.append("Content-Type", "application/json");
         var options = new __WEBPACK_IMPORTED_MODULE_5__angular_http__["d" /* RequestOptions */]({ headers: headers });
         var postParams = {
             username: this.slideOneForm.value['username'],
             password: this.slideOneForm.value['enterPassword'],
-            email: this.slideOneForm.value['email']
+            email: this.slideOneForm.value['email'],
+            first_name: this.slideOneForm.value['firstName'],
+            last_name: this.slideOneForm.value['lastName']
         };
         //Submit JSON request to API, receive response, and log any errors
         this.http.post("http://localhost:8000/accounts/api/users", JSON.stringify(postParams), options)
             .subscribe(function (data) {
             console.log(data["_body"]);
+            var parsed = JSON.parse(data["_body"]);
+            _this.token = parsed["token"];
+            _this.storage.set('orig_iat', _this.token);
         }, function (error) {
             console.log("AN ERROR OCCURED!" + error.error); // Error getting the data
         });
@@ -589,9 +602,10 @@ var SignupPage = (function () {
         Description: This page contains the functionality for a user to register/sign up for our platform.
           */
         ,
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_5__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__["a" /* Camera */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_http__["b" /* Http */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__["a" /* Camera */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */]) === "function" && _e || Object])
     ], SignupPage);
     return SignupPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=signup.js.map
@@ -677,10 +691,10 @@ var EventListPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-event-list',template:/*ion-inline-start:"C:\Users\trogd\Documents\Github\mobile_iot\src\pages\event-list\event-list.html"*/'<ion-header>\n\n    <ion-navbar>\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n        <ion-searchbar [(ngModel)]="searchKey" (ionInput)="onInput($event)"\n\n                       (ionCancel)="onCancel($event)"></ion-searchbar>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <ion-card *ngFor="let place of places; let i = index" (click)="onOpenPlace(place, i)">\n\n    <img [src]="place.imageUrl">\n\n    <ion-card-content text-center>\n\n      <ion-card-title>\n\n        {{ place.title }}\n\n      </ion-card-title>\n\n      <p>{{ place.description }}</p>\n\n    </ion-card-content>\n\n  </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\trogd\Documents\Github\mobile_iot\src\pages\event-list\event-list.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_2__services_places__["a" /* PlacesService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_places__["a" /* PlacesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_places__["a" /* PlacesService */]) === "function" && _b || Object])
     ], EventListPage);
     return EventListPage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=event-list.js.map
