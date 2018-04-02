@@ -18,7 +18,7 @@ Description: This page contains the functionality for a user to register/sign up
 export class SignupPage {
  
     @ViewChild('signupSlider') signupSlider: any;
- 
+    public token;
     slideOneForm: FormGroup;
     slideTwoForm: FormGroup;
     public selfiePhoto: string;
