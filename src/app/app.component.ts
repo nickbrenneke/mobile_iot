@@ -15,7 +15,6 @@ import { ProfilePage } from '../pages/profile/profile';
 export interface MenuItem {
     title: string;
     component: any;
-    icon: string;
 }
 
 @Component({
