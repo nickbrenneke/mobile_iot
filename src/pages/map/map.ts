@@ -1,6 +1,8 @@
 import { Component , ViewChild ,ElementRef } from '@angular/core';
 import { ModalController, Platform, NavParams, ViewController, NavController } from 'ionic-angular';
 import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation';
+import { AddPlacePage } from "../add-place/add-place";
+
 
 declare var google;
 
@@ -14,6 +16,7 @@ declare var google;
   Description: This class contains the functions and components to render the Google Maps view of events.
   */
 export class MapPage {
+  addPlacePage = AddPlacePage;
   options : GeolocationOptions;
   currentPos : Geoposition;
   places : Array<any> ; 

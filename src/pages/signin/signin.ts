@@ -4,6 +4,7 @@ import { NavController} from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { HomePage } from '../home/home';
 import { MapPage} from '../map/map';
+import { WelcomePage} from '../welcome/welcome';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
 
@@ -43,8 +44,8 @@ constructor(public nav: NavController, public http: Http, public storage: Storag
     /*this.storage.get('currentToken').then((val) => {
     console.log('Your token is', val);*/
     this.storage.get('currentToken').then((val) => {
-    console.log('Your store len is', val);
-    this.nav.setRoot(HomePage);
+    console.log('Your stored token is', val);
+    this.nav.setRoot(MapPage);
   });
   }
   
