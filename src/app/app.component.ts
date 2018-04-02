@@ -38,6 +38,7 @@ export class MyApp {
       {title: 'Home', component: MapPage},
       {title: 'Help Wanted', component: EventListPage},
       {title: 'My Account', component: ProfilePage},
+      {title: 'About', component: WelcomePage},
       {title: 'Logout', component: SigninPage}
     ];
     

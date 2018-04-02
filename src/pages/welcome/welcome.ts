@@ -7,5 +7,4 @@ import { AddPlacePage } from "../add-place/add-place";
     templateUrl: 'welcome.html'
 })
 export class WelcomePage {
-    addPlacePage = AddPlacePage;
 }
