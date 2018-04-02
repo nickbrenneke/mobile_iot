@@ -44,7 +44,7 @@ constructor(public nav: NavController, public http: Http, public storage: Storag
     console.log('Your token is', val);*/
     this.storage.get('currentToken').then((val) => {
     console.log('Your store len is', val);
-    this.nav.setRoot(HomePage);
+    this.nav.setRoot(MapPage);
   });
   }
   

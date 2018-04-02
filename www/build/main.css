@@ -25678,6 +25678,10 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+page-add-place sebm-google-map {
+  height: 250px;
+}
+
 page-map .scroll {
   height: 100%;
 }
@@ -25685,6 +25689,14 @@ page-map .scroll {
 page-map #map {
   width: 100%;
   height: 50%;
+}
+
+page-place sebm-google-map {
+  height: 250px;
+}
+
+page-set-location sebm-google-map {
+  height: 250px;
 }
 
 .ios page-signup p, .md page-signup p {
