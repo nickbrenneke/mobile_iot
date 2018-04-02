@@ -25678,6 +25678,11 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+.menu-logo {
+  height: 140px;
+  margin: 0 0 0 0;
+}
+
 page-add-place agm-map {
   height: 250px;
 }
