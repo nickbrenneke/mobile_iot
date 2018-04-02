@@ -36,21 +36,21 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       //{ title: 'Home', component: HomePage },
-      { title: 'Home', component: MapPage },
+      {title: 'Home', component: MapPage},
       {title: 'Help Wanted', component: EventListPage},
-      {title: 'My Account', component: ProfilePage, icon: 'ios-contact'},
-      {title: 'Logout', component: SigninPage, icon: 'log-out'}
+      {title: 'My Account', component: ProfilePage},
+      {title: 'Logout', component: SigninPage}
     ];
     
     this.appMenuItems = [
-      {title: 'Home', component: WelcomePage, icon: 'star'},
-      {title: 'Help Wanted', component: EventListPage, icon: 'star'},
+      {title: 'Home', component: WelcomePage},
+      {title: 'Help Wanted', component: EventListPage}
       // {title: 'Offered Help', component: FavoriteListPage, icon: 'star'},
     ];
         
     this.accountMenuItems = [
-      {title: 'My Account', component: ProfilePage, icon: 'ios-contact'},
-      {title: 'Logout', component: WelcomePage, icon: 'log-out'}
+      {title: 'My Account', component: ProfilePage},
+      {title: 'Logout', component: WelcomePage}
     ];
 
   }
