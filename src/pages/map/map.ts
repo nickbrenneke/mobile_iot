@@ -1,7 +1,10 @@
-import { Component , ViewChild ,ElementRef } from '@angular/core';
+import { Component , OnInit, ViewChild ,ElementRef } from '@angular/core';
 import { ModalController, Platform, NavParams, ViewController, NavController } from 'ionic-angular';
 import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation';
-import { AddPlacePage } from "../add-place/add-place";
+import { AddEventPage } from "../add-event/add-event";
+import { Event } from "../../models/event";
+import { EventsService } from "../../services/events";
+import { EventPage } from "../event/event";
 
 
 declare var google;
@@ -15,20 +18,47 @@ declare var google;
   Class name: MapPage
   Description: This class contains the functions and components to render the Google Maps view of events.
   */
-export class MapPage {
-  addPlacePage = AddPlacePage;
+export class MapPage implements OnInit{
+  addEventPage = AddEventPage;
   options : GeolocationOptions;
   currentPos : Geoposition;
   places : Array<any> ; 
+  events: Event[] = [];
+
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, private geolocation : Geolocation) {}
-  openModal(eventNum) {
+  constructor(public navCtrl: NavController, 
+              public modalCtrl: ModalController, 
+              private geolocation : Geolocation,
+              private eventsService: EventsService) {}
 
-    let modal = this.modalCtrl.create(ModalContentPage, eventNum);
-    modal.present();
+  ngOnInit() {
+    this.eventsService.fetchEvents()
+      .then(
+        (events: Event[]) => this.events = events
+      );
   }
+
+  ionViewWillEnter() {
+    this.events = this.eventsService.loadEvents();
+  }
+
+  onOpenEvent(event: Event, index: number) {
+    const modal = this.modalCtrl.create(EventPage, {event: event, index: index});
+    modal.present();
+    modal.onDidDismiss(
+      () => {
+        this.events = this.eventsService.loadEvents();
+      }
+    );
+  }
+
+  // openModal(eventNum) {
+
+  //   let modal = this.modalCtrl.create(ModalContentPage, eventNum);
+  //   modal.present();
+  // }
   
   /*
   Function name: getUserPosition
@@ -81,7 +111,7 @@ export class MapPage {
     this.addMarker();
   }
 
-    /*
+  /*
   Function name: AddMarker
   Arguments: None
   Description: This function adds markers on the Map object.
@@ -150,79 +180,79 @@ export class MapPage {
 }
 
 //The following component is for modal (popup) windows. It creates a template with the event details.
-@Component({
-  template: `
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-    {{event.shortname}}
-    </ion-title>
-    <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios">Cancel</span>
-        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
-  <ion-list>
-      <ion-item>
-        {{event.name}}
-      </ion-item>
-      <ion-item>
-        {{event.duration}}
-      </ion-item>
-      <ion-item>
-        {{event.time}}
-      </ion-item>
-      <ion-item>
-        {{event.description}}
-      </ion-item>
-  </ion-list>
-</ion-content>
-`
-})
+// @Component({
+//   template: `
+// <ion-header>
+//   <ion-toolbar>
+//     <ion-title>
+//     {{event.shortname}}
+//     </ion-title>
+//     <ion-buttons start>
+//       <button ion-button (click)="dismiss()">
+//         <span ion-text color="primary" showWhen="ios">Cancel</span>
+//         <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+//       </button>
+//     </ion-buttons>
+//   </ion-toolbar>
+// </ion-header>
+// <ion-content>
+//   <ion-list>
+//       <ion-item>
+//         {{event.name}}
+//       </ion-item>
+//       <ion-item>
+//         {{event.duration}}
+//       </ion-item>
+//       <ion-item>
+//         {{event.time}}
+//       </ion-item>
+//       <ion-item>
+//         {{event.description}}
+//       </ion-item>
+//   </ion-list>
+// </ion-content>
+// `
+// })
 
-  /*
-  Class name: ModalContentPage
-  Description: This class contains sample events to test the modal functionality.
-  */
-export class ModalContentPage {
-  event;
+//   /*
+//   Class name: ModalContentPage
+//   Description: This class contains sample events to test the modal functionality.
+//   */
+// export class ModalContentPage {
+//   event;
 
-  constructor(
-    public platform: Platform,
-    public params: NavParams,
-    public viewCtrl: ViewController
-  ) {
-    var events = [
-      {
-        shortname: 'Raking',
-        name: 'John Smith',
-        duration: '2 hours',
-        time: '2:30pm',
-        description: 'Need help raking my lawn. Bring your own rake!'
-      },
-      {
-        shortname: 'Unloading groceries',
-        name: 'Sally Robinson',
-        duration: '20 minutes',
-        time: 'Now',
-        description: 'Need help unloading groceries ASAP. Have issues with my back.'
-      },
-      {
-        shortname: 'Fence repair',
-        name: 'Prateek Kumar',
-        duration: '30 minutes',
-        time: '2/22/2018 4:00pm',
-        description: 'Need help fixing a hole in my fence. Bring work gloves.'
-      }
-    ];
-    this.event = events[this.params.get('eventNum')];
-  }
+//   constructor(
+//     public platform: Platform,
+//     public params: NavParams,
+//     public viewCtrl: ViewController
+//   ) {
+//     var events = [
+//       {
+//         shortname: 'Raking',
+//         name: 'John Smith',
+//         duration: '2 hours',
+//         time: '2:30pm',
+//         description: 'Need help raking my lawn. Bring your own rake!'
+//       },
+//       {
+//         shortname: 'Unloading groceries',
+//         name: 'Sally Robinson',
+//         duration: '20 minutes',
+//         time: 'Now',
+//         description: 'Need help unloading groceries ASAP. Have issues with my back.'
+//       },
+//       {
+//         shortname: 'Fence repair',
+//         name: 'Prateek Kumar',
+//         duration: '30 minutes',
+//         time: '2/22/2018 4:00pm',
+//         description: 'Need help fixing a hole in my fence. Bring work gloves.'
+//       }
+//     ];
+//     this.event = events[this.params.get('eventNum')];
+//   }
 
-  dismiss() {
-    this.viewCtrl.dismiss();
-  }
-}
+//   dismiss() {
+//     this.viewCtrl.dismiss();
+//   }
+// }

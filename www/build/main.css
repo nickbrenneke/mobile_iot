@@ -25683,7 +25683,11 @@ ion-navbar.toolbar {
   margin: 0 0 0 0;
 }
 
-page-add-place agm-map {
+page-add-event agm-map {
+  height: 250px;
+}
+
+page-event sebm-google-map {
   height: 250px;
 }
 
@@ -25694,10 +25698,6 @@ page-map .scroll {
 page-map #map {
   width: 100%;
   height: 50%;
-}
-
-page-place sebm-google-map {
-  height: 250px;
 }
 
 .account ion-card {

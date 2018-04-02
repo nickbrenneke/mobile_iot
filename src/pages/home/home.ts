@@ -1,41 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ModalController, NavController } from 'ionic-angular';
-import { AddPlacePage } from "../add-place/add-place";
-import { Place } from "../../models/place";
-import { PlacesService } from "../../services/places";
-import { PlacePage } from "../place/place";
+import { AddEventPage } from "../add-event/add-event";
+import { Event } from "../../models/event";
+import { EventsService } from "../../services/events";
+import { EventPage } from "../event/event";
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage implements OnInit {
-  addPlacePage = AddPlacePage;
-  places: Place[] = [];
+  addEventPage = AddEventPage;
+  events: Event[] = [];
 
   constructor(private modalCtrl: ModalController,
-              private placesService: PlacesService, private nav: NavController) {
+              private eventsService: EventsService, 
+              private nav: NavController) {
 
   }
 
   ngOnInit() {
-    this.placesService.fetchPlaces()
+    this.eventsService.fetchEvents()
       .then(
-        (places: Place[]) => this.places = places
+        (events: Event[]) => this.events = events
       );
   }
 
   ionViewWillEnter() {
-    this.places = this.placesService.loadPlaces();
+    this.events = this.eventsService.loadEvents();
   }
 
-  onOpenPlace(place: Place, index: number) {
-    const modal = this.modalCtrl.create(PlacePage, {place: place, index: index});
+  onOpenEvent(event: Event, index: number) {
+    const modal = this.modalCtrl.create(EventPage, {event: event, index: index});
     modal.present();
     modal.onDidDismiss(
       () => {
-        this.places = this.placesService.loadPlaces();
+        this.events = this.eventsService.loadEvents();
       }
     );
   }

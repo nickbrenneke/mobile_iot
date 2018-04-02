@@ -8,24 +8,24 @@ import {HttpClientModule} from "@angular/common/http";
 import { File } from '@ionic-native/file';
 import {CustomFormsModule} from 'ng2-validation';
 import { Storage, IonicStorageModule } from "@ionic/storage";
+import { Geolocation } from '@ionic-native/geolocation';
+import { AgmCoreModule } from "@agm/core";
+import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SigninPage } from '../pages/signin/signin';
-import { Geolocation } from '@ionic-native/geolocation';
-import { MapPage as MapPage, ModalContentPage } from '../pages/map/map';
 import { SignupPage } from '../pages/signup/signup';
-import { Camera } from '@ionic-native/camera';
+import { MapPage } from '../pages/map/map';
 import { CameraPage } from '../pages/camera/camera';
 import { WelcomePage } from '../pages/welcome/welcome';
-import { AddPlacePage } from "../pages/add-place/add-place";
-import { PlacePage } from "../pages/place/place";
+import { AddEventPage } from "../pages/add-event/add-event";
+import { EventPage } from "../pages/event/event";
 import { SetLocationPage } from "../pages/set-location/set-location";
 import { EventListPage } from "../pages/event-list/event-list";
 import { ProfilePage } from "../pages/profile/profile";
-import { AgmCoreModule } from "@agm/core";
 
-import { PlacesService } from "../services/places";
+import { EventsService } from "../services/events";
 import { ProfileService } from "../services/profile-service-mock";
 import { DataProvider } from '../providers/data/data';
 
@@ -36,11 +36,10 @@ import { DataProvider } from '../providers/data/data';
     HomePage,
     SigninPage,
     MapPage,
-    ModalContentPage,
     SignupPage,
     CameraPage,
-    AddPlacePage,
-    PlacePage,
+    AddEventPage,
+    EventPage,
     SetLocationPage,
     EventListPage,
     ProfilePage
@@ -61,14 +60,13 @@ import { DataProvider } from '../providers/data/data';
     HomePage,
     SigninPage,
     MapPage,
-    ModalContentPage,
     SignupPage,
     CameraPage,
     ProfilePage,
     EventListPage,
     SetLocationPage,
-    PlacePage,
-    AddPlacePage,
+    EventPage,
+    AddEventPage,
     WelcomePage
   ],
   providers: [
@@ -78,7 +76,7 @@ import { DataProvider } from '../providers/data/data';
     Geolocation,
     Camera,
     File,
-    PlacesService,
+    EventsService,
     ProfilePage,
     DataProvider
   ]

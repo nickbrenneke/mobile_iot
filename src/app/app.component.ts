@@ -15,6 +15,7 @@ import { ProfilePage } from '../pages/profile/profile';
 export interface MenuItem {
     title: string;
     component: any;
+    icon: string;
 }
 
 @Component({
@@ -25,32 +26,18 @@ export class MyApp {
 
   rootPage: any = SigninPage;
 
-  pages: Array<{title: string, component: any}>;
-  appMenuItems: Array<MenuItem>;
-  accountMenuItems: Array<MenuItem>;
+  pages: Array<MenuItem>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      //{ title: 'Home', component: HomePage },
-      {title: 'Home', component: MapPage},
-      {title: 'Help Wanted', component: EventListPage},
-      {title: 'My Account', component: ProfilePage},
-      {title: 'About', component: WelcomePage},
-      {title: 'Logout', component: SigninPage}
-    ];
-    
-    this.appMenuItems = [
-      {title: 'Home', component: WelcomePage},
-      {title: 'Help Wanted', component: EventListPage}
-      // {title: 'Offered Help', component: FavoriteListPage, icon: 'star'},
-    ];
-        
-    this.accountMenuItems = [
-      {title: 'My Account', component: ProfilePage},
-      {title: 'Logout', component: WelcomePage}
+      {title: 'Home', component: MapPage, icon: 'star'},
+      {title: 'Help Wanted', component: EventListPage, icon: 'star'},
+      {title: 'My Account', component: ProfilePage, icon: 'star'},
+      {title: 'About', component: WelcomePage, icon: 'star'},
+      {title: 'Logout', component: SigninPage, icon: 'star'}
     ];
 
   }

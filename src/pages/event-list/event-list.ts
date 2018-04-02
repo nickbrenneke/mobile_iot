@@ -1,39 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ModalController } from 'ionic-angular';
-import { Place } from "../../models/place";
-import { PlacesService } from "../../services/places";
-import { PlacePage } from "../place/place";
+import { Event } from "../../models/event";
+import { EventsService } from "../../services/events";
+import { EventPage } from "../event/event";
 
 @Component({
   selector: 'page-event-list',
   templateUrl: 'event-list.html'
 })
 export class EventListPage implements OnInit {
-  places: Place[] = [];
+  events: Event[] = [];
 
   constructor(private modalCtrl: ModalController,
-              private placesService: PlacesService) {
+              private eventsService: EventsService) {
 
   }
 
   ngOnInit() {
-    this.placesService.fetchPlaces()
+    this.eventsService.fetchEvents()
       .then(
-        (places: Place[]) => this.places = places
+        (events: Event[]) => this.events = events
       );
   }
 
   ionViewWillEnter() {
-    this.places = this.placesService.loadPlaces();
+    this.events = this.eventsService.loadEvents();
   }
 
-  onOpenPlace(place: Place, index: number) {
-    const modal = this.modalCtrl.create(PlacePage, {place: place, index: index});
+  onOpenEvent(event: Event, index: number) {
+    const modal = this.modalCtrl.create(EventPage, {event: event, index: index});
     modal.present();
     modal.onDidDismiss(
       () => {
-        this.places = this.placesService.loadPlaces();
+        this.events = this.eventsService.loadEvents();
       }
     );
   }

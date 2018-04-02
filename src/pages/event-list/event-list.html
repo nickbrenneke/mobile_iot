@@ -9,13 +9,13 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let place of places; let i = index" (click)="onOpenPlace(place, i)">
-    <img [src]="place.imageUrl">
+  <ion-card *ngFor="let event of events; let i = index" (click)="onOpenEvent(event, i)">
+    <img [src]="event.imageUrl">
     <ion-card-content text-center>
       <ion-card-title>
-        {{ place.title }}
+        {{ event.title }}
       </ion-card-title>
-      <p>{{ place.description }}</p>
+      <p>{{ event.description }}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

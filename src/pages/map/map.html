@@ -7,7 +7,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-buttons end>
-      <button ion-button icon-only [navPush]="addPlacePage">
+      <button ion-button icon-only [navPush]="addEventPage">
       <ion-icon name="add"></ion-icon>
     </button>
         </ion-buttons>
@@ -18,7 +18,7 @@
 
 <div #map id="map"></div> 
 
-<div style="width : 100% ;height: 60%">
+<!-- <div style="width : 100% ;height: 60%">
   <ion-list>
     <ion-list-header>
       Open Events
@@ -33,6 +33,15 @@
       Fixing Fence
     </a>
   </ion-list>
-</div>
+</div> -->
+
+<ion-card *ngFor="let event of events; let i = index" (click)="onOpenEvent(event, i)">
+  <ion-card-content text-center>
+    <ion-card-title>
+      {{ event.title }}
+    </ion-card-title>
+    <p>{{ event.description }}</p>
+  </ion-card-content>
+</ion-card>
 
 </ion-content>
