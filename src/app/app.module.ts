@@ -77,7 +77,7 @@ import { DataProvider } from '../providers/data/data';
     Camera,
     File,
     EventsService,
-    ProfilePage,
+    ProfileService,
     DataProvider
   ]
 })
