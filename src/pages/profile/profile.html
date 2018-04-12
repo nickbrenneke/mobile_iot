@@ -1,78 +1,50 @@
+
 <ion-header>
+
     <ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>My Account</ion-title>
+            <button ion-button menuToggle>
+                    <ion-icon name="menu"></ion-icon>
+                </button>
+      <ion-title>Profile</ion-title>
     </ion-navbar>
-</ion-header>
+  
+  </ion-header>
+  
+  <ion-content padding>
+    
+    
+    <form #formCtrl="ngForm">
+        <div align="center" *ngIf="formCtrl.form.valid">
+            
+          <h1> Profile</h1>
+          <img class="profile-image" src="assets/imgs/profile.jpg">
+            <h4>{{person.name}}</h4>
+            <h5>{{age}} years old</h5>
+        </div>
+    <ion-list>
+        <ion-item>
+          <ion-label floating>Name</ion-label>
+          <ion-input type="text" [(ngModel)]="person.name" name="name" required></ion-input>
+        </ion-item>
+        
+        <ion-item>
+            <ion-label >Birth Date</ion-label>
+            <ion-datetime required name="birthdate" displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="dob" [ngModelOptions]="{standalone:true}"></ion-datetime>
+        </ion-item>
 
-<ion-content class="account">
+        <ion-item>
+                <ion-label floating>Contact number</ion-label>
+                <ion-input type="text" [(ngModel)]="person.mobile" name="mobile" required></ion-input>
+        </ion-item>
 
-<!--     <ion-card>
-
-        <ion-card-content>
-            <img src="{{profile.picture}}"/>
-            <h2>{{profile.name}}</h2>
-            <h3>{{profile.title}}</h3>
-        </ion-card-content>
-
-        <ion-list>
-            <a href="tel:{{profile.Phone__c}}" ion-item>
-                <ion-icon name="call" item-left></ion-icon>
-                <p>Call Office</p>
-                <h2>{{profile.phone}}</h2>
-            </a>
-            <a href="tel:{{profile.phone}}" ion-item>
-                <ion-icon name="call" item-left></ion-icon>
-                <p>Call Mobile</p>
-                <h2>{{profile.mobilePhone}}</h2>
-            </a>
-            <a href="tel:{{profile.phone}}" ion-item>
-                <ion-icon name="text" item-left></ion-icon>
-                <p>Text</p>
-                <h2>{{profile.mobilePhone}}</h2>
-            </a>
-            <a href="mailto:{{profile.email}}" ion-item>
-                <ion-icon name="mail" item-left></ion-icon>
-                <p>Email</p>
-                <h2>{{profile.email}}</h2>
-            </a>
-        </ion-list>
-
-    </ion-card> -->
-
-    <ion-card>
-
-        <ion-card-content>
-            <img src="https://i2.wp.com/abingtoncaregivers.com/wp-content/uploads/2015/01/old-asian-woman.jpg?ssl=1"/>
-            <h2>Olivia Wu</h2>
-            <h3>Retired Accountant</h3>
-        </ion-card-content>
-
-        <ion-list>
-<!--             <a href="tel:{{profile.Phone__c}}" ion-item>
-                <ion-icon name="call" item-left></ion-icon>
-                <p>Call Office</p>
-                <h2>{{profile.phone}}</h2>
-            </a> -->
-            <a ion-item>
-                <ion-icon name="call" item-left></ion-icon>
-                <p>Call Mobile</p>
-                <h2>412-244-3672</h2>
-            </a>
-<!--             <a href="tel:{{profile.phone}}" ion-item>
-                <ion-icon name="text" item-left></ion-icon>
-                <p>Text</p>
-                <h2>{{profile.mobilePhone}}</h2>
-            </a> -->
-            <a ion-item>
-                <ion-icon name="mail" item-left></ion-icon>
-                <p>Email</p>
-                <h2>oliviawu@gmail.com</h2>
-            </a>
-        </ion-list>
-
-    </ion-card>
-
-</ion-content>
+        <ion-item>
+                <ion-label floating>Email</ion-label>
+                <ion-input type="text" [(ngModel)]="person.email" name="email" required></ion-input>
+        </ion-item>
+        
+        
+    </ion-list>
+    <button color="secondary" [disabled]="!formCtrl.form.valid" ion-button block (click)="save()">Save</button>
+    <button color="danger" ion-button block (click)="reset()">Reset</button>
+  </form>
+  </ion-content>
