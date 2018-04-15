@@ -11,6 +11,7 @@ import { Storage, IonicStorageModule } from "@ionic/storage";
 import { Geolocation } from '@ionic-native/geolocation';
 import { AgmCoreModule } from "@agm/core";
 import { Camera } from '@ionic-native/camera';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -76,6 +77,7 @@ import { DataProvider } from '../providers/data/data';
     Geolocation,
     Camera,
     File,
+    InAppBrowser,
     EventsService,
     ProfileService,
     DataProvider
