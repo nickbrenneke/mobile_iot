@@ -41,14 +41,8 @@ constructor(public nav: NavController, public http: Http, public storage: Storag
   */
   login() {
     this.authenticate();
-    /*this.storage.get('currentToken').then((val) => {
-    console.log('Your token is', val);*/
-    this.storage.get('currentToken').then((val) => {
-      console.log('Your stored token is', val);
-      this.nav.setRoot(MapPage);
-    });
-    this.storage.get('orig_iat').then((val) => {
-      console.log('Your original token is', val);})
+    this.nav.setRoot(MapPage);
+
   }
   
     /*
@@ -70,9 +64,11 @@ constructor(public nav: NavController, public http: Http, public storage: Storag
         //console.log("PRINTED IN SUBSCIRBE:    " + data["_body"]);
         let parsed = JSON.parse(data["_body"]);
         this.token = parsed["token"];
-        this.storage.set('currentToken',this.token);
-        //this.nav.setRoot(HomePage);
-       }, error => {
+        this.storage.set('originalToken',this.token).then(() => {console.log('Original token has been set.');
+          this.storage.get('currentToken').then((val) => {console.log('Your current token is', val);})});
+        this.storage.set('currentToken',this.token).then(() => {console.log('Current token has been set.');
+          this.storage.get('originalToken').then((val) => {console.log('Your original token is', val);})});
+    }, error => {
         console.log(error["_body"]);// Error getting the data
     });
   }

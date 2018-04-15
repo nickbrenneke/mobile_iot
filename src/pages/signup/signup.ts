@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import {Camera} from '@ionic-native/camera';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { UsernameValidator } from  '../../validators/username';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Storage } from "@ionic/storage";
+import { MapPage} from '../map/map';
  
 @Component({
   selector: 'page-signup',
@@ -27,7 +28,8 @@ export class SignupPage {
  
     submitAttempt: boolean = false;
  
-constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public http: Http, private camera: Camera, public storage: Storage) {
+constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public http: Http, private camera: Camera, public storage: Storage,
+public toastCtrl: ToastController) {
  
     //Build first form as a slide object
     this.slideOneForm = formBuilder.group({
@@ -94,10 +96,18 @@ save() {
         console.log(data["_body"]);
         let parsed = JSON.parse(data["_body"]);
         this.token = parsed["token"];
-        this.storage.set('orig_iat',this.token);
+        this.storage.set('originalToken',this.token).then(() => {console.log('Original token has been set.');
+          this.storage.get('currentToken').then((val) => {console.log('Your current token is', val);})});
+        this.storage.set('currentToken',this.token).then(() => {console.log('Current token has been set.');
+          this.storage.get('originalToken').then((val) => {console.log('Your original token is', val);})});
        }, error => {
         console.log("AN ERROR OCCURED!" + error.error);// Error getting the data
       });
+      const successToast = this.toastCtrl.create({
+        message: 'Account created successfully!',
+        duration: 2500});
+      successToast.present();
+      this.navCtrl.setRoot(MapPage);
   }
  
     /*

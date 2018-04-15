@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, AlertController, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -11,6 +11,7 @@ import { CameraPage} from '../pages/camera/camera';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { EventListPage } from '../pages/event-list/event-list';
 import { ProfilePage } from '../pages/profile/profile';
+import { Storage } from '@ionic/storage';
 
 export interface MenuItem {
     title: string;
@@ -28,7 +29,8 @@ export class MyApp {
 
   pages: Array<MenuItem>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public alertCtrl: AlertController, public storage: Storage,
+  public toastCtrl: ToastController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -36,8 +38,8 @@ export class MyApp {
       {title: 'Home', component: MapPage, icon: 'star'},
       {title: 'Help Wanted', component: EventListPage, icon: 'star'},
       {title: 'My Account', component: ProfilePage, icon: 'star'},
-      {title: 'About', component: WelcomePage, icon: 'star'},
-      {title: 'Logout', component: SigninPage, icon: 'star'}
+      {title: 'About', component: WelcomePage, icon: 'star'}/*,
+      {title: 'Logout', component: SigninPage, icon: 'star'}*/
     ];
 
   }
@@ -56,4 +58,36 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+  
+  presentLogout() {
+  let alert = this.alertCtrl.create({
+    title: 'Confirm Log Out',
+    message: 'Are you sure you want to log out?',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Log Out',
+        handler: () => {
+        this.storage.remove('originalToken').then(() => {console.log('Original token has been removed.');
+          this.storage.get('currentToken').then((val) => {console.log('CONFIRMING: Your current token is', val);})});
+        this.storage.remove('currentToken').then(() => {console.log('Current token has been removed.');
+          this.storage.get('originalToken').then((val) => {console.log('CONFIRMING: Your original token is', val);})});
+        const logoutToast = this.toastCtrl.create({
+          message: 'You have been logged out.',
+          duration: 2500});
+        logoutToast.present();
+        this.nav.setRoot(SigninPage);
+          console.log('Logged out');
+        }
+      }
+    ]
+  });
+  alert.present();
+}
 }
