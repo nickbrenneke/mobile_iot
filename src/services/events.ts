@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Storage } from "@ionic/storage";
 import { File } from "@ionic-native/file";
+import 'rxjs/add/operator/map';
 
 import { Event } from "../models/event";
 import { Location } from "../models/location";
@@ -71,5 +72,14 @@ export class EventsService {
           this.addEvent(event.title, event.description, event.location, event.imageUrl);
         }
       );
+  }
+
+  findByName(searchKey: string) {
+    let key: string = searchKey.toUpperCase();
+    // return Promise.resolve(Event.filter((event: any) =>
+    //     (event.title +  ' ' +property.address +  ' ' + property.city + ' ' + property.description).toUpperCase().indexOf(key) > -1));
+    return this.events.filter((event) => {
+      return event.title.toUpperCase().indexOf(key) > -1;
+    })
   }
 }
