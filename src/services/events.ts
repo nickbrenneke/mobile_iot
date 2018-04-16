@@ -80,6 +80,6 @@ export class EventsService {
     //     (event.title +  ' ' +property.address +  ' ' + property.city + ' ' + property.description).toUpperCase().indexOf(key) > -1));
     return this.events.filter((event) => {
       return event.title.toUpperCase().indexOf(key) > -1;
-    })
+    });
   }
 }

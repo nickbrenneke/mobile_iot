@@ -3,12 +3,18 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-searchbar [(ngModel)]="searchKey" (ionInput)="onInput()">
+        <ion-searchbar 
+        [(ngModel)]="searchKey" 
+        [formControl]="searchControl"
+        (ionInput)="onSearchInput()">
         </ion-searchbar>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="searching" class="spinner-container">
+    <ion-spinner></ion-spinner>
+  </div>
   <ion-card *ngFor="let event of events; let i = index" (click)="onOpenEvent(event, i)">
     <img [src]="event.imageUrl">
     <ion-card-content text-center>
