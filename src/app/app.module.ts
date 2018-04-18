@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { File } from '@ionic-native/file';
 import {CustomFormsModule} from 'ng2-validation';
 import { Storage, IonicStorageModule } from "@ionic/storage";
@@ -49,6 +49,7 @@ import { DataProvider } from '../providers/data/data';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
+    HttpClientModule,
     IonicStorageModule.forRoot(),
     CustomFormsModule,
     AgmCoreModule.forRoot({
@@ -74,6 +75,7 @@ import { DataProvider } from '../providers/data/data';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HttpClientModule,
     Geolocation,
     Camera,
     File,
