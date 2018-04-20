@@ -4,11 +4,12 @@ import { ModalController, LoadingController, ToastController, NavController } fr
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
 import { File, Entry, FileError } from '@ionic-native/file';
-
+import Rx from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { SetLocationPage } from "../set-location/set-location";
 import { Location } from "../../models/location";
 import { EventsService } from "../../services/events";
-
+import { Event } from "../../models/event";
 import { WelcomePage } from "../welcome/welcome";
 
 declare var cordova: any;
@@ -18,14 +19,17 @@ declare var cordova: any;
   templateUrl: 'add-event.html'
 })
 export class AddEventPage {
+  events: Event[] = [];
+
   selectOptions = ['<15mins', '15-30mins', '>30mins'];
-  
   location: Location = {
     lat: 40.443646,
     lng: -79.944697
   };
   locationIsSet = false;
   imageUrl = '';
+
+  event = new Event(NgForm);
 
   constructor(private modalCtrl: ModalController,
               private loadingCtrl: LoadingController,
@@ -37,16 +41,22 @@ export class AddEventPage {
               private nav: NavController) {
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit(event) {
     this.eventsService
-      .addEvent(form.value.title, form.value.description, this.location, this.imageUrl);
-    form.reset();
-    this.location = {
-      lat: 40.7624324,
-      lng: -73.9759827
-    };
-    this.imageUrl = '';
-    this.locationIsSet = false;
+      // .addEvent(form.value.title, form.value.description, this.location, this.imageUrl);
+      .addEvent(event)
+      .subscribe(
+        (newEvent) => {
+          this.events = this.events.concat(newEvent);
+        }
+      );
+    // form.reset();
+    // this.location = {
+    //   lat: 40.7624324,
+    //   lng: -73.9759827
+    // };
+    // this.imageUrl = '';
+    // this.locationIsSet = false;
   }
 
   onOpenMap() {

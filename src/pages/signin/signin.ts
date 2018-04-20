@@ -3,9 +3,10 @@ import { SignupPage } from '../signup/signup';
 import { NavController} from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { HomePage } from '../home/home';
+import { EventListPage } from '../event-list/event-list';
 import { MapPage} from '../map/map';
 import { WelcomePage} from '../welcome/welcome';
-import 'rxjs/add/operator/map';
+import 'rxjs/Rx';
 import { Storage } from '@ionic/storage';
 
 
@@ -40,11 +41,11 @@ constructor(public nav: NavController, public http: Http, public storage: Storag
   Description: This function executes the login after the user enters his/her details and clicks the login button.
   */
   login() {
-    this.authenticate();
-    this.nav.setRoot(MapPage);
-
+    this.authenticate().subscribe((success) => {
+      this.nav.setRoot(EventListPage);
+    });
   }
-  
+
     /*
   Function name: authenticate
   Arguments: None
@@ -60,7 +61,7 @@ constructor(public nav: NavController, public http: Http, public storage: Storag
     }
     //Send JSON request and header info, parse response and return token object
     return this.http.post("http://localhost:8000/accounts/api/login", JSON.stringify(postParams), options)
-      .subscribe(data => {
+      .map(data => {
         //console.log("PRINTED IN SUBSCIRBE:    " + data["_body"]);
         let parsed = JSON.parse(data["_body"]);
         this.token = parsed["token"];
@@ -71,5 +72,6 @@ constructor(public nav: NavController, public http: Http, public storage: Storag
     }, error => {
         console.log(error["_body"]);// Error getting the data
     });
+
   }
 }

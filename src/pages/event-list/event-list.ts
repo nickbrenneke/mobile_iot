@@ -10,7 +10,8 @@ import 'rxjs/add/operator/debounceTime';
   selector: 'page-event-list',
   templateUrl: 'event-list.html'
 })
-export class EventListPage implements OnInit {
+// export class EventListPage implements OnInit {
+export class EventListPage {
   events: Event[] = [];
   searchKey: string = '';
   searchControl: FormControl;
@@ -21,18 +22,27 @@ export class EventListPage implements OnInit {
     this.searchControl = new FormControl();
   }
 
-  ngOnInit() {
-    this.eventsService.fetchEvents()
-      .then(
-        (events: Event[]) => this.events = events
-      );
-  }
+  // ngOnInit() {
+  //   this.eventsService.fetchEvents()
+  //     .subscribe(
+  //       (events: Event[]) => this.events = events
+  //     );
+  // }
 
-  ionViewWillEnter() {
-    this.events = this.eventsService.loadEvents();
-  }
+  // ionViewWillEnter() {
+  //   this.events = this.eventsService.loadEvents();
+  // }
 
   ionViewDidLoad() {
+    //Change Observable to Promise type code:
+    // this.eventsService.fetchEvents()
+    //   .map((events: Event[]) => this.events = events)
+    //   .toPromise();
+    this.eventsService.fetchEvents()
+      .subscribe(
+        (events: Event[]) => this.events = events
+      );
+
     this.onInput();
     this.searchControl.valueChanges.debounceTime(700).subscribe(search=> {
       this.searching = false;
