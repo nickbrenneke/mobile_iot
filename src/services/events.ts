@@ -75,20 +75,6 @@ export class EventsService {
     return this.events.slice();
   }
 
-  //Mock-up code for showing event details
-  fetchMapEvents() {
-    return this.storage.get('events')
-      .then(
-        (events: Event[]) => {
-          this.events = events != null ? events : [];
-          return this.events;
-        }
-      )
-      .catch(
-        err => console.log(err)
-      );    
-  }
-
   fetchEvents(): Observable<Event[]> {
     // return this.storage.get('events')
     //   .then(

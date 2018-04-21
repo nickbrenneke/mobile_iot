@@ -98,6 +98,31 @@ export class AddEventPage {
         }
       );
   }
+
+  onTakePhoto() { 
+    this.camera.getPicture({ 
+      sourceType: this.camera.PictureSourceType.CAMERA, 
+      destinationType: this.camera.DestinationType.DATA_URL, 
+      encodingType: this.camera.EncodingType.JPEG, 
+      mediaType: this.camera.MediaType.PICTURE, 
+      correctOrientation: true 
+    }) 
+      .then( 
+        imageData => { 
+          this.imageUrl = "data:image/jpeg;base64," + imageData; 
+        } 
+      ) 
+      .catch( 
+        err => { 
+          const toast = this.toastCtrl.create({ 
+            message: 'Could not take the image. Please try again', 
+            duration: 2500 
+          }); 
+          toast.present(); 
+        } 
+      ); 
+  } 
+
   popToRoot(){
     const successToast = this.toastCtrl.create({
     message: 'Event created successfully!',
