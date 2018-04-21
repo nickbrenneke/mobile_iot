@@ -57,18 +57,17 @@ export class EventsService {
     //       this.events.splice(this.events.indexOf(event), 1);
     //     }
     //   );
-    let options = {
-      headers: this.createAuthorizationHeader()
-    };
+    console.log('post event');
 
     return this.httpClient
-      .post(this.baseUrl + '/we_help/events/created', event, options)
+      .post(this.baseUrl + '/we_help/events/created', event)
       .map(response => {
         return new Event(response);
       })
       .catch((error: any) => {
         return Observable.throw(error);
       });
+
   }
 
   loadEvents() {
@@ -76,16 +75,6 @@ export class EventsService {
   }
 
   fetchEvents(): Observable<Event[]> {
-    // return this.storage.get('events')
-    //   .then(
-    //     (events: Event[]) => {
-    //       this.events = events != null ? events : [];
-    //       return this.events;
-    //     }
-    //   )
-    //   .catch(
-    //     err => console.log(err)
-    //   );
     console.log('fetch event');
     
     return Observable.from(
@@ -105,10 +94,6 @@ export class EventsService {
             }).toPromise();
         }
       ));
-
-
-
-
 
         // this.storage.get('currentToken').then(
         //   val => {

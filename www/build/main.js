@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 107:
+/***/ 108:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37,7 +37,7 @@ var EventPage = (function () {
     };
     EventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-event',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/event/event.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ event.title }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col text-center>\n        <img [src]="event.imageUrl">\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <p>{{ event.description }}</p>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <agm-map\n          [latitude]="event.location.lat"\n          [longitude]="event.location.lng"\n          [zoom]="16">\n          <agm-marker\n            [latitude]="event.location.lat"\n            [longitude]="event.location.lng"></agm-marker>\n        </agm-map>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <button\n          ion-button\n          block\n          (click)="onLeave()">Leave</button>\n      </ion-col>\n      <ion-col>\n        <button\n          ion-button\n          block\n          color="danger"\n          (click)="onDelete()">Delete</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/event/event.html"*/
+            selector: 'page-event',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/event/event.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ event.title }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col text-center>\n        <img [src]="event.imageUrl">\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <p>{{ event.description }}</p>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <agm-map\n          [latitude]="event.location.latitude"\n          [longitude]="event.location.longitude"\n          [zoom]="16">\n          <agm-marker\n            [latitude]="event.location.latitude"\n            [longitude]="event.location.longitude"></agm-marker>\n        </agm-map>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <button\n          ion-button\n          block\n          (click)="onLeave()">Leave</button>\n      </ion-col>\n      <ion-col>\n        <button\n          ion-button\n          block\n          color="danger"\n          (click)="onDelete()">Delete</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/event/event.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */],
@@ -50,7 +50,7 @@ var EventPage = (function () {
 
 /***/ }),
 
-/***/ 181:
+/***/ 182:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58,9 +58,9 @@ var EventPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__add_event_add_event__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__add_event_add_event__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_events__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__event_event__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__event_event__ = __webpack_require__(108);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -221,7 +221,7 @@ var MapPage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('map'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
     ], MapPage.prototype, "mapElement", void 0);
     MapPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -232,10 +232,12 @@ var MapPage = (function () {
         Description: This class contains the functions and components to render the Google Maps view of events.
         */
         ,
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_events__["a" /* EventsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_events__["a" /* EventsService */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */],
+            __WEBPACK_IMPORTED_MODULE_4__services_events__["a" /* EventsService */]])
     ], MapPage);
     return MapPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //The following component is for modal (popup) windows. It creates a template with the event details.
@@ -316,154 +318,6 @@ var MapPage = (function () {
 
 /***/ }),
 
-/***/ 182:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddEventPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__set_location_set_location__ = __webpack_require__(350);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_events__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_event__ = __webpack_require__(444);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-
-var AddEventPage = (function () {
-    function AddEventPage(modalCtrl, loadingCtrl, toastCtrl, eventsService, geolocation, camera, file, nav) {
-        this.modalCtrl = modalCtrl;
-        this.loadingCtrl = loadingCtrl;
-        this.toastCtrl = toastCtrl;
-        this.eventsService = eventsService;
-        this.geolocation = geolocation;
-        this.camera = camera;
-        this.file = file;
-        this.nav = nav;
-        this.events = [];
-        this.selectOptions = ['<15mins', '15-30mins', '>30mins'];
-        this.location = {
-            lat: 40.443646,
-            lng: -79.944697
-        };
-        this.locationIsSet = false;
-        this.imageUrl = '';
-        this.event = new __WEBPACK_IMPORTED_MODULE_8__models_event__["a" /* Event */](__WEBPACK_IMPORTED_MODULE_1__angular_forms__["NgForm"]);
-    }
-    AddEventPage.prototype.onSubmit = function (event) {
-        var _this = this;
-        this.eventsService
-            .addEvent(event)
-            .subscribe(function (newEvent) {
-            _this.events = _this.events.concat(newEvent);
-        });
-        // form.reset();
-        // this.location = {
-        //   lat: 40.7624324,
-        //   lng: -73.9759827
-        // };
-        // this.imageUrl = '';
-        // this.locationIsSet = false;
-    };
-    AddEventPage.prototype.onOpenMap = function () {
-        var _this = this;
-        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__set_location_set_location__["a" /* SetLocationPage */], { location: this.location, isSet: this.locationIsSet });
-        modal.present();
-        modal.onDidDismiss(function (data) {
-            if (data) {
-                _this.location = data.location;
-                _this.locationIsSet = true;
-            }
-        });
-    };
-    AddEventPage.prototype.onLocate = function () {
-        var _this = this;
-        var loader = this.loadingCtrl.create({
-            content: 'Getting your Location...'
-        });
-        loader.present();
-        this.geolocation.getCurrentPosition()
-            .then(function (location) {
-            loader.dismiss();
-            _this.location.lat = location.coords.latitude;
-            _this.location.lng = location.coords.longitude;
-            _this.locationIsSet = true;
-        })
-            .catch(function (error) {
-            loader.dismiss();
-            var toast = _this.toastCtrl.create({
-                message: 'Unable to fetch location, please pick it manually!',
-                duration: 2500
-            });
-            toast.present();
-        });
-    };
-    AddEventPage.prototype.onTakePhoto = function () {
-        var _this = this;
-        this.camera.getPicture({
-            sourceType: this.camera.PictureSourceType.CAMERA,
-            destinationType: this.camera.DestinationType.DATA_URL,
-            encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE,
-            correctOrientation: true
-        })
-            .then(function (imageData) {
-            _this.imageUrl = "data:image/jpeg;base64," + imageData;
-        })
-            .catch(function (err) {
-            var toast = _this.toastCtrl.create({
-                message: 'Could not take the image. Please try again',
-                duration: 2500
-            });
-            toast.present();
-        });
-    };
-    AddEventPage.prototype.popToRoot = function () {
-        var successToast = this.toastCtrl.create({
-            message: 'Event created successfully!',
-            duration: 2500
-        });
-        successToast.present();
-        this.nav.popToRoot();
-    };
-    AddEventPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-add-event',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/add-event/add-event.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>New Request</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <form #f="ngForm" (ngSubmit)="onSubmit(f)">\n    <ion-list>\n      <ion-item>\n        <ion-label fixed>Title</ion-label>\n        <ion-input\n          type="text"\n          placeholder="Moving stuff..."\n          name="title"\n          ngModel\n          required></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label floating>Short Description</ion-label>\n        <ion-textarea\n          name="description"\n          ngModel\n          required></ion-textarea>\n      </ion-item>\n      <ion-item>\n        <ion-label floating>Estimated Time</ion-label>\n        <ion-select>\n          <ion-option\n            *ngFor="let option of selectOptions"\n            [value]="option">{{ option }}\n          </ion-option>\n        </ion-select>\n      </ion-item>\n      <ion-item>\n        <ion-label>Valid Until</ion-label>\n        <ion-datetime displayFormat="MMM D hh:mm A" pickerFormat="MMM D hh mm A"></ion-datetime>\n      </ion-item>\n      <ion-item>\n        <ion-label floating>Reward</ion-label>\n        <ion-textarea\n          name="reward"\n          ngModel\n          required></ion-textarea>\n      </ion-item>\n    </ion-list>\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <button\n            ion-button\n            block\n            outline\n            type="button"\n            icon-left\n            (click)="onLocate()">\n            <ion-icon name="locate"></ion-icon>\n            Locate me\n          </button>\n        </ion-col>\n        <ion-col>\n          <button\n            ion-button\n            block\n            outline\n            type="button"\n            icon-left\n            (click)="onOpenMap()">\n            <ion-icon name="map"></ion-icon>\n            Select on Map\n          </button>\n        </ion-col>\n      </ion-row>\n      <ion-row *ngIf="locationIsSet">\n        <ion-col>\n          <agm-map\n            [latitude]="location.lat"\n            [longitude]="location.lng"\n            [zoom]="16"\n            [zoomControl]="false"\n            [streetViewControl]="false">\n            <agm-marker\n              [latitude]="location.lat"\n              [longitude]="location.lng"></agm-marker>\n          </agm-map>\n        </ion-col>\n      </ion-row> \n      <ion-row> \n        <ion-col text-center> \n          <h5>Take a Photo!</h5> \n        </ion-col> \n      </ion-row> \n      <ion-row> \n        <ion-col> \n          <button \n            ion-button \n            icon-left \n            block \n            outline \n            type="button" \n            (click)="onTakePhoto()"> \n            <ion-icon name="camera"></ion-icon> \n            Open Camera \n          </button> \n        </ion-col> \n      </ion-row>  \n      <ion-row *ngIf="imageUrl != \'\'"> \n        <ion-col> \n          <img [src]="imageUrl"> \n        </ion-col> \n      </ion-row>  \n      <ion-row>\n        <ion-col>\n          <button\n            ion-button\n            color="secondary"\n            block\n            type="submit"\n            [disabled]="!f.valid || !locationIsSet"\n            (click)="popToRoot()">\n            Post\n          </button>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </form>\n</ion-content>'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/add-event/add-event.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_7__services_events__["a" /* EventsService */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__["a" /* Geolocation */],
-            __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__["a" /* Camera */],
-            __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__["a" /* File */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]])
-    ], AddEventPage);
-    return AddEventPage;
-}());
-
-//# sourceMappingURL=add-event.js.map
-
-/***/ }),
-
 /***/ 195:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -473,8 +327,8 @@ var AddEventPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_events__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__event_event__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_event_add_event__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__event_event__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_event_add_event__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_debounceTime__ = __webpack_require__(370);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_debounceTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_debounceTime__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -567,10 +421,11 @@ var EventListPage = (function () {
         })
         // export class EventListPage implements OnInit {
         ,
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_events__["a" /* EventsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_events__["a" /* EventsService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_3__services_events__["a" /* EventsService */]])
     ], EventListPage);
     return EventListPage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=event-list.js.map
@@ -711,7 +566,7 @@ var SetLocationPage = (function () {
     }
     SetLocationPage.prototype.onSetMarker = function (event) {
         console.log(event);
-        this.marker = new __WEBPACK_IMPORTED_MODULE_2__models_location__["a" /* Location */](event.coords.lat, event.coords.lng);
+        this.marker = new __WEBPACK_IMPORTED_MODULE_2__models_location__["a" /* Location */](event.coords.latitude, event.coords.longitude);
     };
     SetLocationPage.prototype.onConfirm = function () {
         this.viewCtrl.dismiss({ location: this.marker });
@@ -758,7 +613,7 @@ var Event = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__signup_signup__ = __webpack_require__(446);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(160);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__event_list_event_list__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Rx__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_Rx__);
@@ -869,9 +724,9 @@ var SigninPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__validators_username__ = __webpack_require__(872);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(160);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__map_map__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__map_map__ = __webpack_require__(182);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1077,9 +932,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(293);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(297);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_file__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_file__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_validation__ = __webpack_require__(496);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_validation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_ng2_validation__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_storage__ = __webpack_require__(67);
@@ -1091,11 +946,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_home_home__ = __webpack_require__(873);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_signin_signin__ = __webpack_require__(445);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_signup_signup__ = __webpack_require__(446);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_map_map__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_map_map__ = __webpack_require__(182);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_camera_camera__ = __webpack_require__(874);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_welcome_welcome__ = __webpack_require__(447);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_add_event_add_event__ = __webpack_require__(182);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_event_event__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_add_event_add_event__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_event_event__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_set_location_set_location__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_event_list_event_list__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_profile_profile__ = __webpack_require__(196);
@@ -1215,7 +1070,7 @@ var AppModule = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventsService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_file__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_file__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__(351);
@@ -1224,7 +1079,7 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch__ = __webpack_require__(362);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common_http__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common_http__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_event__ = __webpack_require__(444);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_geolocation__ = __webpack_require__(95);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1285,11 +1140,9 @@ var EventsService = (function () {
         //       this.events.splice(this.events.indexOf(event), 1);
         //     }
         //   );
-        var options = {
-            headers: this.createAuthorizationHeader()
-        };
+        console.log('post event');
         return this.httpClient
-            .post(this.baseUrl + '/we_help/events/created', event, options)
+            .post(this.baseUrl + '/we_help/events/created', event)
             .map(function (response) {
             return new __WEBPACK_IMPORTED_MODULE_8__models_event__["a" /* Event */](response);
         })
@@ -1302,16 +1155,6 @@ var EventsService = (function () {
     };
     EventsService.prototype.fetchEvents = function () {
         var _this = this;
-        // return this.storage.get('events')
-        //   .then(
-        //     (events: Event[]) => {
-        //       this.events = events != null ? events : [];
-        //       return this.events;
-        //     }
-        //   )
-        //   .catch(
-        //     err => console.log(err)
-        //   );
         console.log('fetch event');
         return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].from(Promise.all([this.storage.get('currentToken'), this.geolocation.getCurrentPosition()])
             .then(function (results) {
@@ -1407,7 +1250,7 @@ var EventsService = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(297);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(293);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_map_map__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_map_map__ = __webpack_require__(182);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_signin_signin__ = __webpack_require__(445);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_welcome_welcome__ = __webpack_require__(447);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_event_list_event_list__ = __webpack_require__(195);
@@ -1573,9 +1416,9 @@ var UsernameValidator = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_event_add_event__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_event_add_event__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_events__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__event_event__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__event_event__ = __webpack_require__(108);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1755,7 +1598,7 @@ var profiles = [
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1787,6 +1630,154 @@ var DataProvider = (function () {
 }());
 
 //# sourceMappingURL=data.js.map
+
+/***/ }),
+
+/***/ 99:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddEventPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__set_location_set_location__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_events__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_event__ = __webpack_require__(444);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+var AddEventPage = (function () {
+    function AddEventPage(modalCtrl, loadingCtrl, toastCtrl, eventsService, geolocation, camera, file, nav) {
+        this.modalCtrl = modalCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.toastCtrl = toastCtrl;
+        this.eventsService = eventsService;
+        this.geolocation = geolocation;
+        this.camera = camera;
+        this.file = file;
+        this.nav = nav;
+        this.events = [];
+        this.selectOptions = ['<15mins', '15-30mins', '>30mins'];
+        this.location = {
+            latitude: 40.443646,
+            longitude: -79.944697
+        };
+        this.locationIsSet = false;
+        this.imageUrl = '';
+        this.event = new __WEBPACK_IMPORTED_MODULE_8__models_event__["a" /* Event */](__WEBPACK_IMPORTED_MODULE_1__angular_forms__["NgForm"]);
+    }
+    AddEventPage.prototype.onSubmit = function (event) {
+        var _this = this;
+        this.eventsService
+            .addEvent(event)
+            .subscribe(function (newEvent) {
+            _this.events = _this.events.concat(newEvent);
+        });
+        // form.reset();
+        // this.location = {
+        //   lat: 40.7624324,
+        //   lng: -73.9759827
+        // };
+        // this.imageUrl = '';
+        // this.locationIsSet = false;
+    };
+    AddEventPage.prototype.onOpenMap = function () {
+        var _this = this;
+        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__set_location_set_location__["a" /* SetLocationPage */], { location: this.location, isSet: this.locationIsSet });
+        modal.present();
+        modal.onDidDismiss(function (data) {
+            if (data) {
+                _this.location = data.location;
+                _this.locationIsSet = true;
+            }
+        });
+    };
+    AddEventPage.prototype.onLocate = function () {
+        var _this = this;
+        var loader = this.loadingCtrl.create({
+            content: 'Getting your Location...'
+        });
+        loader.present();
+        this.geolocation.getCurrentPosition()
+            .then(function (location) {
+            loader.dismiss();
+            _this.location.latitude = location.coords.latitude;
+            _this.location.longitude = location.coords.longitude;
+            _this.locationIsSet = true;
+        })
+            .catch(function (error) {
+            loader.dismiss();
+            var toast = _this.toastCtrl.create({
+                message: 'Unable to fetch location, please pick it manually!',
+                duration: 2500
+            });
+            toast.present();
+        });
+    };
+    AddEventPage.prototype.onTakePhoto = function () {
+        var _this = this;
+        this.camera.getPicture({
+            sourceType: this.camera.PictureSourceType.CAMERA,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE,
+            correctOrientation: true
+        })
+            .then(function (imageData) {
+            _this.imageUrl = "data:image/jpeg;base64," + imageData;
+        })
+            .catch(function (err) {
+            var toast = _this.toastCtrl.create({
+                message: 'Could not take the image. Please try again',
+                duration: 2500
+            });
+            toast.present();
+        });
+    };
+    AddEventPage.prototype.popToRoot = function () {
+        var successToast = this.toastCtrl.create({
+            message: 'Event created successfully!',
+            duration: 2500
+        });
+        successToast.present();
+        this.nav.popToRoot();
+    };
+    AddEventPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-add-event',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/add-event/add-event.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>New Request</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <form #f="ngForm" (ngSubmit)="onSubmit(f)">\n    <ion-list>\n      <ion-item>\n        <ion-label fixed>Title</ion-label>\n        <ion-input\n          type="text"\n          placeholder="Moving stuff..."\n          name="title"\n          ngModel\n          required></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label floating>Short Description</ion-label>\n        <ion-textarea\n          name="description"\n          ngModel\n          required></ion-textarea>\n      </ion-item>\n      <ion-item>\n        <ion-label floating>Estimated Time</ion-label>\n        <ion-select>\n          <ion-option\n            *ngFor="let option of selectOptions"\n            [value]="option">{{ option }}\n          </ion-option>\n        </ion-select>\n      </ion-item>\n      <ion-item>\n        <ion-label>Valid Until</ion-label>\n        <ion-datetime displayFormat="MMM D hh:mm A" pickerFormat="MMM D hh mm A"></ion-datetime>\n      </ion-item>\n      <ion-item>\n        <ion-label floating>Reward</ion-label>\n        <ion-textarea\n          name="reward"\n          ngModel\n          required></ion-textarea>\n      </ion-item>\n    </ion-list>\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <button\n            ion-button\n            block\n            outline\n            type="button"\n            icon-left\n            (click)="onLocate()">\n            <ion-icon name="locate"></ion-icon>\n            Locate me\n          </button>\n        </ion-col>\n        <ion-col>\n          <button\n            ion-button\n            block\n            outline\n            type="button"\n            icon-left\n            (click)="onOpenMap()">\n            <ion-icon name="map"></ion-icon>\n            Select on Map\n          </button>\n        </ion-col>\n      </ion-row>\n      <ion-row *ngIf="locationIsSet">\n        <ion-col>\n          <agm-map\n            [latitude]="location.lat"\n            [longitude]="location.lng"\n            [zoom]="16"\n            [zoomControl]="false"\n            [streetViewControl]="false">\n            <agm-marker\n              [latitude]="location.lat"\n              [longitude]="location.lng"></agm-marker>\n          </agm-map>\n        </ion-col>\n      </ion-row> \n      <ion-row> \n        <ion-col text-center> \n          <h5>Take a Photo!</h5> \n        </ion-col> \n      </ion-row> \n      <ion-row> \n        <ion-col> \n          <button \n            ion-button \n            icon-left \n            block \n            outline \n            type="button" \n            (click)="onTakePhoto()"> \n            <ion-icon name="camera"></ion-icon> \n            Open Camera \n          </button> \n        </ion-col> \n      </ion-row>  \n      <ion-row *ngIf="imageUrl != \'\'"> \n        <ion-col> \n          <img [src]="imageUrl"> \n        </ion-col> \n      </ion-row>  \n      <ion-row>\n        <ion-col>\n          <button\n            ion-button\n            color="secondary"\n            block\n            type="submit"\n            [disabled]="!f.valid || !locationIsSet"\n            (click)="popToRoot()">\n            Post\n          </button>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </form>\n</ion-content>'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/add-event/add-event.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_7__services_events__["a" /* EventsService */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__["a" /* Geolocation */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__["a" /* Camera */],
+            __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__["a" /* File */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]])
+    ], AddEventPage);
+    return AddEventPage;
+}());
+
+//# sourceMappingURL=add-event.js.map
 
 /***/ })
 

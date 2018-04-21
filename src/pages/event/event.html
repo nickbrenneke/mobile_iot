@@ -23,12 +23,12 @@
     <ion-row>
       <ion-col>
         <agm-map
-          [latitude]="event.location.lat"
-          [longitude]="event.location.lng"
+          [latitude]="event.location.latitude"
+          [longitude]="event.location.longitude"
           [zoom]="16">
           <agm-marker
-            [latitude]="event.location.lat"
-            [longitude]="event.location.lng"></agm-marker>
+            [latitude]="event.location.latitude"
+            [longitude]="event.location.longitude"></agm-marker>
         </agm-map>
       </ion-col>
     </ion-row>

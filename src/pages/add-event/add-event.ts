@@ -23,8 +23,8 @@ export class AddEventPage {
 
   selectOptions = ['<15mins', '15-30mins', '>30mins'];
   location: Location = {
-    lat: 40.443646,
-    lng: -79.944697
+    latitude: 40.443646,
+    longitude: -79.944697
   };
   locationIsSet = false;
   imageUrl = '';
@@ -82,8 +82,8 @@ export class AddEventPage {
       .then(
         location => {
           loader.dismiss();
-          this.location.lat = location.coords.latitude;
-          this.location.lng = location.coords.longitude;
+          this.location.latitude = location.coords.latitude;
+          this.location.longitude = location.coords.longitude;
           this.locationIsSet = true;
         }
       )
