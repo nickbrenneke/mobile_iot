@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SignupPage } from '../signup/signup';
 import { NavController} from 'ionic-angular';
+import { Events } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { HomePage } from '../home/home';
 import { EventListPage } from '../event-list/event-list';
@@ -22,7 +23,7 @@ export class SigninPage {
 username: string;
 password: string;
 public token;
-constructor(public nav: NavController, public http: Http, public storage: Storage) {
+constructor(public nav: NavController, public http: Http, public storage: Storage, public events: Events) {
    this.nav = nav;
 }  
 
@@ -65,10 +66,19 @@ constructor(public nav: NavController, public http: Http, public storage: Storag
         //console.log("PRINTED IN SUBSCIRBE:    " + data["_body"]);
         let parsed = JSON.parse(data["_body"]);
         this.token = parsed["token"];
-        this.storage.set('originalToken',this.token).then(() => {console.log('Original token has been set.');
-          this.storage.get('currentToken').then((val) => {console.log('Your current token is', val);})});
-        this.storage.set('currentToken',this.token).then(() => {console.log('Current token has been set.');
-          this.storage.get('originalToken').then((val) => {console.log('Your original token is', val);})});
+        this.storage.set('originalToken',this.token).then(
+          () => {
+            console.log('Original token has been set.');
+            this.storage.get('currentToken').then(
+              (val) => {
+                console.log('Your current token is', val);
+                this.events.publish('user:signin', this.username, this.token);
+              })});
+        this.storage.set('currentToken',this.token).then(
+          () => {
+            console.log('Current token has been set.');
+            this.storage.get('originalToken').then(
+              (val) => {console.log('Your original token is', val);})});
     }, error => {
         console.log(error["_body"]);// Error getting the data
     });

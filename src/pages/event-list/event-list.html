@@ -15,7 +15,7 @@
   <div *ngIf="searching" class="spinner-container">
     <ion-spinner></ion-spinner>
   </div>
-  <ion-card *ngFor="let event of events; let i = index" (click)="onOpenEvent(event, i)">
+  <!-- <ion-card *ngFor="let event of events; let i = index" (click)="onOpenEvent(event, i)">
     <img [src]="event.imageUrl">
     <ion-card-content text-center>
       <ion-card-title>
@@ -23,5 +23,5 @@
       </ion-card-title>
       <p>{{ event.description }}</p>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 </ion-content>

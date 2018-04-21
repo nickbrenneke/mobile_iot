@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { Event } from "../../models/event";
 import { EventsService } from "../../services/events";
 import { EventPage } from "../event/event";
+import { Events } from 'ionic-angular';
 import 'rxjs/add/operator/debounceTime';
 
 @Component({
@@ -12,14 +13,24 @@ import 'rxjs/add/operator/debounceTime';
 })
 // export class EventListPage implements OnInit {
 export class EventListPage {
-  events: Event[] = [];
+  eventList: Event[] = [];
   searchKey: string = '';
   searchControl: FormControl;
   searching: any = false;
 
-  constructor(private modalCtrl: ModalController,
+  constructor(public events: Events,
+              private modalCtrl: ModalController,
               private eventsService: EventsService) {
     this.searchControl = new FormControl();
+    events.subscribe('user:signin', (user, token) => {
+      console.log('Welcome', user, 'with', token);
+      this.eventsService.fetchEvents()
+        .subscribe(
+          (eventList: Event[]) => this.eventList = eventList
+        );
+
+      this.onInput();
+    });
   }
 
   // ngOnInit() {
@@ -38,12 +49,12 @@ export class EventListPage {
     // this.eventsService.fetchEvents()
     //   .map((events: Event[]) => this.events = events)
     //   .toPromise();
-    this.eventsService.fetchEvents()
-      .subscribe(
-        (events: Event[]) => this.events = events
-      );
+    // this.eventsService.fetchEvents()
+    //   .subscribe(
+    //     (eventList: Event[]) => this.eventList = eventList
+    //   );
 
-    this.onInput();
+    // this.onInput();
     this.searchControl.valueChanges.debounceTime(700).subscribe(search=> {
       this.searching = false;
       this.onInput();
@@ -66,7 +77,7 @@ export class EventListPage {
   }
 
   onInput() {
-    this.events = this.eventsService.findByName(this.searchKey);
+    this.eventList = this.eventsService.findByName(this.searchKey);
   }
 
   onOpenEvent(event: Event, index: number) {
@@ -74,7 +85,7 @@ export class EventListPage {
     modal.present();
     modal.onDidDismiss(
       () => {
-        this.events = this.eventsService.loadEvents();
+        this.eventList = this.eventsService.loadEvents();
       }
     );
   }

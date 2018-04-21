@@ -37,10 +37,10 @@ var EventPage = (function () {
     };
     EventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-event',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/event/event.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ event.title }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col text-center>\n        <img [src]="event.imageUrl">\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <p>{{ event.description }}</p>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <agm-map\n          [latitude]="event.location.lat"\n          [longitude]="event.location.lng"\n          [zoom]="16">\n          <agm-marker\n            [latitude]="event.location.lat"\n            [longitude]="event.location.lng"></agm-marker>\n        </agm-map>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <button\n          ion-button\n          block\n          (click)="onLeave()">Leave</button>\n      </ion-col>\n      <ion-col>\n        <button\n          ion-button\n          block\n          color="danger"\n          (click)="onDelete()">Delete</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/event/event.html"*/
+            selector: 'page-event',template:/*ion-inline-start:"D:\git\iot_frontend\src\pages\event\event.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>{{ event.title }}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col text-center>\n\n        <img [src]="event.imageUrl">\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col>\n\n        <p>{{ event.description }}</p>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col>\n\n        <agm-map\n\n          [latitude]="event.location.lat"\n\n          [longitude]="event.location.lng"\n\n          [zoom]="16">\n\n          <agm-marker\n\n            [latitude]="event.location.lat"\n\n            [longitude]="event.location.lng"></agm-marker>\n\n        </agm-map>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col>\n\n        <button\n\n          ion-button\n\n          block\n\n          (click)="onLeave()">Leave</button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button\n\n          ion-button\n\n          block\n\n          color="danger"\n\n          (click)="onDelete()">Delete</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\git\iot_frontend\src\pages\event\event.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_2__services_events__["a" /* EventsService */]])
     ], EventPage);
     return EventPage;
@@ -221,21 +221,23 @@ var MapPage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('map'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
     ], MapPage.prototype, "mapElement", void 0);
     MapPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-map',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/map/map.html"*/'<ion-header>\n<ion-navbar>\n    <ion-title>\n    Requests Nearby\n    </ion-title>\n      <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-buttons end>\n      <button ion-button icon-only [navPush]="addEventPage">\n      <ion-icon name="add"></ion-icon>\n    </button>\n        </ion-buttons>\n</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n<div #map id="map"></div> \n\n<!-- <div style="width : 100% ;height: 60%">\n  <ion-list>\n    <ion-list-header>\n      Open Events\n    </ion-list-header>\n    <a ion-item (click)="openModal({eventNum: 0})">\n      Raking\n    </a>\n    <a ion-item (click)="openModal({eventNum: 1})">\n      Putting Away Groceries\n    </a>\n    <a ion-item (click)="openModal({eventNum: 2})">\n      Fixing Fence\n    </a>\n  </ion-list>\n</div> -->\n\n<ion-card *ngFor="let event of events; let i = index" (click)="onOpenEvent(event, i)">\n  <ion-card-content text-center>\n    <ion-card-title>\n      {{ event.title }}\n    </ion-card-title>\n    <p>{{ event.description }}</p>\n  </ion-card-content>\n</ion-card>\n\n</ion-content>'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/map/map.html"*/
+            selector: 'page-map',template:/*ion-inline-start:"D:\git\iot_frontend\src\pages\map\map.html"*/'<ion-header>\n\n<ion-navbar>\n\n    <ion-title>\n\n    Requests Nearby\n\n    </ion-title>\n\n      <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only [navPush]="addEventPage">\n\n      <ion-icon name="add"></ion-icon>\n\n    </button>\n\n        </ion-buttons>\n\n</ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n<div #map id="map"></div> \n\n\n\n<!-- <div style="width : 100% ;height: 60%">\n\n  <ion-list>\n\n    <ion-list-header>\n\n      Open Events\n\n    </ion-list-header>\n\n    <a ion-item (click)="openModal({eventNum: 0})">\n\n      Raking\n\n    </a>\n\n    <a ion-item (click)="openModal({eventNum: 1})">\n\n      Putting Away Groceries\n\n    </a>\n\n    <a ion-item (click)="openModal({eventNum: 2})">\n\n      Fixing Fence\n\n    </a>\n\n  </ion-list>\n\n</div> -->\n\n\n\n<ion-card *ngFor="let event of events; let i = index" (click)="onOpenEvent(event, i)">\n\n  <ion-card-content text-center>\n\n    <ion-card-title>\n\n      {{ event.title }}\n\n    </ion-card-title>\n\n    <p>{{ event.description }}</p>\n\n  </ion-card-content>\n\n</ion-card>\n\n\n\n</ion-content>'/*ion-inline-end:"D:\git\iot_frontend\src\pages\map\map.html"*/
         })
         /*
         Class name: MapPage
         Description: This class contains the functions and components to render the Google Maps view of events.
         */
         ,
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_events__["a" /* EventsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_events__["a" /* EventsService */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */],
+            __WEBPACK_IMPORTED_MODULE_4__services_events__["a" /* EventsService */]])
     ], MapPage);
     return MapPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //The following component is for modal (popup) windows. It creates a template with the event details.
@@ -426,16 +428,16 @@ var AddEventPage = (function () {
     };
     AddEventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-add-event',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/add-event/add-event.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>New Request</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <form #f="ngForm" (ngSubmit)="onSubmit(f)">\n    <ion-list>\n      <ion-item>\n        <ion-label fixed>Title</ion-label>\n        <ion-input\n          type="text"\n          placeholder="Moving stuff..."\n          name="title"\n          ngModel\n          required></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label floating>Short Description</ion-label>\n        <ion-textarea\n          name="description"\n          ngModel\n          required></ion-textarea>\n      </ion-item>\n      <ion-item>\n        <ion-label floating>Estimated Time</ion-label>\n        <ion-select>\n          <ion-option\n            *ngFor="let option of selectOptions"\n            [value]="option">{{ option }}\n          </ion-option>\n        </ion-select>\n      </ion-item>\n      <ion-item>\n        <ion-label>Valid Until</ion-label>\n        <ion-datetime displayFormat="MMM D hh:mm A" pickerFormat="MMM D hh mm A"></ion-datetime>\n      </ion-item>\n      <ion-item>\n        <ion-label floating>Reward</ion-label>\n        <ion-textarea\n          name="reward"\n          ngModel\n          required></ion-textarea>\n      </ion-item>\n    </ion-list>\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <button\n            ion-button\n            block\n            outline\n            type="button"\n            icon-left\n            (click)="onLocate()">\n            <ion-icon name="locate"></ion-icon>\n            Locate me\n          </button>\n        </ion-col>\n        <ion-col>\n          <button\n            ion-button\n            block\n            outline\n            type="button"\n            icon-left\n            (click)="onOpenMap()">\n            <ion-icon name="map"></ion-icon>\n            Select on Map\n          </button>\n        </ion-col>\n      </ion-row>\n      <ion-row *ngIf="locationIsSet">\n        <ion-col>\n          <agm-map\n            [latitude]="location.lat"\n            [longitude]="location.lng"\n            [zoom]="16"\n            [zoomControl]="false"\n            [streetViewControl]="false">\n            <agm-marker\n              [latitude]="location.lat"\n              [longitude]="location.lng"></agm-marker>\n          </agm-map>\n        </ion-col>\n      </ion-row>   \n      <ion-row>\n        <ion-col>\n          <button\n            ion-button\n            color="secondary"\n            block\n            type="submit"\n            [disabled]="!f.valid || !locationIsSet"\n            (click)="popToRoot()">\n            Post\n          </button>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </form>\n</ion-content>'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/add-event/add-event.html"*/
+            selector: 'page-add-event',template:/*ion-inline-start:"D:\git\iot_frontend\src\pages\add-event\add-event.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>New Request</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <form #f="ngForm" (ngSubmit)="onSubmit(f)">\n\n    <ion-list>\n\n      <ion-item>\n\n        <ion-label fixed>Title</ion-label>\n\n        <ion-input\n\n          type="text"\n\n          placeholder="Moving stuff..."\n\n          name="title"\n\n          ngModel\n\n          required></ion-input>\n\n      </ion-item>\n\n      <ion-item>\n\n        <ion-label floating>Short Description</ion-label>\n\n        <ion-textarea\n\n          name="description"\n\n          ngModel\n\n          required></ion-textarea>\n\n      </ion-item>\n\n      <ion-item>\n\n        <ion-label floating>Estimated Time</ion-label>\n\n        <ion-select>\n\n          <ion-option\n\n            *ngFor="let option of selectOptions"\n\n            [value]="option">{{ option }}\n\n          </ion-option>\n\n        </ion-select>\n\n      </ion-item>\n\n      <ion-item>\n\n        <ion-label>Valid Until</ion-label>\n\n        <ion-datetime displayFormat="MMM D hh:mm A" pickerFormat="MMM D hh mm A"></ion-datetime>\n\n      </ion-item>\n\n      <ion-item>\n\n        <ion-label floating>Reward</ion-label>\n\n        <ion-textarea\n\n          name="reward"\n\n          ngModel\n\n          required></ion-textarea>\n\n      </ion-item>\n\n    </ion-list>\n\n    <ion-grid>\n\n      <ion-row>\n\n        <ion-col>\n\n          <button\n\n            ion-button\n\n            block\n\n            outline\n\n            type="button"\n\n            icon-left\n\n            (click)="onLocate()">\n\n            <ion-icon name="locate"></ion-icon>\n\n            Locate me\n\n          </button>\n\n        </ion-col>\n\n        <ion-col>\n\n          <button\n\n            ion-button\n\n            block\n\n            outline\n\n            type="button"\n\n            icon-left\n\n            (click)="onOpenMap()">\n\n            <ion-icon name="map"></ion-icon>\n\n            Select on Map\n\n          </button>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row *ngIf="locationIsSet">\n\n        <ion-col>\n\n          <agm-map\n\n            [latitude]="location.lat"\n\n            [longitude]="location.lng"\n\n            [zoom]="16"\n\n            [zoomControl]="false"\n\n            [streetViewControl]="false">\n\n            <agm-marker\n\n              [latitude]="location.lat"\n\n              [longitude]="location.lng"></agm-marker>\n\n          </agm-map>\n\n        </ion-col>\n\n      </ion-row>   \n\n      <ion-row>\n\n        <ion-col>\n\n          <button\n\n            ion-button\n\n            color="secondary"\n\n            block\n\n            type="submit"\n\n            [disabled]="!f.valid || !locationIsSet"\n\n            (click)="popToRoot()">\n\n            Post\n\n          </button>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </form>\n\n</ion-content>'/*ion-inline-end:"D:\git\iot_frontend\src\pages\add-event\add-event.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ToastController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_7__services_events__["a" /* EventsService */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__["a" /* Geolocation */],
             __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__["a" /* Camera */],
             __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__["a" /* File */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */]])
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]])
     ], AddEventPage);
     return AddEventPage;
 }());
@@ -471,14 +473,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var EventListPage = (function () {
-    function EventListPage(modalCtrl, eventsService) {
+    function EventListPage(events, modalCtrl, eventsService) {
+        var _this = this;
+        this.events = events;
         this.modalCtrl = modalCtrl;
         this.eventsService = eventsService;
-        this.events = [];
+        this.eventList = [];
         this.searchKey = '';
         this.searching = false;
         this.searchControl = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]();
+        events.subscribe('user:signin', function (user, token) {
+            console.log('Welcome', user, 'with', token);
+            _this.eventsService.fetchEvents()
+                .subscribe(function (eventList) { return _this.eventList = eventList; });
+            _this.onInput();
+        });
     }
     // ngOnInit() {
     //   this.eventsService.fetchEvents()
@@ -490,14 +501,16 @@ var EventListPage = (function () {
     //   this.events = this.eventsService.loadEvents();
     // }
     EventListPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
         //Change Observable to Promise type code:
         // this.eventsService.fetchEvents()
         //   .map((events: Event[]) => this.events = events)
         //   .toPromise();
-        this.eventsService.fetchEvents()
-            .subscribe(function (events) { return _this.events = events; });
-        this.onInput();
+        // this.eventsService.fetchEvents()
+        //   .subscribe(
+        //     (eventList: Event[]) => this.eventList = eventList
+        //   );
+        var _this = this;
+        // this.onInput();
         this.searchControl.valueChanges.debounceTime(700).subscribe(function (search) {
             _this.searching = false;
             _this.onInput();
@@ -517,26 +530,26 @@ var EventListPage = (function () {
         this.searching = true;
     };
     EventListPage.prototype.onInput = function () {
-        this.events = this.eventsService.findByName(this.searchKey);
+        this.eventList = this.eventsService.findByName(this.searchKey);
     };
     EventListPage.prototype.onOpenEvent = function (event, index) {
         var _this = this;
         var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__event_event__["a" /* EventPage */], { event: event, index: index });
         modal.present();
         modal.onDidDismiss(function () {
-            _this.events = _this.eventsService.loadEvents();
+            _this.eventList = _this.eventsService.loadEvents();
         });
     };
     EventListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-event-list',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/event-list/event-list.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-searchbar \n        [(ngModel)]="searchKey" \n        [formControl]="searchControl"\n        (ionInput)="onSearchInput()">\n        </ion-searchbar>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div *ngIf="searching" class="spinner-container">\n    <ion-spinner></ion-spinner>\n  </div>\n  <ion-card *ngFor="let event of events; let i = index" (click)="onOpenEvent(event, i)">\n    <img [src]="event.imageUrl">\n    <ion-card-content text-center>\n      <ion-card-title>\n        {{ event.title }}\n      </ion-card-title>\n      <p>{{ event.description }}</p>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/event-list/event-list.html"*/
+            selector: 'page-event-list',template:/*ion-inline-start:"D:\git\iot_frontend\src\pages\event-list\event-list.html"*/'<ion-header>\n\n    <ion-navbar>\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n        <ion-searchbar \n\n        [(ngModel)]="searchKey" \n\n        [formControl]="searchControl"\n\n        (ionInput)="onSearchInput()">\n\n        </ion-searchbar>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <div *ngIf="searching" class="spinner-container">\n\n    <ion-spinner></ion-spinner>\n\n  </div>\n\n  <!-- <ion-card *ngFor="let event of events; let i = index" (click)="onOpenEvent(event, i)">\n\n    <img [src]="event.imageUrl">\n\n    <ion-card-content text-center>\n\n      <ion-card-title>\n\n        {{ event.title }}\n\n      </ion-card-title>\n\n      <p>{{ event.description }}</p>\n\n    </ion-card-content>\n\n  </ion-card> -->\n\n</ion-content>\n\n'/*ion-inline-end:"D:\git\iot_frontend\src\pages\event-list\event-list.html"*/
         })
         // export class EventListPage implements OnInit {
         ,
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_3__services_events__["a" /* EventsService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_events__["a" /* EventsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_events__["a" /* EventsService */]) === "function" && _c || Object])
     ], EventListPage);
     return EventListPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=event-list.js.map
@@ -593,9 +606,9 @@ var ProfilePage = (function () {
     };
     ProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-profile',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/profile/profile.html"*/'\n<ion-header>\n\n    <ion-navbar>\n            <button ion-button menuToggle>\n                    <ion-icon name="menu"></ion-icon>\n                </button>\n      <ion-title>Profile</ion-title>\n    </ion-navbar>\n  \n  </ion-header>\n  \n  <ion-content padding>\n    \n    \n    <form #formCtrl="ngForm">\n        <div align="center" *ngIf="formCtrl.form.valid">\n            \n          <h1> Profile</h1>\n          <img class="profile-image" src="assets/imgs/profile.jpg">\n            <h4>{{person.name}}</h4>\n            <h5>{{age}} years old</h5>\n        </div>\n    <ion-list>\n        <ion-item>\n          <ion-label floating>Name</ion-label>\n          <ion-input type="text" [(ngModel)]="person.name" name="name" required></ion-input>\n        </ion-item>\n        \n        <ion-item>\n            <ion-label >Birth Date</ion-label>\n            <ion-datetime required name="birthdate" displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="dob" [ngModelOptions]="{standalone:true}"></ion-datetime>\n        </ion-item>\n\n        <ion-item>\n                <ion-label floating>Contact number</ion-label>\n                <ion-input type="text" [(ngModel)]="person.mobile" name="mobile" required></ion-input>\n        </ion-item>\n\n        <ion-item>\n                <ion-label floating>Email</ion-label>\n                <ion-input type="text" [(ngModel)]="person.email" name="email" required></ion-input>\n        </ion-item>\n        \n        \n    </ion-list>\n    <button color="secondary" [disabled]="!formCtrl.form.valid" ion-button block (click)="save()">Save</button>\n    <button color="danger" ion-button block (click)="reset()">Reset</button>\n  </form>\n  </ion-content>'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/profile/profile.html"*/,
+            selector: 'page-profile',template:/*ion-inline-start:"D:\git\iot_frontend\src\pages\profile\profile.html"*/'\n\n<ion-header>\n\n\n\n    <ion-navbar>\n\n            <button ion-button menuToggle>\n\n                    <ion-icon name="menu"></ion-icon>\n\n                </button>\n\n      <ion-title>Profile</ion-title>\n\n    </ion-navbar>\n\n  \n\n  </ion-header>\n\n  \n\n  <ion-content padding>\n\n    \n\n    \n\n    <form #formCtrl="ngForm">\n\n        <div align="center" *ngIf="formCtrl.form.valid">\n\n            \n\n          <h1> Profile</h1>\n\n          <img class="profile-image" src="assets/imgs/profile.jpg">\n\n            <h4>{{person.name}}</h4>\n\n            <h5>{{age}} years old</h5>\n\n        </div>\n\n    <ion-list>\n\n        <ion-item>\n\n          <ion-label floating>Name</ion-label>\n\n          <ion-input type="text" [(ngModel)]="person.name" name="name" required></ion-input>\n\n        </ion-item>\n\n        \n\n        <ion-item>\n\n            <ion-label >Birth Date</ion-label>\n\n            <ion-datetime required name="birthdate" displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="dob" [ngModelOptions]="{standalone:true}"></ion-datetime>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n                <ion-label floating>Contact number</ion-label>\n\n                <ion-input type="text" [(ngModel)]="person.mobile" name="mobile" required></ion-input>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n                <ion-label floating>Email</ion-label>\n\n                <ion-input type="text" [(ngModel)]="person.email" name="email" required></ion-input>\n\n        </ion-item>\n\n        \n\n        \n\n    </ion-list>\n\n    <button color="secondary" [disabled]="!formCtrl.form.valid" ion-button block (click)="save()">Save</button>\n\n    <button color="danger" ion-button block (click)="reset()">Reset</button>\n\n  </form>\n\n  </ion-content>'/*ion-inline-end:"D:\git\iot_frontend\src\pages\profile\profile.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
     ], ProfilePage);
     return ProfilePage;
 }());
@@ -687,10 +700,10 @@ var SetLocationPage = (function () {
     };
     SetLocationPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-set-location',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/set-location/set-location.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Choose Location</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <agm-map\n          [latitude]="location.lat"\n          [longitude]="location.lng"\n          [zoom]="16"\n          [zoomControl]="false"\n          [streetViewControl]="false"\n          (mapClick)="onSetMarker($event)">\n          <agm-marker\n            [latitude]="marker.lat"\n            [longitude]="marker.lng"\n            *ngIf="marker"></agm-marker>\n        </agm-map>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <button\n          ion-button\n          block\n          color="secondary"\n          (click)="onConfirm()"\n          [disabled]="!marker">Confirm</button>\n      </ion-col>\n      <ion-col>\n        <button\n          ion-button\n          block\n          color="danger"\n          (click)="onAbort()">Abort</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/set-location/set-location.html"*/
+            selector: 'page-set-location',template:/*ion-inline-start:"D:\git\iot_frontend\src\pages\set-location\set-location.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Choose Location</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col>\n\n        <agm-map\n\n          [latitude]="location.lat"\n\n          [longitude]="location.lng"\n\n          [zoom]="16"\n\n          [zoomControl]="false"\n\n          [streetViewControl]="false"\n\n          (mapClick)="onSetMarker($event)">\n\n          <agm-marker\n\n            [latitude]="marker.lat"\n\n            [longitude]="marker.lng"\n\n            *ngIf="marker"></agm-marker>\n\n        </agm-map>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col>\n\n        <button\n\n          ion-button\n\n          block\n\n          color="secondary"\n\n          (click)="onConfirm()"\n\n          [disabled]="!marker">Confirm</button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button\n\n          ion-button\n\n          block\n\n          color="danger"\n\n          (click)="onAbort()">Abort</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\git\iot_frontend\src\pages\set-location\set-location.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]])
     ], SetLocationPage);
     return SetLocationPage;
 }());
@@ -745,11 +758,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SigninPage = (function () {
-    function SigninPage(nav, http, storage) {
+    function SigninPage(nav, http, storage, events) {
         this.nav = nav;
         this.http = http;
         this.storage = storage;
+        this.events = events;
         this.nav = nav;
     }
     /*
@@ -793,7 +808,10 @@ var SigninPage = (function () {
             _this.token = parsed["token"];
             _this.storage.set('originalToken', _this.token).then(function () {
                 console.log('Original token has been set.');
-                _this.storage.get('currentToken').then(function (val) { console.log('Your current token is', val); });
+                _this.storage.get('currentToken').then(function (val) {
+                    console.log('Your current token is', val);
+                    _this.events.publish('user:signin', _this.username, _this.token);
+                });
             });
             _this.storage.set('currentToken', _this.token).then(function () {
                 console.log('Current token has been set.');
@@ -804,16 +822,17 @@ var SigninPage = (function () {
         });
     };
     SigninPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/signin/signin.html"*/'\n<ion-header>\n  <ion-navbar>\n    <ion-title>Sign In</ion-title>\n    <!--button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button-->\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n\n    <ion-item>\n      <ion-label floating>Username</ion-label>\n      <ion-input [(ngModel)]="username" type="text" value=""></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Password</ion-label>\n      <ion-input [(ngModel)]="password" type="password" value=""></ion-input>\n    </ion-item>\n\n  </ion-list>\n\n  <div padding>\n    <button ion-button color="primary" (click)="login()" block>Sign In</button>\n  </div>\n  \n    <div padding>\n    <button ion-button color="primary" (click)="openRegistration()" block>Register</button>\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/signin/signin.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"D:\git\iot_frontend\src\pages\signin\signin.html"*/'\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Sign In</ion-title>\n\n    <!--button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button-->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n\n\n    <ion-item>\n\n      <ion-label floating>Username</ion-label>\n\n      <ion-input [(ngModel)]="username" type="text" value=""></ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label floating>Password</ion-label>\n\n      <ion-input [(ngModel)]="password" type="password" value=""></ion-input>\n\n    </ion-item>\n\n\n\n  </ion-list>\n\n\n\n  <div padding>\n\n    <button ion-button color="primary" (click)="login()" block>Sign In</button>\n\n  </div>\n\n  \n\n    <div padding>\n\n    <button ion-button color="primary" (click)="openRegistration()" block>Register</button>\n\n  </div>\n\n</ion-content>'/*ion-inline-end:"D:\git\iot_frontend\src\pages\signin\signin.html"*/
         })
         /*
         class name: SigninPage
         Description: This class contains related to the sign in page and functionality.
         */
         ,
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* Events */]) === "function" && _d || Object])
     ], SigninPage);
     return SigninPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=signin.js.map
@@ -969,15 +988,15 @@ var SignupPage = (function () {
     ], SignupPage.prototype, "signupSlider", void 0);
     SignupPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-signup',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/signup/signup.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      Sign Up\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n<ion-slides #signupSlider pager>\n  <ion-slide>\n    <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>\n    <ion-list no-lines>\n        <form enctype=\'application/json\'[formGroup]="slideOneForm">\n            <ion-item>\n                <ion-label floating>First Name</ion-label>\n                <ion-input formControlName="firstName" type="text" [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"></ion-input>\n            </ion-item>\n            <ion-item>\n                <ion-label floating>Last Name</ion-label>\n                <ion-input formControlName="lastName" type="text" [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.lastName.dirty || submitAttempt)"></ion-input>\n            </ion-item>\n            <ion-item>\n            <ion-label floating>Username</ion-label>\n              <ion-input [class.invalid]="!slideOneForm.controls.username.valid && (slideOneForm.controls.username.dirty || submitAttempt)" formControlName="username" type="text"></ion-input>\n            </ion-item>\n            <ion-item *ngIf="slideOneForm.controls.username.pending">\n                <p>Checking username...</p>\n            </ion-item>\n            <ion-item *ngIf="!slideOneForm.controls.username.valid && !slideOneForm.controls.username.pending && (slideOneForm.controls.username.dirty || submitAttempt)">\n                <p>Sorry, that username can not be used!</p>\n            </ion-item>\n            <ion-item *ngIf="!slideOneForm.controls.firstName.valid  && (slideOneForm.controls.firstName.dirty || submitAttempt)">\n                <p>Please enter a valid first name.</p>\n            </ion-item>\n            <ion-item *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">\n                <p>Please enter a valid last name.</p>\n            </ion-item>\n            <ion-item>\n                <ion-label floating>Email Address</ion-label>\n                <ion-input formControlName="email" type="email" [class.invalid]="submitAttempt"></ion-input>\n            </ion-item>\n            <ion-item>\n                <ion-label floating>Password</ion-label>\n                <ion-input formControlName="enterPassword" type="password" [class.invalid]="submitAttempt"></ion-input>\n            </ion-item>\n            <ion-item>\n                <ion-label floating>Confirm Password</ion-label>\n                <ion-input formControlName="confirmPassword" type="password" [class.invalid]="submitAttempt"></ion-input>\n            </ion-item>\n        </form>\n  </ion-list>\n    <div padding>\n      <button ion-button color="primary" (click)="next()" block>Next</button>\n      </div>\n  </ion-slide>\n  <ion-slide>\n     <form enctype=\'application/json\' [formGroup]="slideTwoForm">\n       <div class="col col-33">\n            <img [src]="selfiePhoto" class="full-image" *ngIf="selfiePhoto" />\n      </div>\n       Selfie\n       <p><button ion-button (click)="takePicture(\'selfie\')">Take a Picture</button></p>\n    <div class="col col-33">\n          <img [src]="idPhoto" class="full-image" *ngIf="idPhoto" />\n          </div>\n       ID Photo\n       <p><button ion-button (click)="takePicture(\'license\')">Take a Picture</button></p>\n        </form>\n      <div padding>\n    <button ion-button color="primary" (click)="prev()" block>Previous</button>\n    </div>\n      <div padding>\n    <button ion-button color="primary" (click)="save()" block>Create Account</button>\n    </div>\n  </ion-slide>\n</ion-slides>\n</ion-content>'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/signup/signup.html"*/
+            selector: 'page-signup',template:/*ion-inline-start:"D:\git\iot_frontend\src\pages\signup\signup.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title>\n\n      Sign Up\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n \n\n<ion-content>\n\n<ion-slides #signupSlider pager>\n\n  <ion-slide>\n\n    <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>\n\n    <ion-list no-lines>\n\n        <form enctype=\'application/json\'[formGroup]="slideOneForm">\n\n            <ion-item>\n\n                <ion-label floating>First Name</ion-label>\n\n                <ion-input formControlName="firstName" type="text" [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label floating>Last Name</ion-label>\n\n                <ion-input formControlName="lastName" type="text" [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.lastName.dirty || submitAttempt)"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n            <ion-label floating>Username</ion-label>\n\n              <ion-input [class.invalid]="!slideOneForm.controls.username.valid && (slideOneForm.controls.username.dirty || submitAttempt)" formControlName="username" type="text"></ion-input>\n\n            </ion-item>\n\n            <ion-item *ngIf="slideOneForm.controls.username.pending">\n\n                <p>Checking username...</p>\n\n            </ion-item>\n\n            <ion-item *ngIf="!slideOneForm.controls.username.valid && !slideOneForm.controls.username.pending && (slideOneForm.controls.username.dirty || submitAttempt)">\n\n                <p>Sorry, that username can not be used!</p>\n\n            </ion-item>\n\n            <ion-item *ngIf="!slideOneForm.controls.firstName.valid  && (slideOneForm.controls.firstName.dirty || submitAttempt)">\n\n                <p>Please enter a valid first name.</p>\n\n            </ion-item>\n\n            <ion-item *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">\n\n                <p>Please enter a valid last name.</p>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label floating>Email Address</ion-label>\n\n                <ion-input formControlName="email" type="email" [class.invalid]="submitAttempt"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label floating>Password</ion-label>\n\n                <ion-input formControlName="enterPassword" type="password" [class.invalid]="submitAttempt"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label floating>Confirm Password</ion-label>\n\n                <ion-input formControlName="confirmPassword" type="password" [class.invalid]="submitAttempt"></ion-input>\n\n            </ion-item>\n\n        </form>\n\n  </ion-list>\n\n    <div padding>\n\n      <button ion-button color="primary" (click)="next()" block>Next</button>\n\n      </div>\n\n  </ion-slide>\n\n  <ion-slide>\n\n     <form enctype=\'application/json\' [formGroup]="slideTwoForm">\n\n       <div class="col col-33">\n\n            <img [src]="selfiePhoto" class="full-image" *ngIf="selfiePhoto" />\n\n      </div>\n\n       Selfie\n\n       <p><button ion-button (click)="takePicture(\'selfie\')">Take a Picture</button></p>\n\n    <div class="col col-33">\n\n          <img [src]="idPhoto" class="full-image" *ngIf="idPhoto" />\n\n          </div>\n\n       ID Photo\n\n       <p><button ion-button (click)="takePicture(\'license\')">Take a Picture</button></p>\n\n        </form>\n\n      <div padding>\n\n    <button ion-button color="primary" (click)="prev()" block>Previous</button>\n\n    </div>\n\n      <div padding>\n\n    <button ion-button color="primary" (click)="save()" block>Create Account</button>\n\n    </div>\n\n  </ion-slide>\n\n</ion-slides>\n\n</ion-content>'/*ion-inline-end:"D:\git\iot_frontend\src\pages\signup\signup.html"*/
         })
         /*
         Class name: SignupPage
         Description: This page contains the functionality for a user to register/sign up for our platform.
           */
         ,
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_5__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* ToastController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_5__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["m" /* ToastController */]])
     ], SignupPage);
     return SignupPage;
 }());
@@ -1004,7 +1023,7 @@ var WelcomePage = (function () {
     }
     WelcomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-welcome',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/welcome/welcome.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Helping Hands</ion-title>\n\n    </ion-navbar>\n</ion-header>\n\n<ion-content no-bounce>\n    <ion-slides>\n\n        <ion-slide style="background-image: url(\'assets/img/community1.png\')">\n            <p>Receive help or help your community right start from here!</p>\n        </ion-slide>\n        \n    </ion-slides>\n\n</ion-content>'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/welcome/welcome.html"*/
+            selector: 'page-welcome',template:/*ion-inline-start:"D:\git\iot_frontend\src\pages\welcome\welcome.html"*/'<ion-header>\n\n    <ion-navbar>\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title>Helping Hands</ion-title>\n\n\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content no-bounce>\n\n    <ion-slides>\n\n\n\n        <ion-slide style="background-image: url(\'assets/img/community1.png\')">\n\n            <p>Receive help or help your community right start from here!</p>\n\n        </ion-slide>\n\n        \n\n    </ion-slides>\n\n\n\n</ion-content>'/*ion-inline-end:"D:\git\iot_frontend\src\pages\welcome\welcome.html"*/
         })
     ], WelcomePage);
     return WelcomePage;
@@ -1119,7 +1138,7 @@ var AppModule = (function () {
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_14__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_14__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] }
                     ]
@@ -1132,7 +1151,7 @@ var AppModule = (function () {
                     apiKey: 'AIzaSyC1DqPR9cC4gZEEHXqGr32qXOFFcAdOCkM'
                 })
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_14__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_home_home__["a" /* HomePage */],
@@ -1150,7 +1169,7 @@ var AppModule = (function () {
             providers: [
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["ErrorHandler"], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["ErrorHandler"], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicErrorHandler */] },
                 __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_10__ionic_native_geolocation__["a" /* Geolocation */],
                 __WEBPACK_IMPORTED_MODULE_12__ionic_native_camera__["a" /* Camera */],
@@ -1220,17 +1239,20 @@ var EventsService = (function () {
             lng: -79.944697
         };
     }
-    EventsService.prototype.createAuthorizationHeader = function () {
+    EventsService.prototype.createAuthorizationHeader = function (token) {
         var headers = new __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["c" /* HttpHeaders */]();
-        headers.set("Access-Control-Allow-Origin", "*");
-        headers.set("Access-Control-Allow-Credentials", "true");
-        headers.set("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-        headers.set("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-        headers.set("X-CustomHeader", "custom header value");
+        // headers = headers.set("Access-Control-Allow-Origin", "*");
+        // headers = headers.set("Access-Control-Allow-Credentials", "true");
+        // headers = headers.set("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+        // .set("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers")
+        // headers = headers.set("X-CustomHeader", "custom header value");
+        // .set("Authorization", token);
         //get auth token
-        var token = 'JWT ' + this.storage.get('currentToken');
+        // let token = 'JWT ' + this.storage.get('currentToken');
         //append auth token to headers
-        headers.append("Authorization", token);
+        headers = headers.set("Authorization", 'JWT ' + token);
+        console.log('get the token in header ' + token);
+        console.log('headers', { headers: headers });
         return headers;
     };
     EventsService.prototype.addEvent = function (event) {
@@ -1280,18 +1302,52 @@ var EventsService = (function () {
         //   .catch(
         //     err => console.log(err)
         //   );
-        var options = {
-            headers: this.createAuthorizationHeader()
-        };
-        this.geolocation.getCurrentPosition()
-            .then(function (location) {
-            _this.location.lat = location.coords.latitude;
-            _this.location.lng = location.coords.longitude;
-        });
-        return this.httpClient
-            .get(this.baseUrl + '/we_help/events/?longitude=lat&latitude=lng', options)
-            .map(function (events) { return event; })
-            .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].throw(error); });
+        console.log('fetch event');
+        return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].from(Promise.all([this.storage.get('currentToken'), this.geolocation.getCurrentPosition()])
+            .then(function (results) {
+            var token = results[0];
+            var location = results[1];
+            console.log(token, location);
+            var headers = _this.createAuthorizationHeader(token);
+            _this.location.latitude = location.coords.latitude;
+            _this.location.longitude = location.coords.longitude;
+            return _this.httpClient.get(_this.baseUrl + '/we_help/events/?longitude=' + _this.location.longitude + '&latitude=' + _this.location.latitude, { headers: headers })
+                .map(function (events) { return events; }, function (error) {
+                console.log('failure invoke');
+                console.log(error); // Error getting the data
+            }).toPromise();
+        }));
+        // this.storage.get('currentToken').then(
+        //   val => {
+        //     console.log('get header');
+        //     let headers = this.createAuthorizationHeader(val);
+        //     return headers
+        // }).then(
+        //   headers => {
+        //     console.log('try fetch', headers);
+        //     return this.httpClient.get(this.baseUrl + '/we_help/events/?longitude=lat&latitude=lng', {headers})
+        //     .map((events: Event[]) => events
+        //     ,error => {
+        //       console.log('failure invoke');
+        //       console.log(error);// Error getting the data
+        //     }).toPromise();
+        //   }
+        // ));
+        // let options = {
+        //   headers: this.createAuthorizationHeader()
+        // };
+        // this.geolocation.getCurrentPosition()
+        //   .then(
+        //     location => {
+        //       this.location.lat = location.coords.latitude;
+        //       this.location.lng = location.coords.longitude;
+        //     }
+        //   );
+        // return this.httpClient
+        //   // .get(this.baseUrl + '/we_help/events/?longitude=-79.95&latitude=40.45', options)
+        //   .get(this.baseUrl + '/we_help/events/?longitude=lat&latitude=lng', options)
+        //   .map((events: Event) => event)
+        //   .catch((error: any) => Observable.throw(error));
     };
     EventsService.prototype.deleteEvent = function (index) {
         var _this = this;
@@ -1437,14 +1493,14 @@ var MyApp = (function () {
         alert.present();
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <img src="assets/img/hands.jpg" class="menu-logo"/>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n      <button menuClose ion-item (click)="presentLogout()">Logout</button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"D:\git\iot_frontend\src\app\app.html"*/'<ion-menu [content]="content">\n\n  <ion-header>\n\n    <ion-toolbar>\n\n      <ion-title>Menu</ion-title>\n\n    </ion-toolbar>\n\n  </ion-header>\n\n\n\n  <ion-content>\n\n    <img src="assets/img/hands.jpg" class="menu-logo"/>\n\n    <ion-list>\n\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n\n        {{p.title}}\n\n      </button>\n\n      <button menuClose ion-item (click)="presentLogout()">Logout</button>\n\n    </ion-list>\n\n  </ion-content>\n\n\n\n</ion-menu>\n\n\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"D:\git\iot_frontend\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_9__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_9__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */]])
     ], MyApp);
     return MyApp;
 }());
@@ -1550,11 +1606,11 @@ var HomePage = (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons end>\n      <button ion-button icon-only [navPush]="addEventPage">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>\n      Helping Hands\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card *ngFor="let event of events; let i = index" (click)="onOpenEvent(event, i)">\n    <img [src]="event.imageUrl">\n    <ion-card-content text-center>\n      <ion-card-title>\n        {{ event.title }}\n      </ion-card-title>\n      <p>{{ event.description }}</p>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"D:\git\iot_frontend\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only [navPush]="addEventPage">\n\n        <ion-icon name="add"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      Helping Hands\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <ion-card *ngFor="let event of events; let i = index" (click)="onOpenEvent(event, i)">\n\n    <img [src]="event.imageUrl">\n\n    <ion-card-content text-center>\n\n      <ion-card-title>\n\n        {{ event.title }}\n\n      </ion-card-title>\n\n      <p>{{ event.description }}</p>\n\n    </ion-card-content>\n\n  </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\git\iot_frontend\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_3__services_events__["a" /* EventsService */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
     ], HomePage);
     return HomePage;
 }());
@@ -1610,7 +1666,7 @@ var CameraPage = (function () {
     };
     CameraPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-camera',template:/*ion-inline-start:"/Users/aoranw/mobile_iot/src/pages/camera/camera.html"*/'\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Ionic Camera\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="home">\n  <ion-card>\n     <ion-card-content>\n       Selfie\n       <img [src]="selfiePhoto" *ngIf="selfiePhoto" />\n       <p><button ion-button (click)="takePicture(\'selfie\')">Take a Picture</button></p>\n     </ion-card-content>\n   </ion-card>\n   <ion-card>\n     <ion-card-content>\n       ID Photo\n       <img [src]="idPhoto" *ngIf="idPhoto" />\n       <p><button ion-button (click)="takePicture(\'license\')">Take a Picture</button></p>\n     </ion-card-content>\n   </ion-card>\n</ion-content>'/*ion-inline-end:"/Users/aoranw/mobile_iot/src/pages/camera/camera.html"*/
+            selector: 'page-camera',template:/*ion-inline-start:"D:\git\iot_frontend\src\pages\camera\camera.html"*/'\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Ionic Camera\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="home">\n\n  <ion-card>\n\n     <ion-card-content>\n\n       Selfie\n\n       <img [src]="selfiePhoto" *ngIf="selfiePhoto" />\n\n       <p><button ion-button (click)="takePicture(\'selfie\')">Take a Picture</button></p>\n\n     </ion-card-content>\n\n   </ion-card>\n\n   <ion-card>\n\n     <ion-card-content>\n\n       ID Photo\n\n       <img [src]="idPhoto" *ngIf="idPhoto" />\n\n       <p><button ion-button (click)="takePicture(\'license\')">Take a Picture</button></p>\n\n     </ion-card-content>\n\n   </ion-card>\n\n</ion-content>'/*ion-inline-end:"D:\git\iot_frontend\src\pages\camera\camera.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_native_camera__["a" /* Camera */]])
     ], CameraPage);
