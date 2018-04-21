@@ -1,13 +1,14 @@
+import { Location } from "./location";
+
 export class Event {
-  id: number;
-  title: string;
-  description: string;
-  duration: number;
-  close_time: Date;
-  reward: string;
-  latitude: number;
-  longitude: number;
-  imageUrl: string;
+  public id: number;
+  public title: string;
+  public description: string;
+  public duration: number;
+  public close_time: Date;
+  public reward: string;
+  public location: Location;
+  public imageUrl: string;
   constructor(values: Object = {}) {
     Object.assign(this, values);
   }

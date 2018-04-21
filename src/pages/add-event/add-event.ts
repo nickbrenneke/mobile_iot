@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from "@angular/forms";
+import { NgModel } from "@angular/forms";
 import { ModalController, LoadingController, ToastController, NavController } from "ionic-angular";
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
@@ -19,9 +20,9 @@ declare var cordova: any;
   templateUrl: 'add-event.html'
 })
 export class AddEventPage {
-  events: Event[] = [];
+  event = new Event();
 
-  selectOptions = ['<15mins', '15-30mins', '>30mins'];
+  // selectOptions = ['<15mins', '15-30mins', '>30mins'];
   location: Location = {
     latitude: 40.443646,
     longitude: -79.944697
@@ -42,20 +43,20 @@ export class AddEventPage {
   }
 
   onSubmit(eventForm) {
-    let event = new Event();
-    event.title = 'TTitle';
-    event.description = 'DDescription';
-    event.reward = 'reward';
-    event.duration = 15;
-    event.close_time = new Date();
+    this.event.title = 'TTitle';
+    this.event.description = 'DDescription';
+    this.event.reward = 'reward';
+    this.event.duration = 1;
+    this.event.close_time = new Date();
+    this.event.location = new Location(location.latitude, location.longitude);
 
 
     this.eventsService
       // .addEvent(form.value.title, form.value.description, this.location, this.imageUrl);
-      .addEvent(event)
+      .addEvent(this.event)
       .subscribe(
         (newEvent) => {
-          this.events = this.events.concat(newEvent);
+          this.event = this.event.concat(newEvent);
         }
       );
     // form.reset();

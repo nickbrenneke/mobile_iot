@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from "@angular/common/http";
 import { File } from '@ionic-native/file';
+import { FormsModule } from "@angular/forms";
 import {CustomFormsModule} from 'ng2-validation';
 import { Storage, IonicStorageModule } from "@ionic/storage";
 import { Geolocation } from '@ionic-native/geolocation';
@@ -52,6 +53,7 @@ import { DataProvider } from '../providers/data/data';
     HttpClientModule,
     IonicStorageModule.forRoot(),
     CustomFormsModule,
+    FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC1DqPR9cC4gZEEHXqGr32qXOFFcAdOCkM'
     })
