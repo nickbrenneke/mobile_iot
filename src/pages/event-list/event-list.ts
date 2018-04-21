@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { Event } from "../../models/event";
 import { EventsService } from "../../services/events";
 import { EventPage } from "../event/event";
+import { AddEventPage } from "../add-event/add-event";
 import { Events } from 'ionic-angular';
 import 'rxjs/add/operator/debounceTime';
 
@@ -13,6 +14,7 @@ import 'rxjs/add/operator/debounceTime';
 })
 // export class EventListPage implements OnInit {
 export class EventListPage {
+  addEventPage = AddEventPage;
   eventList: Event[] = [];
   searchKey: string = '';
   searchControl: FormControl;

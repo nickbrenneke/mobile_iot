@@ -20,8 +20,8 @@ export class EventsService {
   baseUrl: string = "http://localhost:8000";
 
   location: Location = {
-    lat: 40.443646,
-    lng: -79.944697
+    latitude: 40.443646,
+    longitude: -79.944697
   };
 
   constructor(private storage: Storage,

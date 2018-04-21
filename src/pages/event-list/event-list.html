@@ -1,21 +1,29 @@
 <ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-searchbar 
-        [(ngModel)]="searchKey" 
-        [formControl]="searchControl"
-        (ionInput)="onSearchInput()">
-        </ion-searchbar>
-    </ion-navbar>
+<ion-navbar>
+    <ion-title>
+    Requests Nearby
+    </ion-title>
+      <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only [navPush]="addEventPage">
+      <ion-icon name="add"></ion-icon>
+    </button>
+        </ion-buttons>
+</ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-searchbar 
+  [(ngModel)]="searchKey" 
+  [formControl]="searchControl"
+  (ionInput)="onSearchInput()">
+  </ion-searchbar>  
   <div *ngIf="searching" class="spinner-container">
     <ion-spinner></ion-spinner>
   </div>
-  <!-- <ion-card *ngFor="let event of events; let i = index" (click)="onOpenEvent(event, i)">
+  <ion-card *ngFor="let event of eventList; let i = index" (click)="onOpenEvent(event, i)">
     <img [src]="event.imageUrl">
     <ion-card-content text-center>
       <ion-card-title>
@@ -23,5 +31,5 @@
       </ion-card-title>
       <p>{{ event.description }}</p>
     </ion-card-content>
-  </ion-card> -->
+  </ion-card>
 </ion-content>
