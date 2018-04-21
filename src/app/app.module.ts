@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { File } from '@ionic-native/file';
 import {CustomFormsModule} from 'ng2-validation';
 import { Storage, IonicStorageModule } from "@ionic/storage";
@@ -26,7 +26,7 @@ import { SetLocationPage } from "../pages/set-location/set-location";
 import { EventListPage } from "../pages/event-list/event-list";
 import { ProfilePage } from "../pages/profile/profile";
 
-import { EventsService } from "../services/events";
+import { EventsService } from "../services/event-service";
 import { ProfileService } from "../services/profile-service-mock";
 import { DataProvider } from '../providers/data/data';
 

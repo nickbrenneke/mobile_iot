@@ -3,7 +3,7 @@ import { ModalController, Platform, NavParams, ViewController, NavController } f
 import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation';
 import { AddEventPage } from "../add-event/add-event";
 import { Event } from "../../models/event";
-import { EventsService } from "../../services/events";
+import { EventsService } from "../../services/event-service";
 import { EventPage } from "../event/event";
 
 

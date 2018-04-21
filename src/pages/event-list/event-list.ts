@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from 'ionic-angular';
 import { FormControl } from '@angular/forms';
 import { Event } from "../../models/event";
-import { EventsService } from "../../services/events";
+import { EventsService } from "../../services/event-service";
 import { EventPage } from "../event/event";
 import { AddEventPage } from "../add-event/add-event";
 import { Events } from 'ionic-angular';

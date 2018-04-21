@@ -5,8 +5,8 @@ export class Event {
   duration: number;
   close_time: Date;
   reward: string;
-  lat: number;
-  lng: number;
+  latitude: number;
+  longitude: number;
   imageUrl: string;
   constructor(values: Object = {}) {
     Object.assign(this, values);

@@ -8,7 +8,7 @@ import Rx from 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import { SetLocationPage } from "../set-location/set-location";
 import { Location } from "../../models/location";
-import { EventsService } from "../../services/events";
+import { EventsService } from "../../services/event-service";
 import { Event } from "../../models/event";
 import { WelcomePage } from "../welcome/welcome";
 
@@ -29,7 +29,7 @@ export class AddEventPage {
   locationIsSet = false;
   imageUrl = '';
 
-  event = new Event(NgForm);
+  // event = new Event(NgForm);
 
   constructor(private modalCtrl: ModalController,
               private loadingCtrl: LoadingController,
@@ -41,7 +41,15 @@ export class AddEventPage {
               private nav: NavController) {
   }
 
-  onSubmit(event) {
+  onSubmit(eventForm) {
+    let event = new Event();
+    event.title = 'TTitle';
+    event.description = 'DDescription';
+    event.reward = 'reward';
+    event.duration = 15;
+    event.close_time = new Date();
+
+
     this.eventsService
       // .addEvent(form.value.title, form.value.description, this.location, this.imageUrl);
       .addEvent(event)

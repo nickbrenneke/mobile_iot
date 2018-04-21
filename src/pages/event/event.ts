@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 
 import { Event } from "../../models/event";
-import { EventsService } from "../../services/events";
+import { EventsService } from "../../services/event-service";
 
 @Component({
   selector: 'page-event',

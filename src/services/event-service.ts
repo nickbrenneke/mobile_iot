@@ -31,16 +31,8 @@ export class EventsService {
 
   createAuthorizationHeader(token: string){
     let headers = new HttpHeaders();
-    // headers = headers.set("Access-Control-Allow-Origin", "*");
-    // headers = headers.set("Access-Control-Allow-Credentials", "true");
-    // headers = headers.set("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-      // .set("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers")
-    // headers = headers.set("X-CustomHeader", "custom header value");
-      // .set("Authorization", token);
-    //get auth token
-    // let token = 'JWT ' + this.storage.get('currentToken');
-    //append auth token to headers
     headers = headers.set("Authorization", 'JWT '+token);
+    headers = headers.set("Content-Type", 'application/json');
 
     console.log('get the token in header ' + token);
     console.log('headers', {headers});
@@ -48,25 +40,24 @@ export class EventsService {
   }
 
   addEvent(event: Event): Observable<Event> {
-    // const event = new Event(title, description, location, imageUrl);
-    // this.events.push(event);
-    // this.storage.set('events', this.events)
-    //   .then()
-    //   .catch(
-    //     err => {
-    //       this.events.splice(this.events.indexOf(event), 1);
-    //     }
-    //   );
-    console.log('post event');
-
-    return this.httpClient
-      .post(this.baseUrl + '/we_help/events/created', event)
-      .map(response => {
-        return new Event(response);
-      })
-      .catch((error: any) => {
-        return Observable.throw(error);
-      });
+    
+    console.log('fetch event');
+    
+    return Observable.from(
+      Promise.all([this.storage.get('currentToken')])
+      .then( results =>{
+          let token = results[0];
+          let location = results[1];
+          console.log(token, location);
+          let headers = this.createAuthorizationHeader(token);
+          return this.httpClient.post(this.baseUrl + '/we_help/events/', JSON.stringify(event), {headers})
+            .map((event: Event) => event
+            ,error => {
+              console.log('failure invoke');
+              console.log(error);// Error getting the data
+            }).toPromise();
+        }
+      ));
 
   }
 
@@ -94,42 +85,6 @@ export class EventsService {
             }).toPromise();
         }
       ));
-
-        // this.storage.get('currentToken').then(
-        //   val => {
-        //     console.log('get header');
-        //     let headers = this.createAuthorizationHeader(val);
-        //     return headers
-        // }).then(
-        //   headers => {
-        //     console.log('try fetch', headers);
-
-
-        //     return this.httpClient.get(this.baseUrl + '/we_help/events/?longitude=lat&latitude=lng', {headers})
-        //     .map((events: Event[]) => events
-        //     ,error => {
-        //       console.log('failure invoke');
-        //       console.log(error);// Error getting the data
-        //     }).toPromise();
-        //   }
-        // ));
-    // let options = {
-    //   headers: this.createAuthorizationHeader()
-    // };
-
-    // this.geolocation.getCurrentPosition()
-    //   .then(
-    //     location => {
-    //       this.location.lat = location.coords.latitude;
-    //       this.location.lng = location.coords.longitude;
-    //     }
-    //   );
-
-    // return this.httpClient
-    //   // .get(this.baseUrl + '/we_help/events/?longitude=-79.95&latitude=40.45', options)
-    //   .get(this.baseUrl + '/we_help/events/?longitude=lat&latitude=lng', options)
-    //   .map((events: Event) => event)
-    //   .catch((error: any) => Observable.throw(error));
   }
 
   deleteEvent(index: number) {

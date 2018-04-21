@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from 'ionic-angular';
 import { AddEventPage } from "../add-event/add-event";
 import { Event } from "../../models/event";
-import { EventsService } from "../../services/events";
+import { EventsService } from "../../services/event-service";
 import { EventPage } from "../event/event";
 
 @Component({
