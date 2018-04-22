@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SignupPage } from '../signup/signup';
-import { NavController} from 'ionic-angular';
+import { NavController, AlertController} from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { HomePage } from '../home/home';
@@ -23,7 +23,7 @@ export class SigninPage {
 username: string;
 password: string;
 public token;
-constructor(public nav: NavController, public http: Http, public storage: Storage, public events: Events) {
+constructor(public nav: NavController, public http: Http, public storage: Storage, public events: Events, public alertCtrl: AlertController) {
    this.nav = nav;
 }  
 
@@ -44,9 +44,29 @@ constructor(public nav: NavController, public http: Http, public storage: Storag
   login() {
     this.authenticate().subscribe((success) => {
       this.nav.setRoot(EventListPage);
+    }, error => {
+        console.log(error["_body"]);// Error getting the data
+        this.showErrorAlert();
     });
   }
 
+  showErrorAlert(){
+    let alert = this.alertCtrl.create({
+      title: 'Login Error',
+      message: 'Unable to login with the provided credentials.',
+      buttons: [
+      {
+        text: 'OK',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+    ]
+  });
+  alert.present();
+  }
+  
     /*
   Function name: authenticate
   Arguments: None
