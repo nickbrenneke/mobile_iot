@@ -1,26 +1,30 @@
-
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>{{ event.title }}</ion-title>
-  </ion-navbar>
-
+    <ion-navbar>
+        <ion-title>
+        Coming Help
+        </ion-title>
+            <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-  <ion-grid>
+  <ion-card *ngFor="let event of eventList">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="images/marty-avatar.png">
+      </ion-avatar>
+      <h2>Marty McFly</h2>
+      <p>April 20, 2018</p>
+    </ion-item>
+
     <ion-row>
-      <ion-col text-center>
+      <ion-col text center>
         <img [src]="event.imageUrl">
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col>
-        <p>{{ event.description }}</p>
-      </ion-col>
-    </ion-row>
-    <ion-row>
+<!--     <ion-row>
       <ion-col>
         <agm-map
           [latitude]="event.latitude"
@@ -30,22 +34,32 @@
             [latitude]="event.latitude"
             [longitude]="event.longitude"></agm-marker>
         </agm-map>
+        <ion-fab right top>
+          <button ion-fab>
+            <ion-icon name="pin"></ion-icon>
+          </button>
+        </ion-fab>       
       </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <button
-          ion-button
-          block
-          (click)="onLeave()">Leave</button>
-      </ion-col>
-      <ion-col>
-        <button
-          ion-button
-          block
-          color="danger"
-          (click)="onDelete()">Delete</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    </ion-row> -->
+    
+    <ion-item>
+      <ion-icon name="football" item-start large></ion-icon>
+        <h2>{{ event.title }}</h2>
+        <p>{{ event.description }}</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="wine" item-left large></ion-icon>
+      <h2>{{ event.reward }}</h2>
+    </ion-item>
+
+    <ion-item>
+      <span item-left>{{ event.duration }}</span>
+      <span item-left>({{ event.close_time }})</span>
+      <button ion-button icon-left clear item-end (click)="onDelete()">
+        <ion-icon name="navigate"></ion-icon>
+        Complete
+      </button>
+    </ion-item>
+  </ion-card>
 </ion-content>

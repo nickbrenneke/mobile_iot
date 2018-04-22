@@ -41,7 +41,7 @@ export class EventsService {
 
   addEvent(event: Event): Observable<Event> {
     
-    console.log('fetch event');
+    console.log('post event');
     
     return Observable.from(
       Promise.all([this.storage.get('currentToken')])
