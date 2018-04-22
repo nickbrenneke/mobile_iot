@@ -8,7 +8,7 @@
  
 <ion-content>
 <ion-slides #signupSlider pager>
- <ion-slide>
+ <ion-slide style="overflow-y:scroll">
   <ion-list no-lines>
      <form enctype='application/json' [formGroup]="privacyForm">
     <ion-item text-wrap>
@@ -31,9 +31,9 @@
     </ion-list>
     <div padding>
       <button ion-button color="primary" (click)="next()" block>Next</button>
-      </div>
+    </div>
   </ion-slide>
-  <ion-slide>
+  <ion-slide style="overflow-y:scroll">
     <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
     <ion-list no-lines>
         <form enctype='application/json'[formGroup]="slideOneForm">
