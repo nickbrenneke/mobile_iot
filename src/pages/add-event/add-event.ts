@@ -43,29 +43,17 @@ export class AddEventPage {
   }
 
   onSubmit(eventForm) {
-    this.event.title = 'TTitle';
-    this.event.description = 'DDescription';
-    this.event.reward = 'reward';
-    this.event.duration = 1;
-    this.event.close_time = new Date();
-    this.event.location = new Location(location.latitude, location.longitude);
 
+    this.event.latitude = this.location.latitude;
+    this.event.longitude = this.location.longitude;
 
     this.eventsService
-      // .addEvent(form.value.title, form.value.description, this.location, this.imageUrl);
       .addEvent(this.event)
       .subscribe(
         (newEvent) => {
-          this.event = this.event.concat(newEvent);
+          // this.event = this.event.concat(newEvent);
         }
       );
-    // form.reset();
-    // this.location = {
-    //   lat: 40.7624324,
-    //   lng: -73.9759827
-    // };
-    // this.imageUrl = '';
-    // this.locationIsSet = false;
   }
 
   onOpenMap() {
