@@ -25691,6 +25691,10 @@ page-event sebm-google-map {
   height: 250px;
 }
 
+page-event sebm-google-map {
+  height: 250px;
+}
+
 page-event-list .spinner-container {
   width: 100%;
   text-align: center;

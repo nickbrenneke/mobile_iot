@@ -1,0 +1,51 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ event.title }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <img [src]="event.imageUrl">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p>{{ event.description }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <agm-map
+          [latitude]="event.latitude"
+          [longitude]="event.longitude"
+          [zoom]="16">
+          <agm-marker
+            [latitude]="event.latitude"
+            [longitude]="event.longitude"></agm-marker>
+        </agm-map>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button
+          ion-button
+          block
+          (click)="onLeave()">Leave</button>
+      </ion-col>
+      <ion-col>
+        <button
+          ion-button
+          block
+          color="danger"
+          (click)="onDelete()">Complete</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

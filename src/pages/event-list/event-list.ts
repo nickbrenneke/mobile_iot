@@ -86,14 +86,14 @@ export class EventListPage {
     this.eventList = this.eventsService.findByName(this.searchKey);
   }
 
-  onOpenEvent(event: Event, index: number) {
-    const modal = this.modalCtrl.create(EventPage, {event: event, index: index});
-    modal.present();
-    modal.onDidDismiss(
-      () => {
-        this.eventList = this.eventsService.loadEvents();
-      }
-    );
-  }
+  // onOpenEvent(event: Event, index: number) {
+  //   const modal = this.modalCtrl.create(EventPage, {event: event, index: index});
+  //   modal.present();
+  //   modal.onDidDismiss(
+  //     () => {
+  //       this.eventList = this.eventsService.loadEvents();
+  //     }
+  //   );
+  // }
 
 }

@@ -35,7 +35,7 @@
   </ion-list>
 </div> -->
 
-<ion-card *ngFor="let event of events; let i = index" (click)="onOpenEvent(event, i)">
+<ion-card *ngFor="let event of events">
   <ion-card-content text-center>
     <ion-card-title>
       {{ event.title }}

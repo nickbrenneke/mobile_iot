@@ -23,7 +23,7 @@
   <div *ngIf="searching" class="spinner-container">
     <ion-spinner></ion-spinner>
   </div>
-  <ion-card *ngFor="let event of eventList; let i = index" (click)="onOpenEvent(event, i)">
+  <ion-card *ngFor="let event of eventList">
     <img [src]="event.imageUrl">
     <ion-card-content text-center>
       <ion-card-title>
@@ -31,5 +31,31 @@
       </ion-card-title>
       <p>{{ event.description }}</p>
     </ion-card-content>
+
+    <ion-item>
+      <ion-icon name="wine" item-left large></ion-icon>
+      <h2>{{ event.reward }}</h2>
+      <p>{{ event.duration }}</p>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>12 Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="navigate"></ion-icon>
+          <div>Help</div> 
+        </button>       
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>Share</div>
+        </button>        
+      </ion-col>
+    </ion-row>
   </ion-card>
 </ion-content>

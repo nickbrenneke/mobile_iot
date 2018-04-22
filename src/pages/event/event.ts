@@ -6,6 +6,7 @@ import { Event } from "../../models/event";
 import { EventsService } from "../../services/event-service";
 import { Events } from 'ionic-angular';
 import 'rxjs/add/operator/debounceTime';
+import { EventDetailPage } from '../event-detail/event-detail';
 
 @Component({
   selector: 'page-event',
@@ -18,10 +19,8 @@ export class EventPage {
   constructor(public events: Events,
               public navParams: NavParams,
               private viewCtrl: ViewController,
-              private eventsService: EventsService) {
-    this.index = this.navParams.get('index');
-
-    // events.subscribe('user:signin', (user, token) => {
+              private eventsService: EventsService,
+              private modalCtrl: ModalController) {
 
   }
 
@@ -31,8 +30,15 @@ export class EventPage {
         (eventList: Event[]) => this.eventList = eventList
       );
   }
-  
-  onDelete() {
-    this.eventsService.deleteEvent(this.index);
+
+  onOpenEvent(event: Event, index: number) {
+    const modal = this.modalCtrl.create(EventDetailPage, {event: event, index: index});
+    modal.present();
+    modal.onDidDismiss(
+      () => {
+        this.eventList = this.eventsService.loadEvents();
+      }
+    );
   }
+
 }

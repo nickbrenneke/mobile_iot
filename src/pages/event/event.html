@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let event of eventList">
+  <ion-card *ngFor="let event of eventList; let i = index" (click)="onOpenEvent(event, i)">
     <ion-item>
       <ion-avatar item-start>
         <img src="images/marty-avatar.png">
@@ -56,10 +56,10 @@
     <ion-item>
       <span item-left>{{ event.duration }}</span>
       <span item-left>({{ event.close_time }})</span>
-      <button ion-button icon-left clear item-end (click)="onDelete()">
+<!--       <button ion-button icon-left clear item-end (click)="onDelete()">
         <ion-icon name="navigate"></ion-icon>
         Complete
-      </button>
+      </button> -->
     </ion-item>
   </ion-card>
 </ion-content>
