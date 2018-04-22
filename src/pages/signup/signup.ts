@@ -6,6 +6,7 @@ import { UsernameValidator } from '../../validators/username';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Storage } from "@ionic/storage";
 import { MapPage } from '../map/map';
+import { Events } from 'ionic-angular';
 
 @Component({
   selector: 'page-signup',
@@ -29,8 +30,15 @@ export class SignupPage {
 
   submitAttempt: boolean = false;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public alertCtrl: AlertController, public http: Http, private camera: Camera, public storage: Storage,
-    public toastCtrl: ToastController) {
+  constructor(
+    public navCtrl: NavController, 
+    public formBuilder: FormBuilder, 
+    public alertCtrl: AlertController, 
+    public http: Http, 
+    private camera: Camera, 
+    public storage: Storage,
+    public toastCtrl: ToastController,
+    public events: Events) {
 
     this.privacyForm = formBuilder.group({
       privacyAgree: [null, Validators.requiredTrue]
@@ -154,14 +162,9 @@ export class SignupPage {
           console.log(data["_body"]);
           let parsed = JSON.parse(data["_body"]);
           this.token = parsed["token"];
-          this.storage.set('originalToken', this.token).then(() => {
-            console.log('Original token has been set.');
-            this.storage.get('currentToken').then((val) => { console.log('Your current token is', val); })
-          });
-          this.storage.set('currentToken', this.token).then(() => {
-            console.log('Current token has been set.');
-            this.storage.get('originalToken').then((val) => { console.log('Your original token is', val); })
-          });
+          this.storage.set('originalToken',this.token);
+          this.storage.set('currentToken',this.token);
+          this.events.publish('user:signin', this.slideOneForm.value['username'], this.token);
         }, error => {
           console.log("AN ERROR OCCURED!" + error.error);// Error getting the data
         });
@@ -170,7 +173,9 @@ export class SignupPage {
         duration: 2500
       });
       successToast.present();
-      this.navCtrl.setRoot(MapPage);
+      this.navCtrl.setRoot(MapPage).then(
+          () => {this.events.publish('user:signin', this.slideOneForm.value['username'], this.token);}
+        );
     }
   }
 
