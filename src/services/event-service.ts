@@ -101,6 +101,11 @@ export class EventsService {
       );
   }
 
+  confirmEvent(index: number) {
+    const event = this.events[index];
+    console.log("Comfirm signup");
+  }
+
   private removeFile(event: Event) {
     const currentName = event.imageUrl.replace(/^.*[\\\/]/, '');
     this.file.removeFile(cordova.file.dataDirectory, currentName)

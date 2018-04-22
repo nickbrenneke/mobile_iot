@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    History Post
+    </ion-title>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let event of eventList; let i = index" (click)="onOpenEvent(event, i)">
+    <img [src]="event.imageUrl">
+    <ion-card-content text-center>
+      <ion-card-title>
+        {{ event.title }}
+      </ion-card-title>
+      <p>{{ event.description }}</p>
+    </ion-card-content>
+
+    <ion-item>
+      <ion-icon name="wine" item-left large></ion-icon>
+      <h2>{{ event.reward }}</h2>
+      <p>{{ event.duration }}</p>
+    </ion-item>
+  </ion-card>
+</ion-content>
