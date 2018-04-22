@@ -27,6 +27,8 @@ import { SetLocationPage } from "../pages/set-location/set-location";
 import { EventListPage } from "../pages/event-list/event-list";
 import { ProfilePage } from "../pages/profile/profile";
 import { EventDetailPage } from "../pages/event-detail/event-detail";
+import { HistoryPage } from "../pages/history/history";
+import { ConfirmPage } from "../pages/confirm/confirm";
 
 import { EventsService } from "../services/event-service";
 import { ProfileService } from "../services/profile-service-mock";
@@ -46,7 +48,9 @@ import { DataProvider } from '../providers/data/data';
     SetLocationPage,
     EventListPage,
     ProfilePage,
-    EventDetailPage
+    EventDetailPage,
+    HistoryPage,
+    ConfirmPage
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,9 @@ import { DataProvider } from '../providers/data/data';
     EventPage,
     AddEventPage,
     WelcomePage,
-    EventDetailPage
+    EventDetailPage,
+    HistoryPage,
+    ConfirmPage
   ],
   providers: [
     StatusBar,

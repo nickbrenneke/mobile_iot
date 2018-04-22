@@ -14,7 +14,7 @@ export class EventDetailPage {
 
   constructor(public navParams: NavParams,
               private viewCtrl: ViewController,
-              private placesService: EventsService) {
+              private eventsService: EventsService) {
     this.event = this.navParams.get('event');
     this.index = this.navParams.get('index');
   }
@@ -24,7 +24,7 @@ export class EventDetailPage {
   }
 
   onDelete() {
-    this.placesService.deleteEvent(this.index);
+    this.eventsService.deleteEvent(this.index);
     this.onLeave();
   }
 }

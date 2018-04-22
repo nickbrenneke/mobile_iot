@@ -12,6 +12,7 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { EventListPage } from '../pages/event-list/event-list';
 import { EventPage } from '../pages/event/event';
 import { ProfilePage } from '../pages/profile/profile';
+import { HistoryPage } from '../pages/history/history';
 import { Storage } from '@ionic/storage';
 
 export interface MenuItem {
@@ -38,7 +39,8 @@ export class MyApp {
     this.pages = [
       {title: 'Home', component: MapPage, icon: 'star'},
       {title: 'Help Wanted', component: EventListPage, icon: 'star'},
-      {title: 'Lend a Hand', component: EventPage, icon: 'star'},      
+      {title: 'My Offer', component: EventPage, icon: 'star'}, 
+      {title: 'My Request', component: HistoryPage, icon: 'star'},           
       {title: 'My Account', component: ProfilePage, icon: 'star'},
       {title: 'About', component: WelcomePage, icon: 'star'}/*,
       {title: 'Logout', component: SigninPage, icon: 'star'}*/
