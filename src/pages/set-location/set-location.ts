@@ -21,7 +21,7 @@ export class SetLocationPage {
 
   onSetMarker(event: any) {
     console.log(event);
-    this.marker = new Location(event.coords.latitude, event.coords.longitude);
+    this.marker = new Location(event.coords.lat, event.coords.lng);
   }
 
   onConfirm() {

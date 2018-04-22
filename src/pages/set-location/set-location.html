@@ -13,15 +13,15 @@
     <ion-row>
       <ion-col>
         <agm-map
-          [latitude]="location.lat"
-          [longitude]="location.lng"
+          [latitude]="location.latitude"
+          [longitude]="location.longitude"
           [zoom]="16"
           [zoomControl]="false"
           [streetViewControl]="false"
           (mapClick)="onSetMarker($event)">
           <agm-marker
-            [latitude]="marker.lat"
-            [longitude]="marker.lng"
+            [latitude]="marker.latitude"
+            [longitude]="marker.longitude"
             *ngIf="marker"></agm-marker>
         </agm-map>
       </ion-col>
