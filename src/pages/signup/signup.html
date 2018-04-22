@@ -8,6 +8,31 @@
  
 <ion-content>
 <ion-slides #signupSlider pager>
+ <ion-slide>
+  <ion-list no-lines>
+     <form enctype='application/json' [formGroup]="privacyForm">
+    <ion-item text-wrap>
+    <h1>Helping Hands Privacy Policy</h1>
+    <h2>User Information</h2>
+    <h3>During registration you will be required to provide your first name, last name, and a valid email address. In doing so, you agree that the information provided is correct and accurate. If we determine that you have provided false information, we will revoke your access to the platform until valid information is provided. We take your data privacy seriously and will not share your data with third parties for marketing purposes. Please see the following section for information about our stance on complying with law enforcement agencies.</h3><br>
+    <h2>User Photos</h2>
+    <h3>Our goal is to provide a safe and secure platform where users can ask and receive help. To do so, the last step of the registration requires you to upload a picture of your face and a picture of your government-issued identification. We ask for this information to verify your identity and ensure that users can identify each other when helping one another. We will not share your photo identification information with other users or third parties unless legally required to do so. In the event that a law enforcement agency requests this information for investigation purposes, we will cooperate with that agency to the extent necessary and may provide your information if requested. However, we will not provide this information to such agencies or third parties unless legally required to do so.</h3><br>
+    <h2>User Location</h2>
+    <h3>In order to request help, we require you to provide your current location or the location where the help will be needed. We also request your current location to find nearby requests. In both cases, we will not share your location with other users until you both agree to the help requested. When listing your event, we provide an approximate distance and travel time to nearby users. We believe this data will help users receive adequate help and make informed decisions while looking for opportunities to help others. </h3><br>
+    <h2>Third Party Services and APIs</h2>
+    <h3>We utilize Google Maps APIs to determine your distance and travel time to nearby requests. In doing so, we provide your current location to Google via the API. We make every effort possible to secure your data on our systems, but do not make any guarantees to data security and privacy once sent to third parties.</h3><br>
+    <h3>By checking the box below, you agree that you have read the privacy policy above and agree in full. If you do not agree, you will not be able to continue registration and will not be able to use our services.</h3>
+    </ion-item>
+    <ion-item text-wrap>
+    <ion-label>I agree to the terms of service and privacy policy.</ion-label>
+      <ion-checkbox formControlName="privacyAgree" [checked]="false"></ion-checkbox>
+    </ion-item>
+    </form>
+    </ion-list>
+    <div padding>
+      <button ion-button color="primary" (click)="next()" block>Next</button>
+      </div>
+  </ion-slide>
   <ion-slide>
     <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
     <ion-list no-lines>
@@ -37,8 +62,11 @@
                 <p>Please enter a valid last name.</p>
             </ion-item>
             <ion-item>
-                <ion-label floating>Email Address</ion-label>
-                <ion-input formControlName="email" type="email" [class.invalid]="submitAttempt"></ion-input>
+            <ion-label floating>Email Address</ion-label>
+              <ion-input [class.invalid]="!slideOneForm.controls.email.valid && (slideOneForm.controls.email.dirty || submitAttempt)" formControlName="email" type="email"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!slideOneForm.controls.email.valid  && (slideOneForm.controls.email.dirty || submitAttempt)">
+                <p>Please enter a valid email address.</p>
             </ion-item>
             <ion-item>
                 <ion-label floating>Password</ion-label>
@@ -50,6 +78,9 @@
             </ion-item>
         </form>
   </ion-list>
+   <div padding>
+    <button ion-button color="primary" (click)="prev()" block>Previous</button>
+    </div>
     <div padding>
       <button ion-button color="primary" (click)="next()" block>Next</button>
       </div>

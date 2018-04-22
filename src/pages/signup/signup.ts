@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import {Camera} from '@ionic-native/camera';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, AlertController } from 'ionic-angular';
 import { UsernameValidator } from  '../../validators/username';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Storage } from "@ionic/storage";
@@ -20,6 +20,7 @@ export class SignupPage {
  
     @ViewChild('signupSlider') signupSlider: any;
     public token;
+    privacyForm: FormGroup;
     slideOneForm: FormGroup;
     slideTwoForm: FormGroup;
     public selfiePhoto: string;
@@ -28,15 +29,18 @@ export class SignupPage {
  
     submitAttempt: boolean = false;
  
-constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public http: Http, private camera: Camera, public storage: Storage,
+constructor(public navCtrl: NavController, public formBuilder: FormBuilder,public alertCtrl: AlertController, public http: Http, private camera: Camera, public storage: Storage,
 public toastCtrl: ToastController) {
  
+    this.privacyForm = formBuilder.group({
+      privacyAgree:[null, Validators.requiredTrue]
+    });
     //Build first form as a slide object
     this.slideOneForm = formBuilder.group({
-        firstName: ['', Validators.compose([Validators.maxLength(255), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-        lastName: ['', Validators.compose([Validators.maxLength(255), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-        username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')]), UsernameValidator.checkUsername],
-        email: [''],
+        firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+        lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+        username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.maxLength(150)]), UsernameValidator.checkUsername],
+        email: ['', Validators.compose([Validators.required, Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"), Validators.maxLength(254)])],
         enterPassword: [''],
         confirmPassword: ['']
     });
@@ -80,6 +84,7 @@ public toastCtrl: ToastController) {
   */
 save() {
     var headers = new Headers();
+    this.submitAttempt = true;
     headers.append("Content-Type", "application/json");
     let options = new RequestOptions({ headers: headers });
     let postParams = {
@@ -91,6 +96,48 @@ save() {
     }
     
     //Submit JSON request to API, receive response, and log any errors
+    if(!this.privacyForm.valid){
+      let alert = this.alertCtrl.create({
+        title: 'Privacy Policy Agreement',
+        message: 'You must agree to our privacy policy and terms of service before registering.',
+        buttons: [
+      {
+        text: 'Dismiss',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]});
+        alert.present();
+      }
+    else if(!this.slideOneForm.valid){
+      let alert = this.alertCtrl.create({
+        title: 'User Information Form Error',
+        message: 'You have errors or missing field in your profile information',
+        buttons: [
+      {
+        text: 'Dismiss',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]});
+        alert.present();
+      }
+      else if(!this.slideTwoForm.valid){
+      let alert = this.alertCtrl.create({
+        title: 'User Photos Form Error',
+        message: 'You must submit the required photos.',
+        buttons: [
+      {
+        text: 'Dismiss',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]});
+      alert.present();}
+      else{
     this.http.post("http://localhost:8000/accounts/api/users", JSON.stringify(postParams), options)
       .subscribe(data => {
         console.log(data["_body"]);
@@ -107,7 +154,7 @@ save() {
         message: 'Account created successfully!',
         duration: 2500});
       successToast.present();
-      this.navCtrl.setRoot(MapPage);
+      this.navCtrl.setRoot(MapPage);}
   }
  
     /*

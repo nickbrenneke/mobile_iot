@@ -9,7 +9,24 @@
         .swiper-slide {
             display: block;
         }
- 
+        h1 {
+        font-size: 200%;
+        color: black;
+        font-weight: bold;
+        text-decoration: underline;
+        word-wrap: normal;
+        }
+         h2 {
+        font-size: 150%;
+        color: black;
+        font-weight: bold;
+        word-wrap: normal;
+        }
+         h3 {
+        font-size: 100%;
+        color: black;
+        word-wrap: normal;
+        }
         ion-label, .select-text {
             margin-left: 10px;
         }
