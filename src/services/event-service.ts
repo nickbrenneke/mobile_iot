@@ -78,7 +78,10 @@ export class EventsService {
           this.location.latitude = location.coords.latitude;
           this.location.longitude = location.coords.longitude;
           return this.httpClient.get(this.baseUrl + '/we_help/events/?longitude='+this.location.longitude+'&latitude='+this.location.latitude, {headers})
-            .map((events: Event[]) => events
+            .map((events: Event[]) => {
+              this.events = events;
+              return events;
+            }
             ,error => {
               console.log('failure invoke');
               console.log(error);// Error getting the data

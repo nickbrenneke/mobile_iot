@@ -36,8 +36,7 @@ export class EventPage {
     modal.present();
     modal.onDidDismiss(
       () => {
-        this.eventList = this.eventsService.loadEvents();
-      }
+        this.eventList = this.eventsService.loadEvents();      }
     );
   }
 
