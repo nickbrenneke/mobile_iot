@@ -31,8 +31,12 @@ export class EventListPage {
           (eventList: Event[]) => this.eventList = eventList
         );
 
-      this.onInput();
+      // this.onInput();
     });
+    events.subscribe('event:add', (event) => {
+      this.eventList.push(event);
+    });
+
   }
 
   // ngOnInit() {

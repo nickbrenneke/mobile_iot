@@ -12,6 +12,7 @@ import { Location } from "../../models/location";
 import { EventsService } from "../../services/event-service";
 import { Event } from "../../models/event";
 import { WelcomePage } from "../welcome/welcome";
+import { Events } from 'ionic-angular';
 
 declare var cordova: any;
 
@@ -39,7 +40,8 @@ export class AddEventPage {
               private geolocation: Geolocation,
               private camera: Camera,
               private file: File,
-              private nav: NavController) {
+              private nav: NavController,
+              public events: Events) {
   }
 
   onSubmit(eventForm) {
@@ -51,7 +53,7 @@ export class AddEventPage {
       .addEvent(this.event)
       .subscribe(
         (newEvent) => {
-          // this.event = this.event.concat(newEvent);
+          this.events.publish('event:add', newEvent);
         }
       );
   }
