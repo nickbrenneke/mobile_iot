@@ -69,6 +69,13 @@
                 <p>Please enter a valid email address.</p>
             </ion-item>
             <ion-item>
+            <ion-label floating>Phone Number</ion-label>
+              <ion-input [class.invalid]="!slideOneForm.controls.phone.valid && (slideOneForm.controls.phone.dirty || submitAttempt)" formControlName="phone" type="text"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!slideOneForm.controls.phone.valid  && (slideOneForm.controls.phone.dirty || submitAttempt)">
+                <p>Please enter a valid phone number.</p>
+            </ion-item>
+            <ion-item>
                 <ion-label floating>Password</ion-label>
                 <ion-input formControlName="enterPassword" type="password" [class.invalid]="submitAttempt"></ion-input>
             </ion-item>
