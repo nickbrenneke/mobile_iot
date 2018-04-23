@@ -43,7 +43,9 @@ constructor(public nav: NavController, public http: Http, public storage: Storag
   */
   login() {
     this.authenticate().subscribe((success) => {
-      this.nav.setRoot(EventListPage);
+      this.nav.setRoot(EventListPage).then(
+          () => {this.events.publish('user:signin', this.username, this.token);}
+        );
     }, error => {
         console.log(error["_body"]);// Error getting the data
         this.showErrorAlert();
@@ -83,22 +85,13 @@ constructor(public nav: NavController, public http: Http, public storage: Storag
     //Send JSON request and header info, parse response and return token object
     return this.http.post(backend_baseUrl + "accounts/api/login", JSON.stringify(postParams), options)
       .map(data => {
-        //console.log("PRINTED IN SUBSCIRBE:    " + data["_body"]);
+        console.log("PRINTED IN authenticate:    " + data["_body"]);
         let parsed = JSON.parse(data["_body"]);
         this.token = parsed["token"];
-        this.storage.set('originalToken',this.token).then(
-          () => {
-            console.log('Original token has been set.');
-            this.storage.get('currentToken').then(
-              (val) => {
-                console.log('Your current token is', val);
-                this.events.publish('user:signin', this.username, this.token);
-              })});
-        this.storage.set('currentToken',this.token).then(
-          () => {
-            console.log('Current token has been set.');
-            this.storage.get('originalToken').then(
-              (val) => {console.log('Your original token is', val);})});
+        this.storage.set('originalToken',this.token);
+        this.storage.set('currentToken',this.token);
+        // this.events.publish('user:signin', this.username, this.token);
+
     }, error => {
         console.log(error["_body"]);// Error getting the data
     });
