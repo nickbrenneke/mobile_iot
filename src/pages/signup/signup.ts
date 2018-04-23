@@ -6,6 +6,7 @@ import { UsernameValidator } from '../../validators/username';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Storage } from "@ionic/storage";
 import { MapPage } from '../map/map';
+import { backend_baseUrl } from '../../constants/backend-constants';
 
 @Component({
   selector: 'page-signup',
@@ -149,7 +150,7 @@ export class SignupPage {
       alert.present();
     }
     else {
-      this.http.post("http://localhost:8000/accounts/api/users", JSON.stringify(postParams), options)
+      this.http.post(backend_baseUrl + "accounts/api/users", JSON.stringify(postParams), options)
         .subscribe(data => {
           console.log(data["_body"]);
           let parsed = JSON.parse(data["_body"]);

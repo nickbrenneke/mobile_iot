@@ -9,7 +9,7 @@ import { MapPage} from '../map/map';
 import { WelcomePage} from '../welcome/welcome';
 import 'rxjs/Rx';
 import { Storage } from '@ionic/storage';
-
+import { backend_baseUrl } from '../../constants/backend-constants';
 
 @Component({
   templateUrl: 'signin.html'
@@ -81,7 +81,7 @@ constructor(public nav: NavController, public http: Http, public storage: Storag
       password: this.password
     }
     //Send JSON request and header info, parse response and return token object
-    return this.http.post("http://localhost:8000/accounts/api/login", JSON.stringify(postParams), options)
+    return this.http.post(backend_baseUrl + "accounts/api/login", JSON.stringify(postParams), options)
       .map(data => {
         //console.log("PRINTED IN SUBSCIRBE:    " + data["_body"]);
         let parsed = JSON.parse(data["_body"]);

@@ -10,6 +10,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Event } from "../models/event";
 import { Geolocation } from '@ionic-native/geolocation';
 import { Location } from "../models/location";
+import { backend_baseUrl } from '../constants/backend-constants';
+
 
 declare var cordova: any;
 
@@ -17,7 +19,6 @@ declare var cordova: any;
 @Injectable()
 export class EventsService {
   private events: Event[] = [];
-  baseUrl: string = "http://localhost:8000";
 
   location: Location = {
     latitude: 40.443646,
@@ -50,7 +51,7 @@ export class EventsService {
           let location = results[1];
           console.log(token, location);
           let headers = this.createAuthorizationHeader(token);
-          return this.httpClient.post(this.baseUrl + '/we_help/events/', JSON.stringify(event), {headers})
+          return this.httpClient.post(backend_baseUrl + 'we_help/events/', JSON.stringify(event), {headers})
             .map((event: Event) => event
             ,error => {
               console.log('failure invoke');
@@ -77,7 +78,7 @@ export class EventsService {
           let headers = this.createAuthorizationHeader(token);
           this.location.latitude = location.coords.latitude;
           this.location.longitude = location.coords.longitude;
-          return this.httpClient.get(this.baseUrl + '/we_help/events/?longitude='+this.location.longitude+'&latitude='+this.location.latitude, {headers})
+          return this.httpClient.get(backend_baseUrl + 'we_help/events/?longitude='+this.location.longitude+'&latitude='+this.location.latitude, {headers})
             .map((events: Event[]) => {
               this.events = events;
               return events;
