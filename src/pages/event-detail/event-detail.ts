@@ -23,8 +23,8 @@ export class EventDetailPage {
     this.viewCtrl.dismiss();
   }
 
-  onDelete() {
-    this.eventsService.deleteEvent(this.index);
-    this.onLeave();
-  }
+  // onDelete() {
+  //   this.eventsService.deleteEvent(this.index);
+  //   this.onLeave();
+  // }
 }

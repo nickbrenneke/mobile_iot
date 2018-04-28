@@ -24,5 +24,20 @@
       <h2>{{ event.reward }}</h2>
       <p>{{ event.duration }}</p>
     </ion-item>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left small>
+          <ion-icon name="people"></ion-icon>
+          <div>View</div> 
+        </button>       
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-right small
+          (click) = "onDelete()">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          <div>Complete</div>
+        </button>        
+      </ion-col>
+    </ion-row>
   </ion-card>
 </ion-content>

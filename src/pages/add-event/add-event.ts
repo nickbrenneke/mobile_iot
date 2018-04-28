@@ -120,7 +120,7 @@ export class AddEventPage {
           toast.present(); 
         } 
       ); 
-  } 
+  }
 
   popToRoot(){
     const successToast = this.toastCtrl.create({

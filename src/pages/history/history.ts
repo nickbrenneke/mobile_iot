@@ -39,4 +39,8 @@ export class HistoryPage {
     );
   }
 
+  onDelete() {
+    this.eventsService.deleteEvent(this.index);
+  }
+
 }
