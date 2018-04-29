@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let event of eventList; let i = index" (click)="onOpenEvent(event, i)">
+  <ion-card *ngFor="let event of eventList; let i = index">
     <img [src]="event.imageUrl">
     <ion-card-content text-center>
       <ion-card-title>
@@ -26,7 +26,8 @@
     </ion-item>
     <ion-row>
       <ion-col>
-        <button ion-button icon-left small>
+        <button ion-button icon-left small
+           (click)="onOpenEvent(event, i)">
           <ion-icon name="people"></ion-icon>
           <div>View</div> 
         </button>       
