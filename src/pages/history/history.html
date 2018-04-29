@@ -20,9 +20,9 @@
     </ion-card-content>
 
     <ion-item>
-      <ion-icon name="wine" item-left large></ion-icon>
-      <h2>{{ event.reward }}</h2>
-      <p>{{ event.duration }}</p>
+      <ion-icon name="ribbon" item-left large></ion-icon>
+      <h2>{{ event.duration }} mins</h2>
+      <p>{{ event.reward }}</p>
     </ion-item>
     <ion-row>
       <ion-col>
@@ -32,7 +32,7 @@
         </button>       
       </ion-col>
       <ion-col>
-        <button ion-button icon-right small
+        <button ion-button icon-left small
           (click) = "onDelete()">
           <ion-icon name="checkmark-circle-outline"></ion-icon>
           <div>Complete</div>

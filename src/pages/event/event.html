@@ -43,19 +43,19 @@
     </ion-row> -->
     
     <ion-item>
-      <ion-icon name="football" item-start large></ion-icon>
+      <ion-icon name="flag" item-start large></ion-icon>
         <h2>{{ event.title }}</h2>
         <p>{{ event.description }}</p>
     </ion-item>
 
     <ion-item>
-      <ion-icon name="wine" item-left large></ion-icon>
+      <ion-icon name="nutrition" item-left large></ion-icon>
       <h2>{{ event.reward }}</h2>
     </ion-item>
 
     <ion-item>
-      <span item-left>Duration: {{ event.duration }}mins</span>
-      <span item-left>Valid Untill: ({{ event.close_time }})</span>
+      <p item-left>Duration: {{ event.duration }}mins</p>
+      <p item-left>Valid Untill: ({{ event.close_time }})</p>
 <!--       <button ion-button icon-left clear item-end (click)="onDelete()">
         <ion-icon name="navigate"></ion-icon>
         Complete
