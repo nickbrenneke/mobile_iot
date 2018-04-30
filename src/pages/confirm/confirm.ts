@@ -16,7 +16,6 @@ export class ConfirmPage {
               private viewCtrl: ViewController,
               private eventsService: EventsService) {
     this.event = this.navParams.get('event');
-    this.index = this.navParams.get('index');
   }
 
   onLeave() {
@@ -24,7 +23,7 @@ export class ConfirmPage {
   }
 
   onConfirm() {
-    this.eventsService.confirmEvent(this.index);
+    this.eventsService.confirmEvent(this.event);
     this.onLeave();
   }
 }

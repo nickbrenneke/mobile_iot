@@ -6,6 +6,7 @@ import { EventsService } from "../../services/event-service";
 import { EventPage } from "../event/event";
 import { AddEventPage } from "../add-event/add-event";
 import { Events } from 'ionic-angular';
+import { Storage } from "@ionic/storage";
 import 'rxjs/add/operator/debounceTime';
 
 @Component({
@@ -20,13 +21,14 @@ export class EventListPage {
   searchControl: FormControl;
   searching: any = false;
 
-  constructor(public events: Events,
+  constructor(private storage: Storage,
+              public events: Events,
               private modalCtrl: ModalController,
               private eventsService: EventsService) {
     this.searchControl = new FormControl();
     events.subscribe('user:signin', (user, token) => {
       console.log('Welcome', user, 'with', token);
-      this.eventsService.fetchEvents()
+      this.eventsService.fetchNearbyEvents()
         .subscribe(
           (eventList: Event[]) => this.eventList = eventList
         );
@@ -51,14 +53,16 @@ export class EventListPage {
   // }
 
   ionViewDidLoad() {
-    //Change Observable to Promise type code:
-    // this.eventsService.fetchEvents()
-    //   .map((events: Event[]) => this.events = events)
-    //   .toPromise();
-    // this.eventsService.fetchEvents()
-    //   .subscribe(
-    //     (eventList: Event[]) => this.eventList = eventList
-    //   );
+    this.storage.get('currentToken').then(
+        (token)=>{
+          if (token) {
+            this.eventsService.fetchNearbyEvents()
+              .subscribe(
+                (eventList: Event[]) => this.eventList = eventList
+              );
+          }
+        }
+      )
 
     // this.onInput();
     this.searchControl.valueChanges.debounceTime(700).subscribe(search=> {
@@ -84,6 +88,24 @@ export class EventListPage {
 
   onInput() {
     this.eventList = this.eventsService.findByName(this.searchKey);
+  }
+
+  onSignupClick(event: Event){
+    console.log(event);
+    this.eventsService.signupEvent(event).subscribe(
+        (signup)=>{
+          console.log('update after signup');
+          console.log(signup, this.eventList);
+          let index = -1;
+          for (var i = this.eventList.length - 1; i >= 0; i--) {
+            if (this.eventList[i].id==signup['event']){
+              index = i;
+            }
+          }
+          this.eventList.splice(index, 1);
+
+        }
+      );
   }
 
   // onOpenEvent(event: Event, index: number) {

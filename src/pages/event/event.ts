@@ -25,7 +25,7 @@ export class EventPage {
   }
 
   ionViewDidLoad(){
-    this.eventsService.fetchEvents()
+    this.eventsService.fetchSignedEvents()
       .subscribe(
         (eventList: Event[]) => this.eventList = eventList
       );

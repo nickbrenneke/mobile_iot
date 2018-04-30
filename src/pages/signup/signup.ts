@@ -5,7 +5,7 @@ import { NavController, ToastController, AlertController } from 'ionic-angular';
 import { UsernameValidator } from '../../validators/username';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Storage } from "@ionic/storage";
-import { MapPage } from '../map/map';
+import { EventListPage } from '../event-list/event-list';
 import { Events } from 'ionic-angular';
 import { backend_baseUrl } from '../../constants/backend-constants';
 
@@ -174,7 +174,7 @@ export class SignupPage {
         duration: 2500
       });
       successToast.present();
-      this.navCtrl.setRoot(MapPage).then(
+      this.navCtrl.setRoot(EventListPage).then(
           () => {this.events.publish('user:signin', this.slideOneForm.value['username'], this.token);}
         );
     }

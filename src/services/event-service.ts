@@ -51,7 +51,10 @@ export class EventsService {
           let location = results[1];
           console.log(token, location);
           let headers = this.createAuthorizationHeader(token);
-          return this.httpClient.post(backend_baseUrl + 'we_help/events/', JSON.stringify(event), {headers})
+
+          return this.httpClient.post(
+            backend_baseUrl + '/we_help/events/',
+            JSON.stringify(event), {headers})
             .map((event: Event) => event
             ,error => {
               console.log('failure invoke');
@@ -66,11 +69,17 @@ export class EventsService {
     return this.events.slice();
   }
 
-  fetchEvents(): Observable<Event[]> {
-    console.log('fetch event');
+  fetchNearbyEvents(): Observable<Event[]> {
+    console.log('fetchNearbyEvents');
     
     return Observable.from(
-      Promise.all([this.storage.get('currentToken'), this.geolocation.getCurrentPosition()])
+      Promise.all([this.storage.get('currentToken').then(r=>{
+        console.log('got token');
+        return r;
+      }), this.geolocation.getCurrentPosition().then(r=>{
+        console.log('got location');
+        return r;
+      })])
       .then( results =>{
           let token = results[0];
           let location = results[1];
@@ -78,7 +87,59 @@ export class EventsService {
           let headers = this.createAuthorizationHeader(token);
           this.location.latitude = location.coords.latitude;
           this.location.longitude = location.coords.longitude;
-          return this.httpClient.get(backend_baseUrl + 'we_help/events/?longitude='+this.location.longitude+'&latitude='+this.location.latitude, {headers})
+
+          return this.httpClient.get(
+            backend_baseUrl + 'we_help/events/?longitude='+
+            this.location.longitude+'&latitude='+
+            this.location.latitude, {headers})
+            .map((events: Event[]) => {
+              this.events = events;
+              return events;
+            }
+            ,error => {
+              console.log('failure invoke');
+              console.log(error);// Error getting the data
+            }).toPromise();
+        }
+      ));
+  }
+  fetchCreatedEvents(): Observable<Event[]> {
+    console.log('fetchCreatedEvents');
+    
+    return Observable.from(
+      Promise.all([this.storage.get('currentToken').then(r=>{
+        console.log('got token');
+        return r;
+      })])
+      .then( results =>{
+          let token = results[0];
+          let headers = this.createAuthorizationHeader(token);
+          return this.httpClient.get(
+            backend_baseUrl + 'we_help/events/created', {headers})
+            .map((events: Event[]) => {
+              this.events = events;
+              return events;
+            }
+            ,error => {
+              console.log('failure invoke');
+              console.log(error);// Error getting the data
+            }).toPromise();
+        }
+      ));
+  }
+  fetchSignedEvents(): Observable<Event[]> {
+    console.log('fetchSignedEvents');
+    
+    return Observable.from(
+      Promise.all([this.storage.get('currentToken').then(r=>{
+        console.log('got token');
+        return r;
+      })])
+      .then( results =>{
+          let token = results[0];
+          let headers = this.createAuthorizationHeader(token);
+          return this.httpClient.get(
+            backend_baseUrl + 'we_help/events/signed', {headers})
             .map((events: Event[]) => {
               this.events = events;
               return events;
@@ -97,7 +158,7 @@ export class EventsService {
     this.storage.set('events', this.events)
       .then(
         () => {
-          this.removeFile(event);
+          // this.removeFile(event);
         }
       )
       .catch(
@@ -105,24 +166,47 @@ export class EventsService {
       );
   }
 
-  confirmEvent(index: number) {
-    const event = this.events[index];
-    console.log("Comfirm signup");
+  confirmEvent(event: Event) {
+    console.log("Comfirm signup", event);
   }
 
-  private removeFile(event: Event) {
-    const currentName = event.imageUrl.replace(/^.*[\\\/]/, '');
-    this.file.removeFile(cordova.file.dataDirectory, currentName)
-      .then(
-        () => console.log('Removed File')
-      )
-      .catch(
-        () => {
-          console.log('Error while removing File');
-          // this.addEvent(event.title, event.description, event.location, event.imageUrl);
+  signupEvent(event: Event) {
+    console.log("signupEvent", event);
+
+    return Observable.from(
+      Promise.all([this.storage.get('currentToken').then(r=>{
+        console.log('got token');
+        return r;
+      })])
+      .then( results =>{
+          let token = results[0];
+          let headers = this.createAuthorizationHeader(token);
+          return this.httpClient.post(
+            backend_baseUrl + 'we_help/event/'+event.id+'/signup/', {headers})
+            .map((signup) => {
+              return signup;
+            }
+            ,error => {
+              console.log('failure invoke signupEvent');
+              console.log(error);// Error getting the data
+            }).toPromise();
         }
-      );
+      ));
   }
+
+  // private removeFile(event: Event) {
+  //   const currentName = event.imageUrl.replace(/^.*[\\\/]/, '');
+  //   this.file.removeFile(cordova.file.dataDirectory, currentName)
+  //     .then(
+  //       () => console.log('Removed File')
+  //     )
+  //     .catch(
+  //       () => {
+  //         console.log('Error while removing File');
+  //         // this.addEvent(event.title, event.description, event.location, event.imageUrl);
+  //       }
+  //     );
+  // }
 
   findByName(searchKey: string) {
     let key: string = searchKey.toUpperCase();

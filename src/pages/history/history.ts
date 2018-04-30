@@ -23,14 +23,14 @@ export class HistoryPage {
 
   }
   ionViewDidLoad(){
-    this.eventsService.fetchEvents()
+    this.eventsService.fetchCreatedEvents()
       .subscribe(
         (eventList: Event[]) => this.eventList = eventList
       );
   }
 
-  onOpenEvent(event: Event, index: number) {
-    const modal = this.modalCtrl.create(ConfirmPage, {event: event, index: index});
+  onOpenEvent(event: Event) {
+    const modal = this.modalCtrl.create(ConfirmPage, {event: event});
     modal.present();
     modal.onDidDismiss(
       () => {

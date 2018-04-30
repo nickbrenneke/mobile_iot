@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.eventsService.fetchEvents()
+    this.eventsService.fetchNearbyEvents()
       .subscribe(
         (events: Event[]) => this.events = events
       );

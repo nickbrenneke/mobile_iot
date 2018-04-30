@@ -48,6 +48,7 @@ export class AddEventPage {
 
     this.event.latitude = this.location.latitude;
     this.event.longitude = this.location.longitude;
+    
 
     this.eventsService
       .addEvent(this.event)

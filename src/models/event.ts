@@ -1,4 +1,4 @@
-// import { Location } from "./location";
+import { Signup } from "./signup";
 
 export class Event {
   public id: number;
@@ -10,7 +10,7 @@ export class Event {
   // public location: Location;
   public longitude: number;
   public latitude: number;
-  public imageUrl: string;
+  public signups: Signup[]; 
   constructor(values: Object = {}) {
     Object.assign(this, values);
   }
