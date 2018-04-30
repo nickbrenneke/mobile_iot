@@ -34,7 +34,7 @@ export class MapPage implements OnInit{
               private eventsService: EventsService) {}
 
   ngOnInit() {
-    this.eventsService.fetchEvents()
+    this.eventsService.fetchNearbyEvents()
       .subscribe( //should be "subscribe" when using fetchEvents()
         (events: Event[]) => this.events = events
       );

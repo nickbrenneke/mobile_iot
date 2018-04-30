@@ -53,7 +53,7 @@ export class EventsService {
           let headers = this.createAuthorizationHeader(token);
 
           return this.httpClient.post(
-            backend_baseUrl + '/we_help/events/',
+            backend_baseUrl + 'we_help/events/',
             JSON.stringify(event), {headers})
             .map((event: Event) => event
             ,error => {
