@@ -5,6 +5,7 @@ export class Event {
   public title: string;
   public description: string;
   public duration: number;
+  public create_time: Date;
   public close_time: Date;
   public reward: string;
   // public location: Location;

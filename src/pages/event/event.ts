@@ -40,4 +40,37 @@ export class EventPage {
     );
   }
 
+  formatCreateTime(event: Event, index: number) {
+     let newDate = new Date(event.create_time);
+     console.log('newDate:' + newDate);
+     const monthNames = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+     ];
+     // let year = newDate.getFullYear();
+     let monthIndex = newDate.getMonth();
+     let day = newDate.getDate();
+     let hour = newDate.getHours();
+     let minute = newDate.getMinutes();
+     return monthNames[monthIndex] + ' ' + day + ' ' + hour + ':' + minute;
+  }
+
+  formatCloseTime(event: Event, index: number) {
+     let newDate = new Date(event.close_time);
+     console.log('newDate:' + newDate);
+     const monthNames = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+     ];
+     // let year = newDate.getFullYear();
+     let monthIndex = newDate.getMonth();
+     let day = newDate.getDate();
+     let hour = newDate.getHours();
+     let minute = newDate.getMinutes();
+     return monthNames[monthIndex] + ' ' + day + ' ' + hour + ':' + minute;
+  }
 }
