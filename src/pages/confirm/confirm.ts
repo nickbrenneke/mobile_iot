@@ -3,7 +3,7 @@ import { NavParams, ViewController } from 'ionic-angular';
 
 import { Event } from "../../models/event";
 import { EventsService } from "../../services/event-service";
-
+import {backend_baseUrl} from "../../constants/backend-constants";
 @Component({
   selector: 'page-confirm',
   templateUrl: 'confirm.html'
@@ -16,6 +16,7 @@ export class ConfirmPage {
               private viewCtrl: ViewController,
               private eventsService: EventsService) {
     this.event = this.navParams.get('event');
+    console.log('confirm event', this.event);
   }
 
   onLeave() {
@@ -24,6 +25,11 @@ export class ConfirmPage {
 
   onConfirm() {
     this.eventsService.confirmEvent(this.event);
+    this.onLeave();
+  }
+
+  onCloseEvent() {
+    this.eventsService.closeEvent(this.event);
     this.onLeave();
   }
 }

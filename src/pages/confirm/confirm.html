@@ -2,6 +2,9 @@
 
   <ion-navbar>
     <ion-title>{{ event.title }}</ion-title>
+    <p *ngIf="event.status=='OP'">Status: Open</p>
+    <p *ngIf="event.status=='CF'">Status: Confirm</p>
+    <p *ngIf="event.status=='CL'">Status: Closed</p>
   </ion-navbar>
 
 </ion-header>
@@ -16,17 +19,16 @@
     </ion-row>
 
     <ion-list>
-      <ion-item>
+      <ion-item *ngFor="let signup of event.signups;">
         <ion-label>
           <ion-item>
              <ion-avatar item-start>
-              <img src="img/slimer.png">
+              <img src="{{backend_baseUrl + 'accounts/api/photo/' + signup.signup_user.id}}">
             </ion-avatar>
-            <h2>Venkman</h2>
-            <p>Haha</p>           
+            <h2>{{signup.signup_user.username}}</h2>    
           </ion-item>
         </ion-label>
-        <ion-checkbox></ion-checkbox>
+        <ion-checkbox checked="{{signup.is_pick_up==true}}" [(ngModel)]="signup.is_pick_up"></ion-checkbox>
       </ion-item>
     </ion-list>
 
@@ -37,12 +39,19 @@
           block
           (click)="onLeave()">Leave</button>
       </ion-col>
-      <ion-col>
+      <ion-col *ngIf="event.status=='OP'">
         <button
           ion-button
           block
           color="danger"
           (click)="onConfirm()">Confirm</button>
+      </ion-col>
+      <ion-col *ngIf="event.status=='CF'">
+        <button
+          ion-button
+          block
+          color="danger"
+          (click)="onCloseEvent()">Close</button>
       </ion-col>
     </ion-row>
   </ion-grid>

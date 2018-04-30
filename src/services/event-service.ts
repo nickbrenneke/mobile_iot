@@ -167,7 +167,65 @@ export class EventsService {
   }
 
   confirmEvent(event: Event) {
-    console.log("Comfirm signup", event);
+    console.log("confirm signup", event);
+    let payload = {'id':event.id, 'status':'CF'};
+    payload['signups'] = [];
+    for (var i = event.signups.length - 1; i >= 0; i--) {
+      event.signups[i]
+      payload['signups'].push({
+        'id':event.signups[i].id,
+        'is_pick_up':event.signups[i].is_pick_up})
+    }
+    event.status = 'CF';
+
+    return Observable.from(
+      Promise.all([this.storage.get('currentToken').then(r=>{
+        console.log('got token');
+        return r;
+      })])
+      .then( results =>{
+          let token = results[0];
+          let headers = this.createAuthorizationHeader(token);
+          return this.httpClient.patch(
+            backend_baseUrl + 'we_help/events/created/'+event.id,
+            JSON.stringify(payload), {headers})
+            .map((signup) => {
+              return signup;
+            }
+            ,error => {
+              console.log('failure invoke signupEvent');
+              console.log(error);// Error getting the data
+            }).toPromise();
+        }
+      ));
+  }
+
+  closeEvent(event: Event){
+    console.log("close signup", event);
+    let payload = {'id':event.id, 'status':'CL'};
+    event.status = 'CL';
+  
+
+    return Observable.from(
+      Promise.all([this.storage.get('currentToken').then(r=>{
+        console.log('got token');
+        return r;
+      })])
+      .then( results =>{
+          let token = results[0];
+          let headers = this.createAuthorizationHeader(token);
+          return this.httpClient.patch(
+            backend_baseUrl + 'we_help/events/created/'+event.id,
+            JSON.stringify(payload), {headers})
+            .map((signup) => {
+              return signup;
+            }
+            ,error => {
+              console.log('failure invoke signupEvent');
+              console.log(error);// Error getting the data
+            }).toPromise();
+        }
+      ));
   }
 
   signupEvent(event: Event) {
@@ -182,7 +240,7 @@ export class EventsService {
           let token = results[0];
           let headers = this.createAuthorizationHeader(token);
           return this.httpClient.post(
-            backend_baseUrl + 'we_help/event/'+event.id+'/signup/', {headers})
+            backend_baseUrl + 'we_help/event/'+event.id+'/signup/', {}, {headers})
             .map((signup) => {
               return signup;
             }
