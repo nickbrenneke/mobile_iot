@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let event of eventList;" (click)="onOpenEvent(event, event.id)">
+  <ion-card *ngFor="let event of eventList;">
     <img [src]="event.imageUrl">
     <ion-card-content text-center>
       <ion-card-title>
