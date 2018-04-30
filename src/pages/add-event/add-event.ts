@@ -29,7 +29,7 @@ export class AddEventPage {
     longitude: -79.944697
   };
   locationIsSet = false;
-  imageUrl = '';
+  pic = '';
 
   // event = new Event(NgForm);
 
@@ -48,7 +48,7 @@ export class AddEventPage {
 
     this.event.latitude = this.location.latitude;
     this.event.longitude = this.location.longitude;
-    
+    this.event.pic = this.pic;
 
     this.eventsService
       .addEvent(this.event)
@@ -109,7 +109,7 @@ export class AddEventPage {
     }) 
       .then( 
         imageData => { 
-          this.imageUrl = "data:image/jpeg;base64," + imageData; 
+          this.pic = "data:image/jpeg;base64," + imageData; 
         } 
       ) 
       .catch( 
