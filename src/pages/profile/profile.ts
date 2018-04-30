@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { ModalController } from 'ionic-angular';
+import { FormControl } from '@angular/forms';
+import { Profile } from "../../models/profile";
+import { ProfileService } from "../../services/profile-service-mock";
+import 'rxjs/add/operator/debounceTime';
 
 
 @IonicPage()
@@ -8,41 +13,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-  public person: {name: string, birthdate?: number, mobile: string, email: string};
-  dob: any;
-  age: any;
   showProfile: boolean;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.person = {name: undefined, birthdate: undefined, mobile: undefined, email: undefined};
-    this.dob = undefined;
+  searchKey: string = '';
+  searchControl: FormControl;
+  searching: any = false;
+  profile = new Profile();
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+              private profileService: ProfileService) {
   }
 
   ionViewDidLoad() {
-    let person = JSON.parse(localStorage.getItem('PERSON'));
-    if (person){
-      this.person = person;
-      this.age = this.getAge(this.person.birthdate);
-      this.dob = new Date(this.person.birthdate).toISOString();
-    }
-  }
+    // invoke profile service
+    // get data
 
-  reset(){
-    this.person = {name: null, birthdate: null, mobile: null, email: null};
-    this.dob = null;
-    this.showProfile = false;
-  }
+    this.searchControl = new FormControl();
+     // console.log('Welcome', user, 'with', token);
+      this.profileService.fetchProfile()
+        .subscribe(
+          
+          (profile) => {
+            console.log("asign profile", profile);
+            this.profile = profile;
+          })
 
-  save(){
-    this.person.birthdate = new Date(this.dob).getTime();
-    this.age = this.getAge(this.person.birthdate);
-    this.showProfile = true;
-    localStorage.setItem('PERSON', JSON.stringify(this.person));
+    // let person = JSON.parse(localStorage.getItem('PERSON'));
+    // if (person){
+    //   this.person = person;
+    //   this.age = this.getAge(this.person.birthdate);
+    //   this.dob = new Date(this.person.birthdate).toISOString();
+    // 
   }
-
-  getAge(birthdate){
-    let currentTime = new Date().getTime();
-     return ((currentTime - birthdate)/31556952000).toFixed(0);
-  }
-
+  
 
 }
