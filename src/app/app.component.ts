@@ -39,8 +39,8 @@ export class MyApp {
     this.pages = [
       // {title: 'Home', component: MapPage, icon: 'star'},
       {title: 'Help Wanted', component: EventListPage, icon: 'star'},
-      {title: 'My Offer', component: EventPage, icon: 'star'}, 
-      {title: 'My Request', component: HistoryPage, icon: 'star'},           
+      {title: 'My Offers to Help', component: EventPage, icon: 'star'}, 
+      {title: 'My Requests for Help', component: HistoryPage, icon: 'star'},           
       {title: 'My Account', component: ProfilePage, icon: 'star'},
       {title: 'About', component: WelcomePage, icon: 'star'}/*,
       {title: 'Logout', component: SigninPage, icon: 'star'}*/
