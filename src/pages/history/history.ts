@@ -36,7 +36,6 @@ export class HistoryPage {
     modal.present();
     modal.onDidDismiss(
       () => {
-        this.eventList = this.eventsService.loadEvents();
       }
     );
   }

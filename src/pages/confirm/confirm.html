@@ -3,10 +3,6 @@
   <ion-navbar  color="primary">
     <ion-title>{{ event.title }}</ion-title>
   </ion-navbar>
-  <button
-    ion-button
-    block
-    (click)="onLeave()">Leave</button>
 </ion-header>
 
 <ion-content padding>
@@ -44,6 +40,12 @@
       <!-- <ion-col> -->
         
       <!-- </ion-col> -->
+      <ion-col>
+        <button
+          ion-button
+          block
+          (click)="onLeave()">Leave</button>
+      </ion-col>
       <ion-col *ngIf="event.status=='OP'">
         <button
           ion-button
