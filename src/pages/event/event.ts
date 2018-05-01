@@ -53,7 +53,6 @@ export class EventPage {
 
   formatCreateTime(event: Event, index: number) {
      let newDate = new Date(event.create_time);
-     console.log('newDate:' + newDate);
      const monthNames = [
         "January", "February", "March",
         "April", "May", "June", "July",
@@ -70,7 +69,6 @@ export class EventPage {
 
   formatCloseTime(event: Event, index: number) {
      let newDate = new Date(event.close_time);
-     console.log('newDate:' + newDate);
      const monthNames = [
         "January", "February", "March",
         "April", "May", "June", "July",
