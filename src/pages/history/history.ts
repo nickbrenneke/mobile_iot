@@ -6,6 +6,7 @@ import { Event } from "../../models/event";
 import { EventsService } from "../../services/event-service";
 import { Events } from 'ionic-angular';
 import { ConfirmPage } from '../confirm/confirm';
+import { backend_baseUrl } from '../../constants/backend-constants';
 
 @Component({
   selector: 'page-history',
@@ -15,6 +16,7 @@ import { ConfirmPage } from '../confirm/confirm';
 export class HistoryPage {
   eventList: Event[] = [];
   index: number;
+  backend_baseUrl: string = backend_baseUrl;
 
   constructor(public events: Events,
               private viewCtrl: ViewController,

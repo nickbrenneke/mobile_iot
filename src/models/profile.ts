@@ -1,7 +1,7 @@
 export class Profile {
   public id: number;
   public name: string;
-  public mobile: string;
+  public phone: string;
   public email: string;
 
   

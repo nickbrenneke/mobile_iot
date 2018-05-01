@@ -3,6 +3,7 @@ import { NavParams, ViewController } from 'ionic-angular';
 
 import { Event } from "../../models/event";
 import { EventsService } from "../../services/event-service";
+import { backend_baseUrl } from '../../constants/backend-constants';
 
 @Component({
   selector: 'page-event-detail',
@@ -11,6 +12,7 @@ import { EventsService } from "../../services/event-service";
 export class EventDetailPage {
   event: Event;
   index: number;
+  backend_baseUrl: string = backend_baseUrl;
 
   constructor(public navParams: NavParams,
               private viewCtrl: ViewController,

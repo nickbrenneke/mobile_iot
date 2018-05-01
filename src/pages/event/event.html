@@ -13,7 +13,7 @@
   <ion-card *ngFor="let event of eventList; let i = index">
     <ion-item>
       <ion-avatar item-start>
-        <img [src]="event.create_user.profile.pic" 
+        <img [src]="backend_baseUrl + 'accounts/api/photo/'+event.create_user.id+'/'" 
           (click)="onOpenProfile(event, i)">
       </ion-avatar>
       <h2>Requester : {{event.create_user.username}}</h2>
@@ -22,7 +22,7 @@
 
     <ion-row>
       <ion-col text center>
-        <img [src]="event.pic">
+        <img [src]="backend_baseUrl + 'we_help/events/photo/'+event.id+'/'">
       </ion-col>
     </ion-row>
 <!--     <ion-row>

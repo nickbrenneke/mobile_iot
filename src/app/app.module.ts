@@ -31,7 +31,7 @@ import { HistoryPage } from "../pages/history/history";
 import { ConfirmPage } from "../pages/confirm/confirm";
 
 import { EventsService } from "../services/event-service";
-import { ProfileService } from "../services/profile-service-mock";
+import { ProfileService } from "../services/profile-service";
 import { DataProvider } from '../providers/data/data';
 
 @NgModule({

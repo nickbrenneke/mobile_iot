@@ -12,14 +12,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Profile } from "../models/profile";
 import { Geolocation } from '@ionic-native/geolocation';
 import { Location } from "../models/location";
+import { backend_baseUrl } from '../constants/backend-constants';
 
 declare var cordova: any;
 
 
 @Injectable()
 export class ProfileService {
-  baseUrl: string = "http://localhost:8000";
-
+  profile: Profile;
 
   constructor(private storage: Storage,
               private file: File,
@@ -46,14 +46,42 @@ export class ProfileService {
           let location = results[1];
           console.log(token, location);
           let headers = this.createAuthorizationHeader(token);
-          return this.httpClient.get(this.baseUrl + '/accounts/api/profile/', {headers})
+          return this.httpClient.get(backend_baseUrl + 'accounts/api/profile/', {headers})
             .map((profile) => {
               console.log('Profile loaded');
 
               let result = new Profile();
               result.name = profile['user'].first_name;
               result.email = profile['user'].email;
-              result.mobile = profile['user'].mobile;
+              result.phone = profile['user'].phone;
+              return result;
+            }
+            ,error => {
+              console.log('failure invoke');
+              console.log(error);// Error getting the data
+            }).toPromise();
+        }
+      ));
+  }
+
+  updateProfile(): Observable<Profile> {
+    console.log('fetch profile');
+    
+    return Observable.from(
+      Promise.all([this.storage.get('currentToken')])
+      .then( results =>{
+          let token = results[0];
+          let location = results[1];
+          console.log(token, location);
+          let headers = this.createAuthorizationHeader(token);
+          return this.httpClient.get(backend_baseUrl + 'accounts/api/profile/', {headers})
+            .map((profile) => {
+              console.log('Profile loaded');
+
+              let result = new Profile();
+              result.name = profile['user'].first_name;
+              result.email = profile['user'].email;
+              result.phone = profile['user'].phone;
               return result;
             }
             ,error => {

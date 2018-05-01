@@ -10,6 +10,7 @@ import { Storage } from "@ionic/storage";
 import 'rxjs/add/operator/debounceTime';
 import { backend_baseUrl } from '../../constants/backend-constants';
 
+
 @Component({
   selector: 'page-event-list',
   templateUrl: 'event-list.html'

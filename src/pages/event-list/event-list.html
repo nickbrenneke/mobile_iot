@@ -24,7 +24,8 @@
     <ion-spinner></ion-spinner>
   </div>
   <ion-card *ngFor="let event of eventList">
-    <img src="{{backend_baseUrl}}we_help/events/photo/{{event.id}}">
+
+    <img [src]="backend_baseUrl + 'we_help/events/photo/'+event.id+'/'">
     <ion-card-content text-center>
       <ion-card-title>
         {{ event.title }}

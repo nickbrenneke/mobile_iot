@@ -8,6 +8,7 @@ import { Events } from 'ionic-angular';
 import 'rxjs/add/operator/debounceTime';
 import { EventDetailPage } from '../event-detail/event-detail';
 import { ProfilePage } from '../profile/profile';
+import { backend_baseUrl } from '../../constants/backend-constants';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { ProfilePage } from '../profile/profile';
 export class EventPage {
   eventList: Event[] = [];
   index: number;
-
+  backend_baseUrl: string = backend_baseUrl;
   constructor(public events: Events,
               public navParams: NavParams,
               private viewCtrl: ViewController,

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from 'ionic-angular';
 import { FormControl } from '@angular/forms';
 import { Profile } from "../../models/profile";
-import { ProfileService } from "../../services/profile-service-mock";
+import { ProfileService } from "../../services/profile-service";
 import 'rxjs/add/operator/debounceTime';
 
 
