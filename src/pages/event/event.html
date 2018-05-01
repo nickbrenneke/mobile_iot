@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-navbar>
+    <ion-navbar  color="primary">
         <ion-title>
         My Offers to Help
         </ion-title>
@@ -45,8 +45,8 @@
   <div (click)="onOpenEvent(event, i)">
     <ion-item>
       <ion-icon name="flag" item-start large></ion-icon>
-        <h2 *ngIf="!event.is_pick_up">{{ event.title + ' : waiting host'}}</h2>
-        <h2 *ngIf="event.is_pick_up">{{ event.title + ' : got selected!'}}</h2>
+        <h2 *ngIf="!event.is_pick_up">{{ event.title + ' : waiting for confirmation'}}</h2>
+        <h2 *ngIf="event.is_pick_up">{{ event.title + ' : reach out to help!'}}</h2>
         <p>{{ event.description }}</p>
     </ion-item>
 
