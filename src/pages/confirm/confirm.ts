@@ -11,6 +11,7 @@ import {backend_baseUrl} from "../../constants/backend-constants";
 export class ConfirmPage {
   event: Event;
   index: number;
+  backend_baseUrl: string = backend_baseUrl;
 
   constructor(public navParams: NavParams,
               private viewCtrl: ViewController,
