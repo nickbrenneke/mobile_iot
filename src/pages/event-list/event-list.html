@@ -23,40 +23,31 @@
   <div *ngIf="searching" class="spinner-container">
     <ion-spinner></ion-spinner>
   </div>
-  <ion-card *ngFor="let event of eventList">
 
-    <img [src]="backend_baseUrl + 'we_help/events/photo/'+event.id+'/'">
-    <ion-card-content text-center>
-      <ion-card-title>
-        {{ event.title }}
-      </ion-card-title>
-      <p>{{ event.description }}</p>
-    </ion-card-content>
-
-    <ion-item>
-      <ion-icon name="logo-snapchat" item-left large></ion-icon>
-      <h2>Duration: {{ event.duration }} mins</h2>
-      <p>Reward: {{ event.reward }}</p>
-    </ion-item>
-    <ion-row>
-      <ion-col>
-        <button ion-button icon-left clear small>
-          <ion-icon name="thumbs-up"></ion-icon>
-          <div>12 Likes</div>
-        </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-left small (click)="onSignupClick(event)">
-          <ion-icon name="hand"></ion-icon>
-          <div>Help</div> 
-        </button>       
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-left clear small>
-          <ion-icon name="share"></ion-icon>
-          <div>Share</div>
-        </button>        
-      </ion-col>
-    </ion-row>
-  </ion-card>
+  <flash-card *ngFor="let event of eventList">
+    <div class="fc-front">
+      <img [src]="backend_baseUrl + 'we_help/events/photo/'+event.id+'/'">
+      <h2 text-center>{{event.title}}</h2>
+      <h3 text-center>{{event.description}}</h3>
+      <hr />   
+    </div>
+    <div class="fc-back">
+      <h2 text-center>{{event.title}}</h2>
+      <h3 text-center>{{event.description}}</h3>
+      <hr />
+      <ion-item>
+        <ion-icon name="logo-snapchat" item-left large></ion-icon>
+        <h2>Duration: {{ event.duration }} mins</h2>
+        <p>Reward: {{ event.reward }}</p>
+      </ion-item>
+      <ion-row>
+        <div text-center>
+          <button ion-button small (click)="onSignupClick(event)">
+            <ion-icon name="hand"></ion-icon>
+            <div>Help</div> 
+          </button> 
+        </div>      
+      </ion-row>        
+    </div>    
+  </flash-card>
 </ion-content>

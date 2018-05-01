@@ -14,6 +14,7 @@ import { AgmCoreModule } from "@agm/core";
 import { Camera } from '@ionic-native/camera';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
+import { SharedModule } from './shared.module';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SigninPage } from '../pages/signin/signin';
@@ -57,6 +58,7 @@ import { DataProvider } from '../providers/data/data';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    SharedModule,
     HttpModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),

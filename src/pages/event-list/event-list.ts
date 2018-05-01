@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { FormControl } from '@angular/forms';
 import { Event } from "../../models/event";
 import { EventsService } from "../../services/event-service";
@@ -10,7 +10,7 @@ import { Storage } from "@ionic/storage";
 import 'rxjs/add/operator/debounceTime';
 import { backend_baseUrl } from '../../constants/backend-constants';
 
-
+@IonicPage()
 @Component({
   selector: 'page-event-list',
   templateUrl: 'event-list.html'
@@ -26,7 +26,8 @@ export class EventListPage {
 
   constructor(private storage: Storage,
               public events: Events,
-              private modalCtrl: ModalController,
+              public navCtrl: NavController,
+              public navParams: NavParams,
               private eventsService: EventsService) {
     this.searchControl = new FormControl();
     events.subscribe('user:signin', (user, token) => {
