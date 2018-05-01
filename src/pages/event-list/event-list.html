@@ -40,14 +40,13 @@
         <h2>Duration: {{ event.duration }} mins</h2>
         <p>Reward: {{ event.reward }}</p>
       </ion-item>
-      <ion-row>
-        <div text-center>
-          <button ion-button small (click)="onSignupClick(event)">
-            <ion-icon name="hand"></ion-icon>
-            <div>Help</div> 
-          </button> 
-        </div>      
-      </ion-row>        
+      <hr />
+      <div text-center>
+        <button ion-button small (click)="onSignupClick(event)">
+          <ion-icon name="hand"></ion-icon>
+          <div>Help</div> 
+        </button> 
+      </div>         
     </div>    
   </flash-card>
 </ion-content>
