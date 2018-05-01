@@ -8,6 +8,7 @@ import { AddEventPage } from "../add-event/add-event";
 import { Events } from 'ionic-angular';
 import { Storage } from "@ionic/storage";
 import 'rxjs/add/operator/debounceTime';
+import { backend_baseUrl } from '../../constants/backend-constants';
 
 @Component({
   selector: 'page-event-list',
@@ -20,6 +21,7 @@ export class EventListPage {
   searchKey: string = '';
   searchControl: FormControl;
   searching: any = false;
+  backend_baseUrl: string = backend_baseUrl;
 
   constructor(private storage: Storage,
               public events: Events,
