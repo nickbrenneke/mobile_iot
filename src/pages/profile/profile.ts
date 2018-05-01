@@ -19,6 +19,17 @@ export class ProfilePage {
   searching: any = false;
   profile = new Profile();
 
+  user = {
+    username: 'k13k', //should be full name
+    profileImage: 'assets/img/avatar/girl-avatar.png', //should be user pic
+    coverImage: 'assets/img/background/background-5.jpg', //we will apply a global images
+    first_name: 'Cosima',
+    last_name: 'Niehaus',
+    description: 'Passionate Designer. Recently focusing on developing mobile hybrid apps and web development.',
+    phone: '555 555 555',
+    email: 'cosima@niehaus.com',
+  };
+
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private profileService: ProfileService) {
   }
