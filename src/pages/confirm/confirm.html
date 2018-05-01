@@ -2,9 +2,6 @@
 
   <ion-navbar>
     <ion-title>{{ event.title }}</ion-title>
-    <p *ngIf="event.status=='OP'">Status: Open</p>
-    <p *ngIf="event.status=='CF'">Status: Confirm</p>
-    <p *ngIf="event.status=='CL'">Status: Closed</p>
   </ion-navbar>
 
 </ion-header>
@@ -15,6 +12,14 @@
     <ion-row>
       <ion-col>
         <p>{{ event.description }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <p *ngIf="event.status=='OP'">Status: Open</p>
+        <p *ngIf="event.status=='CF'">Status: Confirm</p>
+        <p *ngIf="event.status=='CL'">Status: Closed</p>
       </ion-col>
     </ion-row>
 

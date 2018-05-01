@@ -3,12 +3,6 @@
 
   <ion-navbar>
     <ion-title>{{ event.title }}</ion-title>
-    <p *ngIf="event.is_pick_up">
-      You have been selected!
-    </p>
-    <p *ngIf="!event.is_pick_up">
-      Waiting for host to confirm
-    </p>
   </ion-navbar>
 
 </ion-header>
@@ -24,6 +18,12 @@
     <ion-row>
       <ion-col>
         <p>{{ event.description }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p *ngIf="event.is_pick_up">Status: You have been selected!</p>
+        <p *ngIf="!event.is_pick_up">Status: Waiting for host to confirm.</p>
       </ion-col>
     </ion-row>
     <ion-row *ngIf="event.is_pick_up">
