@@ -43,7 +43,7 @@ export class MyApp {
       {title: 'My Offers to Help', component: EventPage, icon: 'star'}, 
       {title: 'My Requests for Help', component: HistoryPage, icon: 'star'},           
       {title: 'My Account', component: ProfilePage, icon: 'star'},
-      {title: 'About', component: WelcomePage, icon: 'star'}/*,
+      {title: 'Manual', component: WelcomePage, icon: 'star'}/*,
       {title: 'Logout', component: SigninPage, icon: 'star'}*/
     ];
 
