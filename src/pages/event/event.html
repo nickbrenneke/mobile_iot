@@ -15,7 +15,7 @@
       <ion-avatar item-start>
         <img src="event.create_user.profile.pic">
       </ion-avatar>
-      <h2>{{event.create_user.username}}</h2>
+      <h2>Requester : {{event.create_user.username}}</h2>
       <p>{{formatCreateTime(event, i)}}</p>
     </ion-item>
 
@@ -44,7 +44,8 @@
     
     <ion-item>
       <ion-icon name="flag" item-start large></ion-icon>
-        <h2>{{ event.title }}</h2>
+        <h2 *ngIf="!event.is_pick_up">{{ event.title + ' : waiting host'}}</h2>
+        <h2 *ngIf="event.is_pick_up">{{ event.title + ' : got selected!'}}</h2>
         <p>{{ event.description }}</p>
     </ion-item>
 

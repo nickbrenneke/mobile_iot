@@ -3,6 +3,12 @@
 
   <ion-navbar>
     <ion-title>{{ event.title }}</ion-title>
+    <p *ngIf="event.is_pick_up">
+      You have been selected!
+    </p>
+    <p *ngIf="!event.is_pick_up">
+      Waiting for host to confirm
+    </p>
   </ion-navbar>
 
 </ion-header>
@@ -20,7 +26,7 @@
         <p>{{ event.description }}</p>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row *ngIf="event.is_pick_up">
       <ion-col>
         <agm-map
           [latitude]="event.latitude"

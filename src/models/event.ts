@@ -13,7 +13,8 @@ export class Event {
   public latitude: number;
   public status: string;
   public pic: string;
-  public signups: Signup[]; 
+  public signups: Signup[];
+  public is_pick_up: boolean;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
