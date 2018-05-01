@@ -10,10 +10,11 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let event of eventList; let i = index" (click)="onOpenEvent(event, i)">
+  <ion-card *ngFor="let event of eventList; let i = index">
     <ion-item>
       <ion-avatar item-start>
-        <img src="event.create_user.profile.pic">
+        <img [src]="event.create_user.profile.pic" 
+          (click)="onOpenProfile(event, i)">
       </ion-avatar>
       <h2>{{event.create_user.username}}</h2>
       <p>{{formatCreateTime(event, i)}}</p>
@@ -41,7 +42,7 @@
         </ion-fab>       
       </ion-col>
     </ion-row> -->
-    
+  <div (click)="onOpenEvent(event, i)">
     <ion-item>
       <ion-icon name="flag" item-start large></ion-icon>
         <h2>{{ event.title }}</h2>
@@ -61,5 +62,6 @@
         Complete
       </button> -->
     </ion-item>
+  </div>
   </ion-card>
 </ion-content>

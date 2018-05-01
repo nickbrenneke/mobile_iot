@@ -7,6 +7,8 @@ import { EventsService } from "../../services/event-service";
 import { Events } from 'ionic-angular';
 import 'rxjs/add/operator/debounceTime';
 import { EventDetailPage } from '../event-detail/event-detail';
+import { ProfilePage } from '../profile/profile';
+
 
 @Component({
   selector: 'page-event',
@@ -33,6 +35,15 @@ export class EventPage {
 
   onOpenEvent(event: Event, index: number) {
     const modal = this.modalCtrl.create(EventDetailPage, {event: event, index: index});
+    modal.present();
+    modal.onDidDismiss(
+      () => {
+        this.eventList = this.eventsService.loadEvents();      }
+    );
+  }
+
+  onOpenProfile(event: Event, index: number) {
+    const modal = this.modalCtrl.create(ProfilePage);
     modal.present();
     modal.onDidDismiss(
       () => {
