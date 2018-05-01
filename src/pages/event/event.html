@@ -14,7 +14,7 @@
     <ion-item>
       <ion-avatar item-start>
         <img [src]="backend_baseUrl + 'accounts/api/photo/'+event.create_user.id+'/'" 
-          (click)="onOpenProfile(event, i)">
+          (click)="onProfileClick(event.create_user.id)">
       </ion-avatar>
       <h2>Requester : {{event.create_user.username}}</h2>
       <p>{{formatCreateTime(event, i)}}</p>

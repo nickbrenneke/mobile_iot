@@ -6,20 +6,22 @@ import { Profile } from "../../models/profile";
 import { ProfileService } from "../../services/profile-service";
 import 'rxjs/add/operator/debounceTime';
 import { backend_baseUrl } from '../../constants/backend-constants';
+import { ViewController } from 'ionic-angular';
 
 
 @IonicPage()
 @Component({
-  selector: 'page-profile',
-  templateUrl: 'profile.html',
+  selector: 'page-profile-public',
+  templateUrl: 'profile-public.html',
 })
-export class ProfilePage {
+export class ProfilePublicPage {
   showProfile: boolean;
   searchKey: string = '';
   searchControl: FormControl;
   searching: any = false;
   profile = new Profile();
   backend_baseUrl: string = backend_baseUrl;
+  id: number;
 
   // user = {
   //   username: 'k13k', //should be full name
@@ -33,7 +35,11 @@ export class ProfilePage {
   // };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-              private profileService: ProfileService) {
+              private profileService: ProfileService,
+              private viewCtrl: ViewController,
+              ) {
+    this.id = this.navParams.get('id');
+
   }
 
   ionViewDidLoad() {
@@ -42,7 +48,7 @@ export class ProfilePage {
 
     this.searchControl = new FormControl();
      // console.log('Welcome', user, 'with', token);
-      this.profileService.fetchProfile()
+      this.profileService.fetchPublicProfile(this.id)
         .subscribe(
           
           (profile) => {
@@ -57,6 +63,10 @@ export class ProfilePage {
     //   this.age = this.getAge(this.person.birthdate);
     //   this.dob = new Date(this.person.birthdate).toISOString();
     // 
+  }
+
+  onLeave() {
+    this.viewCtrl.dismiss();
   }
   
 

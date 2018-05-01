@@ -9,6 +9,7 @@ import 'rxjs/add/operator/debounceTime';
 import { EventDetailPage } from '../event-detail/event-detail';
 import { ProfilePage } from '../profile/profile';
 import { backend_baseUrl } from '../../constants/backend-constants';
+import { ProfilePublicPage } from '../profile-public/profile-public';
 
 
 @Component({
@@ -43,14 +44,14 @@ export class EventPage {
     );
   }
 
-  onOpenProfile(event: Event, index: number) {
-    const modal = this.modalCtrl.create(ProfilePage);
-    modal.present();
-    modal.onDidDismiss(
-      () => {
-        this.eventList = this.eventsService.loadEvents();      }
-    );
-  }
+  // onOpenProfile(event: Event, index: number) {
+  //   const modal = this.modalCtrl.create(ProfilePage);
+  //   modal.present();
+  //   modal.onDidDismiss(
+  //     () => {
+  //       this.eventList = this.eventsService.loadEvents();      }
+  //   );
+  // }
 
   formatCreateTime(event: Event, index: number) {
      let newDate = new Date(event.create_time);
@@ -82,5 +83,11 @@ export class EventPage {
      let hour = newDate.getHours();
      let minute = newDate.getMinutes();
      return monthNames[monthIndex] + ' ' + day + ' ' + hour + ':' + minute;
+  }
+
+  onProfileClick(id){
+    console.log('onProfileClick', id);
+    const modal = this.modalCtrl.create(ProfilePublicPage, {id: id});
+    modal.present();
   }
 }

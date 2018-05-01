@@ -12,6 +12,7 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { EventListPage } from '../pages/event-list/event-list';
 import { EventPage } from '../pages/event/event';
 import { ProfilePage } from '../pages/profile/profile';
+import { ProfilePublicPage } from '../pages/profile-public/profile-public';
 import { HistoryPage } from '../pages/history/history';
 import { Storage } from '@ionic/storage';
 

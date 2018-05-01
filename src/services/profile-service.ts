@@ -36,7 +36,7 @@ export class ProfileService {
   }
     
   
-  fetchProfile(): Observable<Profile> {
+  fetchProfile(): Observable<Object> {
     console.log('fetch profile');
     
     return Observable.from(
@@ -50,11 +50,7 @@ export class ProfileService {
             .map((profile) => {
               console.log('Profile loaded');
 
-              let result = new Profile();
-              result.name = profile['user'].first_name;
-              result.email = profile['user'].email;
-              result.phone = profile['user'].phone;
-              return result;
+              return profile;
             }
             ,error => {
               console.log('failure invoke');
@@ -64,7 +60,31 @@ export class ProfileService {
       ));
   }
 
-  updateProfile(): Observable<Profile> {
+  fetchPublicProfile(id:number): Observable<Object> {
+    console.log('fetch profile');
+    
+    return Observable.from(
+      Promise.all([this.storage.get('currentToken')])
+      .then( results =>{
+          let token = results[0];
+          let location = results[1];
+          console.log(token, location);
+          let headers = this.createAuthorizationHeader(token);
+          return this.httpClient.get(backend_baseUrl + 'accounts/api/profile/'+id, {headers})
+            .map((profile) => {
+              console.log('Profile loaded');
+
+              return profile;
+            }
+            ,error => {
+              console.log('failure invoke');
+              console.log(error);// Error getting the data
+            }).toPromise();
+        }
+      ));
+  }
+
+  updateProfile(): Observable<Object> {
     console.log('fetch profile');
     
     return Observable.from(
@@ -78,11 +98,7 @@ export class ProfileService {
             .map((profile) => {
               console.log('Profile loaded');
 
-              let result = new Profile();
-              result.name = profile['user'].first_name;
-              result.email = profile['user'].email;
-              result.phone = profile['user'].phone;
-              return result;
+              return profile;
             }
             ,error => {
               console.log('failure invoke');
